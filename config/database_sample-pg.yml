@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  database: team05_dev
+  min_messages: warning
+  
+  # uncomment these lines if you are connected to postgres over the network stack
+  # host: localhost
+  # username:
+  # password:
+
+test:
+  adapter: postgresql
+  database: team05_test
+  min_messages: warning
+
+  # uncomment these lines if you are connected to postgres over the network stack
+  # host: localhost
+  # username:
+  # password:
