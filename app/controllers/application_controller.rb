@@ -13,10 +13,10 @@ class ApplicationController < ActionController::Base
 
   # Catch NotFound exceptions and handle them neatly, when URLs are mistyped or mislinked
   rescue_from ActiveRecord::RecordNotFound do
-    render template: 'errors/error_404', status: 404
+    render template: 'errors/error_404', status: :not_found
   end
   rescue_from CanCan::AccessDenied do
-    render template: 'errors/error_403', status: 403
+    render template: 'errors/error_403', status: :forbidden
   end
 
   # IE over HTTPS will not download if browser caching is off, so allow browser caching when sending files
@@ -36,8 +36,8 @@ class ApplicationController < ActionController::Base
   end
 
   def ie_warning
-    if request.user_agent.to_s =~ /MSIE [6-7]/ && request.user_agent.to_s !~ %r{Trident/7.0}
-      redirect_to(ie_warning_path)
-    end
+    return unless request.user_agent.to_s =~ /MSIE [6-7]/ && request.user_agent.to_s !~ %r{Trident/7.0}
+
+    redirect_to(ie_warning_path)
   end
 end
