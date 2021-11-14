@@ -1,14 +1,16 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
 ruby '2.7.4'
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}.git" }
 
 gem 'sentry-raven'
 
-gem 'rails', '~> 6.1', '>= 6.1.4'
 gem 'activerecord-session_store'
 gem 'bootsnap'
-gem 'responders'
 gem 'puma'
+gem 'rails', '~> 6.1', '>= 6.1.4'
+gem 'responders'
 
 gem 'webpacker'
 
@@ -17,26 +19,30 @@ gem 'pg'
 gem 'hamlit'
 gem 'hamlit-rails'
 
-gem 'simple_form'
 gem 'draper'
 gem 'ransack'
+gem 'simple_form'
 
-gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'will_paginate'
 
-gem 'devise'
-gem 'devise_ldap_authenticatable'
-gem 'devise_cas_authenticatable'
 gem 'cancancan'
+gem 'devise'
+gem 'devise_cas_authenticatable'
+gem 'devise_ldap_authenticatable'
 
-gem 'whenever'
+gem 'daemons'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
-gem 'daemons'
+gem 'whenever'
+
+gem 'rubocop', require: false
+gem 'rubocop-rails', require: false
+gem 'rubocop-rspec', require: false
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'byebug'
+  gem 'rspec-rails'
   gem 'sqlite3'
 end
 
@@ -47,18 +53,18 @@ group :development do
   gem 'web-console'
 
   gem 'capistrano'
-  gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
-  gem 'capistrano-rvm', require: false
   gem 'capistrano-passenger', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm', require: false
 
-  gem 'letter_opener'
   gem 'annotate'
+  gem 'letter_opener'
 end
 
 group :test do
-  gem 'factory_bot_rails'
   gem 'capybara'
+  gem 'factory_bot_rails'
   gem 'webdrivers'
 
   gem 'database_cleaner'

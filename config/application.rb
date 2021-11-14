@@ -1,6 +1,8 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-require "rails/all"
+require_relative 'boot'
+
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -12,31 +14,31 @@ module Team05
     config.active_job.queue_adapter = :delayed_job
 
     # This points to our own routes middleware to handle exceptions
-    config.exceptions_app = self.routes
+    config.exceptions_app = routes
 
     I18n.enforce_available_locales = false
     config.generators do |g|
       g.orm                 :active_record
       g.template_engine     :haml
       g.fixture_replacement :factory_bot,
-                              dir: 'spec/factories'
+                            dir: 'spec/factories'
       g.test_framework      :rspec,
-                              fixture: true,
-                              helper_specs: true,
-                              routing_specs: false,
-                              controller_specs: false,
-                              view_specs: false,
-                              integration_tool: false
+                            fixture: true,
+                            helper_specs: true,
+                            routing_specs: false,
+                            controller_specs: false,
+                            view_specs: false,
+                            integration_tool: false
     end
 
     config.action_mailer.smtp_settings = {
-      address:              'mailhost.shef.ac.uk',
-      port:                 587,
+      address: 'mailhost.shef.ac.uk',
+      port: 587,
       enable_starttls_auto: true,
-      openssl_verify_mode:  OpenSSL::SSL::VERIFY_PEER,
+      openssl_verify_mode: OpenSSL::SSL::VERIFY_PEER,
       openssl_verify_depth: 3,
-      ca_file:              '/etc/ssl/certs/ca-certificates.crt',
-      domain:               'student-app.demo.shefcompsci.org.uk',
+      ca_file: '/etc/ssl/certs/ca-certificates.crt',
+      domain: 'student-app.demo.shefcompsci.org.uk'
     }
 
     # Initialize configuration defaults for originally generated Rails version.

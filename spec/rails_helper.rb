@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'simplecov'
 SimpleCov.start 'rails'
 
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -52,7 +54,7 @@ RSpec.configure do |config|
   end
 
   # Use transactions for non-javascript tests as it is much faster than truncation
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.strategy = :transaction
     ActionMailer::Base.deliveries.clear
   end
@@ -63,20 +65,18 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
   end
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.start
   end
 
-  config.after(:each) do
+  config.after do
     Warden.test_reset!
     DatabaseCleaner.clean
   end
 
   # Help debug tests
   config.after(:each, screenshot_on_failure: true) do |example|
-    if example.exception
-      save_and_open_screenshot
-    end
+    save_and_open_screenshot if example.exception
   end
 
   # Use this to test real error pages (e.g. epiSupport)
