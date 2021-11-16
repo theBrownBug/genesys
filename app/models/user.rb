@@ -7,11 +7,11 @@
 #  first_name :string
 #  last_name  :string
 #  password   :string
-#  type       :integer
+#  user_type  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :uuid
 #
 class User < ApplicationRecord
-  enum type: [:internal, :external]
+  enum user_type: [:internal, :external]
 end
