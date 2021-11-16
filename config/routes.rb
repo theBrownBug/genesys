@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :users
   match '/403', to: 'errors#error_403', via: :all
   match '/404', to: 'errors#error_404', via: :all
   match '/422', to: 'errors#error_422', via: :all

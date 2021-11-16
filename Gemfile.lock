@@ -322,6 +322,7 @@ GEM
     rubycas-client (2.3.9)
       activesupport
     rubyzip (2.3.2)
+    securerandom (0.1.1)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -422,6 +423,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   rubocop-rspec
+  securerandom
   sentry-raven
   simple_form
   simplecov
