@@ -12,5 +12,10 @@
 #  updated_at :datetime         not null
 #
 class User < ApplicationRecord
+  #has_secure_password
+  has_many :roles
+
   enum user_type: [:internal, :external]
+
+
 end

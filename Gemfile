@@ -35,7 +35,9 @@ gem 'daemons'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'whenever'
+
 gem 'securerandom'
+gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
