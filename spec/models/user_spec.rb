@@ -10,7 +10,6 @@
 #  user_type  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :uuid
 #
 require 'rails_helper'
 

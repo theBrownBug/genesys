@@ -3,7 +3,6 @@
 %table
   %thead
     %tr
-      %th User
       %th First name
       %th Last name
       %th Email
@@ -15,7 +14,6 @@
   %tbody
     - @users.each do |user|
       %tr
-        %td= user.user_id
         %td= user.first_name
         %td= user.last_name
         %td= user.email

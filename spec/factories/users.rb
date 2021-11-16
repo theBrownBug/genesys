@@ -10,11 +10,9 @@
 #  user_type  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :uuid
 #
 FactoryBot.define do
   factory :user do
-    user_id { "" }
     first_name { "MyString" }
     last_name { "MyString" }
     email { "MyString" }
