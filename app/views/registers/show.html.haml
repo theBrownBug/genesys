@@ -1,0 +1,13 @@
+%p#notice= notice
+
+%p
+  %b Email:
+  = @register.email
+%p
+  %b Option Chosen:
+  = @register.poption
+
+= link_to 'Edit', edit_register_path(@register)
+\|
+/= link_to 'Back', registers_path
+= link_to 'Home', root_path, title: 'Back'
