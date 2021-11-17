@@ -16,6 +16,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/coverage/*
+.rspec-examples
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
