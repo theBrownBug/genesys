@@ -43,10 +43,10 @@
       .row.g-3
         .col-sm-6
           %label.form-label{:for => "firstName"} First name
-          %input#firstName.form-control{:required => "", :type => "text", :value => ""}
+          %input#firstName.form-control{:required => "true", :type => "text", :value => "", :placeholder =>"John"}
         .col-sm-6
           %label.form-label{:for => "lastName"} Last name
-          %input#lastName.form-control{:required => "", :type => "text", :value => ""}
+          %input#lastName.form-control{:required => "true", :type => "text", :value => "", :placeholder=> "Doe"}
         .col-12
           %label.form-label{:for => "username"} Username
           .input-group.has-validation
