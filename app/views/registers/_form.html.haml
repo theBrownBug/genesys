@@ -1,0 +1,14 @@
+-# frozen_string_literal: true
+= simple_form_for(@register) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :email
+    = f.radio_button :poption, '1', :checked => true
+    = f.label :poption, 'Option 1', :value => '1'
+    = f.radio_button :poption, '2'
+    = f.label :poption, 'Option 2', :value => '2'
+
+  .form-actions
+    = f.button :submit
