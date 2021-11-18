@@ -53,6 +53,6 @@ class RegistersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def register_params
-      params.require(:register).permit(:email, :poption)
+      params.require(:register).permit(:email, :option)
     end
 end

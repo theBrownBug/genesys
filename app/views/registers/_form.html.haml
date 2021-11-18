@@ -5,10 +5,10 @@
 
   .form-inputs
     = f.input :email
-    = f.radio_button :poption, '1', :checked => true
-    = f.label :poption, 'Option 1', :value => '1'
-    = f.radio_button :poption, '2'
-    = f.label :poption, 'Option 2', :value => '2'
+    = f.label :option, "Option 1", :value => 1
+    = f.radio_button :option, 1
+    = f.label :option, "Option 2", :value => 2
+    = f.radio_button :option, 2, :checked => true
 
   .form-actions
     = f.button :submit

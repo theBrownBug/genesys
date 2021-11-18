@@ -1,13 +1,13 @@
 %p#notice= notice
 
 %p
-  %b Email:
+  %b Your Email:
   = @register.email
 %p
-  %b Option Chosen:
-  = @register.poption
+  %b Option You Choose:
+  = @register.option
 
 = link_to 'Edit', edit_register_path(@register)
 \|
 /= link_to 'Back', registers_path
-= link_to 'Home', root_path, title: 'Back'
+= link_to 'Home', root_path
