@@ -11,6 +11,19 @@ class ApplicationController < ActionController::Base
   before_action :update_headers_to_disable_caching
   before_action :ie_warning
 
+  #before_action :configure_permitted_parameters, if: :devise_controller?
+  '''
+  protected
+  def configure_permitted_parameters
+    attributes = [:name, :surname,:username, :email, :avatar]
+    sign_in_attr = [:email, :password]
+    devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
+    devise_parameter_sanitizer.permit(:sign_in , keys:sign_in_attr)
+    devise_parameter_sanitizer.permit(:account_update, keys: attributes)
+  end
+  '''
+
+
   # Catch NotFound exceptions and handle them neatly, when URLs are mistyped or mislinked
   rescue_from ActiveRecord::RecordNotFound do
     render template: 'errors/error_404', status: :not_found
