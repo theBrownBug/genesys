@@ -20,6 +20,6 @@
 #
 class Role < ApplicationRecord
   belongs_to :user
-  enum role_type: [:normal, :reporter , :product_owner, :admin]
+  enum role_type: [:normal, :admin ,:product_owner, :reporter]
 
 end

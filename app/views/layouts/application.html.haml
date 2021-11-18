@@ -28,6 +28,17 @@
               %a.nav-link.px-2.link-dark{:href => "#"} Customers
             %li
               %a.nav-link.px-2.link-dark{:href => "#"} Products
+            %li
+              %a.nav-link.px-2.link-dark{:href=> "/users/sign_in"} Sign In
+            -#if user_signed_in?
+              %li
+                %a.nav-link.px-2.link-dark=link_to 'Add User',new_user_registration_path
+              %li
+                %a.nav-link.px-2.link-dark=link_to 'Edit Users', users_path
+              %li
+                %a.nav-link.px-2.link-dark=link_to 'Sign Out',destroy_user_session_path
+
+
           %form.col-12.col-lg-auto.mb-3.mb-lg-0.me-lg-3
             %input.form-control{"aria-label" => "Search", :placeholder => "Search...", :type => "search"}
           .dropdown.text-end
