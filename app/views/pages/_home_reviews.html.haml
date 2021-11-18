@@ -1,0 +1,34 @@
+%section.bg-light
+  #review-carousel.carousel.slide{ "data-bs-ride" => "carousel" }
+    .carousel-inner
+      .carousel-item.active
+        .d-flex.flex-row.justify-content-around
+          - @reviews.each_with_index do |review, i|
+            - unless i > 2
+              .card.w-auto.mx-4
+                .card-body
+                  .d-flex.flex-row.justify-content-start.mb-4
+                    - review.rating.times do
+                      %i.fas.fa-star.fa-lg
+                  %h5.card-title= review.title
+                  %p.card-textSome= review.body
+                  .d-flex.flex-row.justify-content-between
+                    %p.small.text-muted #{review.likes} people found this review helpful
+                    %a.btn.btn-primary.align-self-start{ :href => "#" }Read more
+      - unless @reviews.size < 4
+        .carousel-item
+          .d-flex.flex-row.justify-content-between
+            - @reviews.each_with_index do |review, i|
+              - unless i < 3
+                .card.w-auto.mx-auto
+                  .card-body
+                    %h5.card-title= review.title
+                    %p.card-textSome= review.body
+                    %a.btn.btn-primary{ :href => "#" }Read more
+    - unless @reviews.size < 4
+      %btn.carousel-control-prev{ :type => "button", "data-bs-target" => "#review-carousel", "data-bs-slide" => "prev" }
+        %span.carousel-control-prev-icon{ "aria-hidden" => "true" }
+        %span.visually-hidden Previous
+      %btn.carousel-control-next{ :type => "button", "data-bs-target" => "#review-carousel", "data-bs-slide" => "next" }
+        %span.carousel-control-next-icon{ "aria-hidden" => "true" }
+        %span.visually-hidden Next
