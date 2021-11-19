@@ -5,5 +5,8 @@
 
 import Rails from "@rails/ujs";
 import "bootstrap";
+import "chartkick/chart.js"
+
+import '../scripts/metrics';
 
 Rails.start();

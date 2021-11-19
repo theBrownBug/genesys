@@ -10,5 +10,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Visit < ApplicationRecord
+FactoryBot.define do
+  factory :visit do
+    from { "" }
+    to { "" }
+    longitude { "9.99" }
+    latitude { "9.99" }
+  end
 end
