@@ -1,7 +1,8 @@
 class MetricsController < ApplicationController
   def index
     @Metrics = Visit.all
-  end
+    @Locations = Visit.all.map{|visit| visit.reverse_geocode}.tally
+   end
   def create
     from = Time.at(params["pageVisitedFrom"].to_i / 1000).to_datetime
     to = Time.at(params["pageVisitedTo"].to_i / 1000).to_datetime

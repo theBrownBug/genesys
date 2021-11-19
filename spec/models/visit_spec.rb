@@ -3,6 +3,7 @@
 # Table name: visits
 #
 #  id         :bigint           not null, primary key
+#  country    :string
 #  from       :datetime
 #  latitude   :decimal(, )
 #  longitude  :decimal(, )

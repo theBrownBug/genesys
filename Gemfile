@@ -13,7 +13,7 @@ gem 'puma'
 gem 'rails', '~> 6.1', '>= 6.1.4'
 gem 'responders'
 gem "chartkick"
-
+gem 'geocoder'
 gem 'webpacker'
 
 gem 'pg'
