@@ -1,9 +1,15 @@
 .container
     .row
-        .col
+        .col 
+            %h4 Locations
+    .row
+        .col.ratio.ratio-16x9
             = javascript_include_tag "https://www.gstatic.com/charts/loader.js"
-            = geo_chart @Locations
+            = geo_chart @Locations, height: "100%"
+    .row 
+        .col 
+            %h4 Sessions
     .row
         .col
             = line_chart @Metrics.group_by_day(:created_at).count
-
+            
