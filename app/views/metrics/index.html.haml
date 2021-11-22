@@ -1,15 +1,12 @@
-.container
-    .row
-        .col 
-            %h4 Locations
-    .row
-        .col.ratio.ratio-16x9
-            = javascript_include_tag "https://www.gstatic.com/charts/loader.js"
-            = geo_chart @Locations, height: "100%"
-    .row 
-        .col 
-            %h4 Sessions
-    .row
-        .col
-            = line_chart @Metrics.group_by_day(:created_at).count
-            
+= javascript_include_tag "https://www.gstatic.com/charts/loader.js"
+.card.mb-3
+    .card-header 
+        %h5 Location
+    .card-body.ratio.ratio-16x9
+        = geo_chart @Locations, height: "100%", width: "90%"
+        //= geo_chart ["england", "england"], height: "100%", width: "90%"
+.card
+    .card-header 
+        %h5 Sessions
+    .card-body
+        = line_chart @Metrics.group_by_day(:created_at).count

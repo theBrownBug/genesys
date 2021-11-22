@@ -1,17 +1,21 @@
 class MetricsController < ApplicationController
   def index
     @Metrics = Visit.all
-    @Locations = Visit.all.map{|visit| visit.reverse_geocode}.tally
+    @Locations = Visit.pluck("country").tally
+    print(@Locations)
    end
+
   def create
     from = Time.at(params["pageVisitedFrom"].to_i / 1000).to_datetime
     to = Time.at(params["pageVisitedTo"].to_i / 1000).to_datetime
     longitude = params["longitude"]
     latitude = params["latitude"]
+    location = Geocoder.search([latitude, longitude])
     Visit.create(from: from,
                  to: to,
                  longitude: longitude,
-                 latitude: latitude)
+                 latitude: latitude,
+                 country: location.first.country)
     head :ok
   end
 end
