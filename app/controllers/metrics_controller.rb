@@ -1,7 +1,8 @@
 class MetricsController < ApplicationController
   def index
     @Metrics = Visit.all
-    @Locations = Visit.pluck("country").tally
+    @Locations =Visit.pluck(:country)
+    print(@Metrics)
     print(@Locations)
    end
 

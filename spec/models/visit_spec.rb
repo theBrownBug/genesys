@@ -7,6 +7,7 @@
 #  from       :datetime
 #  latitude   :decimal(, )
 #  longitude  :decimal(, )
+#  path       :string
 #  to         :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
