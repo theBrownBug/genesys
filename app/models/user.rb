@@ -24,14 +24,27 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
+
 class User < ApplicationRecord
-  include UsersHelper
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   #has_secure_password
-  has_many :roles
+  has_many :roles , dependent: :destroy
 
   enum user_type: [:internal, :external]
+
+  def is_admin?
+    User.find(self.id).roles.exists?(role_type: :admin)
+  end
+
+  def is_product_owner?
+    User.find(self.id).roles.exists?(role_type: :product_owner)
+  end
+
+  def is_reporter?
+    User.find(self.id).roles.exists?(role_type: :reporter)
+  end
+
 end

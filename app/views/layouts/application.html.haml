@@ -28,14 +28,12 @@
               %a.nav-link.px-2.link-dark{:href => "#"} Customers
             %li
               %a.nav-link.px-2.link-dark{:href => "#"} Products
-            %li
-              %a.nav-link.px-2.link-dark{:href=> "/users/sign_up"} Sign Up
-            %li
-              %a.nav-link.px-2.link-dark{:href=> "/users/sign_in"} Sign In
+            -if not user_signed_in?
+              %li
+                %a.nav-link.px-2.link-dark{:href=> "/users/sign_in"} Sign In
             -if user_signed_in?
               %li
-                %a.nav-link.px-2.link-dark= link_to("Logout", destroy_user_session_path, :method => :delete)
-
+                = link_to("Logout", destroy_user_session_path, method: :delete, class: "nav-link px-2 link-dark")
             -#if user_signed_in?
               %li
                 %a.nav-link.px-2.link-dark=link_to 'Add User',new_user_registration_path

@@ -16,10 +16,9 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
-    <%= f.input :role_type,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "John" }%>
+    <%= f.label :role %>
+    <%= f.select :roles, Role.role_types %>
+
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),

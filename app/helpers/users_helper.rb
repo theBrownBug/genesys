@@ -9,7 +9,7 @@ module UsersHelper
   end
 
   def is_admin?
-    Role.where({user_id: self.id, is_active: true , role_type: :admin})
+    Role.where({user_id: self.id, is_active: true , role_type: :admin}).count==1
   end
 
   def is_product_owner?
