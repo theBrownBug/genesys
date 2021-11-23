@@ -1,19 +1,7 @@
 %section.bg-light
-  .row.justify-content-start.align-items-start
-    .col-12.col-md-4.p-0.align-self-start.sticky-top
-      =render :partial => "review_overview"
-    .col-12.col-md-8.p-0
-      .row{ "data-masonry" => '{"percentPosition": true }'}
-        - @reviews.each do |review|
-          .col-12.col-sm-12.col-md-6.col-lg-6.p-0
-            .card.mt-4.me-3.ms-3
-              .card-body
-                .d-flex.flex-column.justify-content-around
-                  %h4.card-title= review.title
-                  .d-flex.flex-row.justify-content-start.mb-4
-                    - review.rating.times do
-                      %span.text-warning
-                        %i.fas.fa-star.fa-sm
-                  %p.card-textSome.overflow-scroll{ :style => "max-height: 400px;" }= review.body
-                  .d-flex.flex-row.justify-content-between
-                    %p.small.text-muted #{review.likes} people found this review helpful
+  .container
+    .row.justify-content-center
+      .col-12.col-lg-4.align-self-start.sticky-lg-top
+        =render :partial => "review_overview"
+      .col-12.col-lg-8
+        =render :partial => "reviews"
