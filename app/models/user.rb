@@ -25,6 +25,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
+  include UsersHelper
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -33,6 +34,4 @@ class User < ApplicationRecord
   has_many :roles
 
   enum user_type: [:internal, :external]
-
-
 end
