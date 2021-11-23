@@ -1,31 +1,32 @@
-%h1 Listing reviews
-
-%table
-  %thead
-    %tr
-      %th Title
-      %th Body
-      %th Rating
-      %th Likes
-      %th Dislikes
-      %th Is live
-      %th
-      %th
-      %th
-
-  %tbody
-    - @reviews.each do |review|
-      %tr
-        %td= review.title
-        %td= review.body
-        %td= review.rating
-        %td= review.likes
-        %td= review.dislikes
-        %td= review.is_live
-        %td= link_to 'Show', review
-        %td= link_to 'Edit', edit_review_path(review)
-        %td= link_to 'Destroy', review, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
+=render partial: "reviews_main"
+-#%h1 Listing reviews
+-#
+-#%table
+-#  %thead
+-#    %tr
+-#      %th Title
+-#      %th Body
+-#      %th Rating
+-#      %th Likes
+-#      %th Dislikes
+-#      %th Is live
+-#      %th
+-#      %th
+-#      %th
+-#
+-#  %tbody
+-#    - @reviews.each do |review|
+-#      %tr
+-#        %td= review.title
+-#        %td= review.body
+-#        %td= review.rating
+-#        %td= review.likes
+-#        %td= review.dislikes
+-#        %td= review.is_live
+-#        %td= link_to 'Show', review
+-#        %td= link_to 'Edit', edit_review_path(review)
+-#        %td= link_to 'Destroy', review, :method => :delete, :data => { :confirm => 'Are you sure?' }
+-#
+-#%br
 
 = link_to 'New Review', new_review_path
