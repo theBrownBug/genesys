@@ -2,7 +2,13 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   def index
-    @reviews = Review.all
+    @reviews = Review.all.order(created_at: :desc)
+
+    ratings = Review.order(rating: :desc).group(:rating).count
+    ratings_total_count = ratings.map { |rating, count| rating.to_i * count }
+
+    @ratings_metrics = ratings.map { |rating, count| [rating, get_rating_metrics(rating, count)] }.to_h
+    @ratings_metrics[:average] = (ratings_total_count.sum.to_f / @reviews.count).round(2)
   end
 
   # GET /reviews/1
@@ -54,4 +60,12 @@ class ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(:title, :body, :rating, :likes, :dislikes, :is_live)
     end
+
+  def get_rating_metrics(rating, count)
+    colors = { 5 => "8CD47E", 4 => "7ABD7E", 3 => "F8D66D", 2 => "FFB54C", 1 => "FF6961" }
+    { :count => count,
+      :rating_percentage => ((count.to_f / @reviews.count) * 100).round(0),
+      :color => colors[rating]
+    }
+  end
 end
