@@ -5,6 +5,5 @@
 
 import Rails from "@rails/ujs";
 import "bootstrap";
-import "masonry-layout/masonry";
 
 Rails.start();
