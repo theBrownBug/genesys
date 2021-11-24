@@ -59,15 +59,15 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:title, :body, :rating, :likes, :dislikes, :is_live)
   end
 
-  def ratings_metrics(ratings)
-    ratings_metrics = ratings.map { |rating, count| [rating, get_rating_metrics(rating, count)] }.to_h
-    ratings_metrics[:average] = (ratings.map { |rating, count| rating.to_i * count }.sum.to_f / @reviews.count).round(2)
-  end
-
   def rating_metrics(rating, count)
     colors = { 5 => '8CD47E', 4 => '7ABD7E', 3 => 'F8D66D', 2 => 'FFB54C', 1 => 'FF6961' }
     { count: count,
       rating_percentage: ((count.to_f / @reviews.count) * 100).round(0),
       color: colors[rating] }
+  end
+
+  def ratings_metrics(ratings)
+    ratings_metrics = ratings.map { |rating, count| [rating, rating_metrics(rating, count)] }.to_h
+    ratings_metrics[:average] = (ratings.map { |rating, count| rating.to_i * count }.sum.to_f / @reviews.count).round(2)
   end
 end
