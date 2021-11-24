@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# Tracking of user metrics
+# rubocop:disable Metrics/AbcSize
 class MetricsController < ApplicationController
   def index
     @Metrics = Visit.where.not(path: '/metrics')
@@ -22,3 +26,5 @@ class MetricsController < ApplicationController
     head :ok
   end
 end
+# rubocop:enable Metrics/AbcSize
+
