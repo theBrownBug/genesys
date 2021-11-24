@@ -9,4 +9,6 @@
 #  updated_at :datetime         not null
 #
 class Register < ApplicationRecord
+    validates :email, presence: true
+    validates :option, presence: true
 end

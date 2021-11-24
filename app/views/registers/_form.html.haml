@@ -2,13 +2,29 @@
 = simple_form_for(@register) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-
-  .form-inputs
-    = f.input :email
-    = f.label :option, "Option 1", :value => 1
-    = f.radio_button :option, 1
-    = f.label :option, "Option 2", :value => 2
-    = f.radio_button :option, 2, :checked => true
+  %table{:style=>"border: 5px; width: 100%"}
+    .form-inputs
+    %thead
+      %tr 
+        %th= f.input :email
+    %tbody
+      %tr 
+        %td= f.label :option, "Option 1", :value => 1 
+        %td= f.label :option, "Option 2", :value => 2
+      %tr 
+        %td= f.label :option, "Manual adding of learning blocks.", :value => 1 
+        %td= f.label :option, "Automated adding of learning blocks.", :value => 2 
+      %tr 
+        %td= f.label :option, "Manual adding of constant blocks such as appointments or lectures.", :value => 1
+        %td= f.label :option, "Automated adding of constant blocks such as appointments or lectures.", :value => 2
+      %tr 
+        %td
+          %Strong= f.label :option, "Free", :value => 1
+        %td
+          %Strong= f.label :option, "£2 per month", :value => 2
+      %tr 
+        %td= f.radio_button :option, 1
+        %td= f.radio_button :option, 2, :checked => true    
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, "Register Interest"
