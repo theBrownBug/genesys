@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class RemoveDislikes < ActiveRecord::Migration[6.1]
   def change
-    remove_column :reviews, :dislikes
+    remove_column :reviews, :dislikes, :boolean
   end
 end
