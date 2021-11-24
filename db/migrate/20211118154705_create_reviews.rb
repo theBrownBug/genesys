@@ -7,7 +7,6 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.string :body
       t.integer :rating
       t.integer :likes
-      t.integer :dislikes
       t.boolean :is_live
 
       t.timestamps
