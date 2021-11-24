@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# For the registration of user interest
 class RegistersController < ApplicationController
-  before_action :set_register, only: [:show, :edit, :update, :destroy]
+  before_action :set_register, only: %i[show edit update destroy]
 
   # GET /registers
   def index
@@ -7,8 +10,7 @@ class RegistersController < ApplicationController
   end
 
   # GET /registers/1
-  def show
-  end
+  def show; end
 
   # GET /registers/new
   def new
@@ -16,8 +18,7 @@ class RegistersController < ApplicationController
   end
 
   # GET /registers/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /registers
   def create
@@ -46,13 +47,14 @@ class RegistersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_register
-      @register = Register.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def register_params
-      params.require(:register).permit(:email, :option)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_register
+    @register = Register.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def register_params
+    params.require(:register).permit(:email, :option)
+  end
 end
