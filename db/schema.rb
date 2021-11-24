@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_11_22_184421) do
-=======
-ActiveRecord::Schema.define(version: 2021_11_18_180703) do
->>>>>>> origin/master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +30,13 @@ ActiveRecord::Schema.define(version: 2021_11_18_180703) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-<<<<<<< HEAD
+  create_table "registers", force: :cascade do |t|
+    t.string "email"
+    t.integer "option"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
@@ -53,22 +55,6 @@ ActiveRecord::Schema.define(version: 2021_11_18_180703) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "country"
     t.string "path"
-=======
-  create_table "registers", force: :cascade do |t|
-    t.string "email"
-    t.integer "option"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "sessions", force: :cascade do |t|
-    t.string "session_id", null: false
-    t.text "data"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
-    t.index ["updated_at"], name: "index_sessions_on_updated_at"
->>>>>>> origin/master
   end
 
 end

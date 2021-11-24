@@ -5,7 +5,7 @@
 class MetricsController < ApplicationController
   def index
     @Metrics = Visit.where.not(path: '/metrics')
-    @Locations = Visit.where.not(country: nil).pluck(:country).tally
+    @Locations = Visit.where.not(country: nil).where.not(path:'/metrics').pluck(:country).tally
     print(@Metrics)
     print(@Locations)
    end
