@@ -4,7 +4,6 @@
 #
 #  id         :bigint           not null, primary key
 #  body       :string
-#  dislikes   :integer
 #  is_live    :boolean
 #  likes      :integer
 #  rating     :integer
