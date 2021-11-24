@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 const location = navigator.geolocation.getCurrentPosition(success);
                 function success(pos){
                     var crd = pos.coords;
-                    console.log('visibility');
                     let metrics = new FormData();
                     metrics.append('pageVisitedFrom', pageVisitedFrom);
                     metrics.append('pageVisitedTo', Date.now());

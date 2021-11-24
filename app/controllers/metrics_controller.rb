@@ -1,6 +1,6 @@
 class MetricsController < ApplicationController
   def index
-    @Metrics = Visit.all
+    @Metrics = Visit.where.not(path: '/metrics')
     @Locations = Visit.where.not(country: nil).pluck(:country).tally
     print(@Metrics)
     print(@Locations)
@@ -9,11 +9,13 @@ class MetricsController < ApplicationController
   def create
     from = Time.at(params["pageVisitedFrom"].to_i / 1000).to_datetime
     to = Time.at(params["pageVisitedTo"].to_i / 1000).to_datetime
+    path = params["path"]
     longitude = params["longitude"]
     latitude = params["latitude"]
     location = Geocoder.search([latitude, longitude])
     Visit.create(from: from,
                  to: to,
+                 path:path,
                  longitude: longitude,
                  latitude: latitude,
                  country: location.first.country)
