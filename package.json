@@ -12,7 +12,6 @@
     "bootstrap": "^5.0",
     "bootstrap-icons": "^1.7.1",
     "jquery": "^3.6.0",
-    "masonry-layout": "^4.2.2",
     "popper.js": "^1.16.1",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
