@@ -5,8 +5,5 @@ class PagesController < ApplicationController
 
   def home
     @current_nav_identifier = :home
-
-    # get all reviews that are live
-    @reviews = Review.where(is_live: true)
   end
 end
