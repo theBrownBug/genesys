@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: registers
@@ -10,7 +12,7 @@
 #
 FactoryBot.define do
   factory :register do
-    email { "MyString" }
+    email { 'MyString' }
     option { 1 }
   end
 end
