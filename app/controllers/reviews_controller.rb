@@ -69,5 +69,7 @@ class ReviewsController < ApplicationController
   def ratings_metrics(ratings)
     ratings_metrics = ratings.map { |rating, count| [rating, rating_metrics(rating, count)] }.to_h
     ratings_metrics[:average] = (ratings.map { |rating, count| rating.to_i * count }.sum.to_f / @reviews.count).round(2)
+
+    ratings_metrics
   end
 end
