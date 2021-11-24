@@ -1,5 +1,6 @@
 - content_for :title, "Home"
 
+/splash
 %section.bg-light
   .container
     .row
@@ -11,8 +12,43 @@
           Our application solves this problem by allowing
           %strong.text-primary automated management of your time
           based on the credit weights of your modules, allowing you to focus on the actual studying.
-        %p
-          %a.btn.btn-primary.shadow.px-3.py-2{:href => "registers/new"} Register Interest
-          %a.btn.btn-outline-primary.mx-3.px-3.py-2{:href => "#"} Extra button
+        .row
+          .col-sm-6.col-lg-4.mb-3.text-center
+            %a.btn.btn-primary.shadow.px-3.py-2.w-100{:href => "registers/new"} Register Interest
+          .col-sm-6.col-lg-4.mb-3.text-center
+            %a.btn.btn-outline-primary.px-3.py-2.w-100{:href => "#"} Extra button
       .col-lg-6.order-1.order-lg-2
         =image_tag "Learning-pana.svg", alt: "Girl sat at a laptop"
+
+/ Services
+%section
+  .container
+    %h2 A timetable to suit you
+    %p.text-muted.mb-5 Feature spotlight
+    .row
+      .col-sm-6.col-lg-4.mb-3.text-center
+        = render 'layouts/svg_academic_cap'
+        %h6 Automated timetable creation
+        %p.text-muted Our application creates a weekly timetable based on the work you need to complete. 
+        %p.text-muted Simply choose your working hours and we'll fill out your day for you!
+      .col-sm-6.col-lg-4.mb-3.text-center
+        = render 'layouts/svg_clock'
+        %h6 Account for last minute changes
+        %p.text-muted .
+      .col-sm-6.col-lg-4.mb-3
+        .h-50.img-fluid.max-width
+          =image_tag "500x250_placeholder.png", alt: "Image placeholder", class: "mw-100"
+    .row
+      .col-sm-6.col-lg-4.mb-3
+        .h-50.img-fluid.max-width
+          =image_tag "500x250_placeholder.png", alt: "Image placeholder", class: "mw-100"
+      .col-sm-6.col-lg-4.mb-3.text-center
+        = render 'layouts/svg_academic_cap'
+        %h6 Automated timetable creation
+        %p.text-muted Our application creates a weekly timetable based on the work you need to complete. 
+        %p.text-muted Simply choose your working hours and we'll fill out your day for you!
+      .col-sm-6.col-lg-4.mb-3.text-center
+        = render 'layouts/svg_clock'
+        %h6 Account for last minute changes
+        %p.text-muted .
+    
