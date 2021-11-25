@@ -5,10 +5,21 @@
 
   .form-inputs
     = f.input :first_name
+    %br
     = f.input :last_name
+    %br
     = f.input :email
+    %br
     = f.input :password
+    %br
     = f.input :user_type, :as => :select, :collection => User.user_types.keys.to_a
+
+    %br
+
+    -#.form-group
+      = f.label :role_types, "User roles"
+      = f.collection_select :role_ids, Role.all.order(role_type: :asc), :id, :role_type, {}, { multiple: true, class: "form-control" }
+      .explanation Choose one or more roles
 
   .form-actions
     = f.button :submit
