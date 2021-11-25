@@ -34,6 +34,7 @@ FactoryBot.define do
     first_name { "MyString" }
     last_name { "MyString" }
     email { "MyString" }
+    password { "MyString" }
     user_type { 1 }
   end
 end
