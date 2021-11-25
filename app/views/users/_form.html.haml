@@ -8,7 +8,7 @@
     = f.input :last_name
     = f.input :email
     = f.input :password
-    = f.input :user_type
+    = f.input :user_type, :as => :select, :collection => User.user_types.keys.to_a
 
   .form-actions
     = f.button :submit
