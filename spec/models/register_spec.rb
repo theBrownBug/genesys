@@ -10,10 +10,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-#  option     :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
 require 'rails_helper'
 
 RSpec.describe Register, type: :model do
