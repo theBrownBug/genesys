@@ -8,8 +8,8 @@
 #  updated_at :datetime         not null
 #
 class Role < ApplicationRecord
-  has_many :user_roles
+  has_many :user_roles, dependent: :destroy
   has_many :users , through: :user_roles
 
-  enum role_type: [:normal, :admin ,:product_owner, :reporter]
+  enum role_type: {normal: 0 , admin: 1, product_owner: 2 , reporter: 3}
 end
