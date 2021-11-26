@@ -1,0 +1,50 @@
+=render partial: "reviews_main"
+%section.bg-light
+  .container
+    %h1 Reviews
+    .row.justify-content-center.p-0.mt-4
+      .col-12
+        .table-responsive
+          %table.table.table-striped.align-middle
+            %thead.table-dark.align-middle
+              %tr
+                %th.text-start.px-4{ :scope => "col" } Title
+                %th.text-start.px-4{ :scope => "col" } Body
+                %th.text-start.px-4{ :scope => "col" } Rating
+                %th.text-start.px-4{ :scope => "col" } Likes
+                %th.text-center.px-4{ :scope => "col" } Is live
+                %th.text-center.px-4{ :scope => "col" } Edit
+                %th.text-center.px-4{ :scope => "col" } Delete
+
+            %tbody
+              - @reviews.each do |review|
+                %tr.text-start
+                  %td.px-4= review.title
+                  %td.px-4{ :style => "min-width: 350px; "}= review.body
+                  %td.px-4= review.rating
+                  %td.px-4= review.likes
+                  %td.text-center.px-4
+                    - if review.is_live
+                      %span.badge.rounded-pill.bg-danger Live
+                    - else
+                      %span.badge.rounded-pill.bg-secondary Offline
+                  %td.text-center.px-4
+                    %a{ :href => "#modal_edit", "data-bs-toggle" => "modal", "data-bs-target" => "#modal_edit_#{review.id}"}
+                      %i.fas.fa-edit
+                    .modal.fade{ :id => "modal_edit_#{review.id}", :tabindex => "-1" }
+                      .modal-dialog.modal-dialog-centered.modal-xl
+                        .modal-content
+                          .modal-header
+                            %h5.modal-title Modal Title
+                            %btn.btn-close{ "data-bs-dismiss" => "modal", "aria-label" => "Close" }
+                          .modal-body
+                            %h5= review.title
+                          .modal-footer
+                            %btn.btn.btn-secondary{ "data-bs-dismiss" => "modal"} Close
+                            %btn.btn.btn-primary Update
+                  -#%td= link_to 'Edit', edit_review_path(review)
+                  %td.text-center.px-4
+                    %a{ :href => "#" }
+                      %i.fas.fa-trash-alt
+                  -#%td= link_to 'Destroy', review, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %br

@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 2021_11_25_232055) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+    t.integer "rating"
+    t.integer "likes"
+    t.boolean "is_live"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.integer "role_type"
     t.datetime "created_at", precision: 6, null: false
