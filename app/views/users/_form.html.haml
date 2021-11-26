@@ -13,12 +13,10 @@
     = f.input :password
     %br
     = f.input :user_type, :as => :select, :collection => User.user_types.keys.to_a
-
     %br
-
     .form-group
-      = f.label :role_types, "User roles"
-      = f.collection_select :role_ids, Role.all.order(role_type: :asc), :id, :role_type, {}, { multiple: true, class: "form-control" }
+      = f.label :role_ids, "User roles"
+      = f.collection_select :role_ids, Role.all.order(id: :asc), :id, :role_type, {}, { multiple: true, class: "form-control" }
       .explanation Choose one or more roles
 
   .form-actions

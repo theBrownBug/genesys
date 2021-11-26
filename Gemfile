@@ -40,8 +40,8 @@ gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 gem 'rubocop-rspec', require: false
 
-gem 'ed25519'
 gem 'bcrypt_pbkdf'
+gem 'ed25519'
 
 group :development, :test do
   gem 'byebug'
