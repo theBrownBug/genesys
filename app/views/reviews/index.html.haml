@@ -1,32 +1,40 @@
 =render partial: "reviews_main"
--#%h1 Listing reviews
--#
--#%table
--#  %thead
--#    %tr
--#      %th Title
--#      %th Body
--#      %th Rating
--#      %th Likes
--#      %th Dislikes
--#      %th Is live
--#      %th
--#      %th
--#      %th
--#
--#  %tbody
--#    - @reviews.each do |review|
--#      %tr
--#        %td= review.title
--#        %td= review.body
--#        %td= review.rating
--#        %td= review.likes
--#        %td= review.dislikes
--#        %td= review.is_live
--#        %td= link_to 'Show', review
--#        %td= link_to 'Edit', edit_review_path(review)
--#        %td= link_to 'Destroy', review, :method => :delete, :data => { :confirm => 'Are you sure?' }
--#
--#%br
+%section.bg-light
+  .container
+    %h1 Reviews
+    .row.justify-content-center.p-0.mt-4
+      .col-12
+        .table-responsive
+          %table.table.table-striped.align-middle
+            %thead.table-dark.align-middle.text-center
+              %tr
+                %th{ :scope => "col" } Title
+                %th{ :scope => "col" } Body
+                %th{ :scope => "col" } Rating
+                %th{ :scope => "col" } Likes
+                %th{ :scope => "col" } Is live
+                %th{ :scope => "col" } Created At
+                %th{ :scope => "col" } Updated At
+                %th
+                %th
+                %th
 
-= link_to 'New Review', new_review_path
+            %tbody
+              - @reviews.each do |review|
+                %tr
+                  %td.px-4= review.title
+                  %td.px-4{ :style => "min-width: 350px; "}= review.body
+                  %td.px-4= review.rating
+                  %td.px-4= review.likes
+                  %td.px-4.text-center
+                    - if review.is_live
+                      %span.badge.rounded-pill.bg-danger Live
+                    - else
+                      %span.badge.rounded-pill.bg-secondary Offline
+                  %td.p-4= review.created_at
+                  %td.p-4= review.updated_at
+                  %td= link_to 'Show', review
+                  %td= link_to 'Edit', edit_review_path(review)
+                  %td= link_to 'Destroy', review, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+          %br
