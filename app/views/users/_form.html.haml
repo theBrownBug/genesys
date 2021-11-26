@@ -16,7 +16,7 @@
 
     %br
 
-    -#.form-group
+    .form-group
       = f.label :role_types, "User roles"
       = f.collection_select :role_ids, Role.all.order(role_type: :asc), :id, :role_type, {}, { multiple: true, class: "form-control" }
       .explanation Choose one or more roles

@@ -37,7 +37,7 @@ class User < ApplicationRecord
 
   has_many :user_roles , dependent: :destroy
   has_many :roles , through: :user_roles
-  #accepts_nested_attributes_for :roles
+  accepts_nested_attributes_for :roles
 
   enum user_type: {internal: 0 , external: 1}
 
