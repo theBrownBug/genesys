@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
-    authorize! :show, @users
     render :index
   end
 

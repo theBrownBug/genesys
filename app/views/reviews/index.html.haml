@@ -13,7 +13,7 @@
                 %th.text-start.px-4{ :scope => "col" } Rating
                 %th.text-start.px-4{ :scope => "col" } Likes
                 - if user_signed_in?
-                  - if current_user.is? :product_owner
+                  - if can? :edit, @reviews
                     %th.text-center.px-4{ :scope => "col" } Is live
                     %th.text-center.px-4{ :scope => "col" } Edit
                     %th.text-center.px-4{ :scope => "col" } Delete
@@ -26,7 +26,7 @@
                   %td.px-4= review.rating
                   %td.px-4= review.likes
                   - if user_signed_in?
-                    - if can? :edit, Review
+                    - if can? :edit, @reviews
                       %td.text-center.px-4
                         - if review.is_live
                           %span.badge.rounded-pill.bg-danger Live

@@ -27,9 +27,17 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
 
     if @review.save
-      redirect_to @review, notice: 'Review was successfully created.'
+      if user_signed_in? && current_user.is?(:product_owner)
+        redirect_to @review, notice: 'Review was successfully created.'
+      else
+        redirect_to root_path, notice: 'Review was successfully created.'
+      end
     else
-      render :new
+      if user_signed_in? && current_user.is?(:product_owner)
+        render :new
+      else
+        redirect_to root_path
+      end
     end
   end
 

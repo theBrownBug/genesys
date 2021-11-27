@@ -9,7 +9,8 @@
     = f.input :rating
     = f.input :likes
     - if user_signed_in? && current_user.internal?
-      = f.input :is_live
+      - if can? :edit, @review
+        = f.input :is_live
 
   .form-actions
     = f.button :submit
