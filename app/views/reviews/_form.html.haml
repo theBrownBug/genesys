@@ -4,21 +4,12 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    .d-flex.flex-row.justify-content-start.align-items-center
-      %h6.me-4.mb-0 Title
-      %p.mb-0= @review.title
-    .d-flex.flex-row.justify-content-start.align-items-center
-      %h6.me-4.mb-0 Body
-      %p.mb-0= @review.body
-    .d-flex.flex-row.justify-content-start.align-items-center
-      %h6.me-4.mb-0 Rating
-      %p.mb-0= @review.rating
-    .d-flex.flex-row.justify-content-start.align-items-center
-      %h6.me-4.mb-0 Likes
-      %p.mb-0= @review.likes
-    .d-flex.flex-row.justify-content-start.align-items-center
-      %h6.me-4.mb-0 Is Live
-      %p.mb-0= @review.is_live
+    = f.input :title
+    = f.input :body
+    = f.input :rating
+    = f.input :likes
+    - if user_signed_in? && current_user.internal?
+      = f.input :is_live
 
   .form-actions
     = f.button :submit

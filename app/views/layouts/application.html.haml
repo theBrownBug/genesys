@@ -28,9 +28,12 @@
             %li
               %a.nav-link.px-2.link-dark{:href => "#"} Register
             %li
-              %a.nav-link.px-2.link-dark{:href => "#"} Reviews
+              %a.nav-link.px-2.link-dark{:href => "/reviews"} Reviews
             %li
               %a.nav-link.px-2.link-dark{:href => "#"} FAQs
+            - if user_signed_in?
+              %li
+                = link_to("Sign Out", destroy_user_session_path, method: :delete, class: "nav-link px-2 link-dark")
 
     .flash-messages
       - flash.each do |name, msg|

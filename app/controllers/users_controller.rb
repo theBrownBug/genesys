@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user, only: %i[show edit update destroy]
 
   # GET /users
   def index
     @users = User.all
+    authorize! :show, @users
+    render :index
   end
 
   # GET /users/1
