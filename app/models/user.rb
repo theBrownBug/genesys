@@ -43,14 +43,11 @@ class User < ApplicationRecord
 
   enum user_type: { internal: 0, external: 1 }
 
-  def is? (requested_role)
-    role = Role.find_by_role_type(requested_role)
+  def is?(requested_role)
+    role = Role.find_by(role_type: requested_role)
     if role
-      user_role  = UserRole.find_by_sql("SELECT * FROM user_roles WHERE user_id=#{self.id} AND role_id=#{role.id}")
-      if user_role
-        return true
-      end
+      user_role = UserRole.find_by_sql("SELECT * FROM user_roles WHERE user_id=#{id} AND role_id=#{role.id}")
+      return true if user_role
     end
   end
-
 end

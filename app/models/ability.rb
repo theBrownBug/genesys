@@ -8,16 +8,14 @@ class Ability
     can :read, Review, is_live: true
     can :create, Register
 
-    return unless user.present?
+    return if user.blank?
     return unless user.external?
 
-    if user.is? :product_owner
-      can [:read, :update] , Review
-    end
+    can %i[read update], Review if user.is? :product_owner
 
     if user.is? :admin
       can :manage, User
-      cannot :destroy, User , id: user.id
+      cannot :destroy, User, id: user.id
 
       can :manage, Role
       cannot :destroy, Role, role_type: :admin
