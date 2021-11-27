@@ -25,6 +25,9 @@ class ReviewsController < ApplicationController
   # POST /reviews
   def create
     @review = Review.new(review_params)
+    if @review.is_live.nil?
+      @review.is_live = false
+    end
 
     if @review.save
       if user_signed_in? && current_user.is?(:product_owner)

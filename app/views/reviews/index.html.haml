@@ -19,36 +19,46 @@
                     %th.text-center.px-4{ :scope => "col" } Delete
 
             %tbody
-              - @reviews.each do |review|
-                %tr.text-start
-                  %td.px-4= review.title
-                  %td.px-4{ :style => "min-width: 350px; "}= review.body
-                  %td.px-4= review.rating
-                  %td.px-4= review.likes
-                  - if user_signed_in?
-                    - if can? :edit, @reviews
-                      %td.text-center.px-4
-                        - if review.is_live
-                          %span.badge.rounded-pill.bg-danger Live
-                        - else
-                          %span.badge.rounded-pill.bg-secondary Offline
-                      %td.text-center.px-4
-                        %a{ :href => "#modal_edit", "data-bs-toggle" => "modal", "data-bs-target" => "#modal_edit_#{review.id}"}
-                          %i.fas.fa-edit
-                        .modal.fade{ :id => "modal_edit_#{review.id}", :tabindex => "-1" }
-                          .modal-dialog.modal-dialog-centered.modal-xl
-                            .modal-content
-                              .modal-header
-                                %h5.modal-title Modal Title
-                                %btn.btn-close{ "data-bs-dismiss" => "modal", "aria-label" => "Close" }
-                              .modal-body
-                                %h5= review.title
-                              .modal-footer
-                                %btn.btn.btn-secondary{ "data-bs-dismiss" => "modal"} Close
-                                %btn.btn.btn-primary Update
-                      -#%td= link_to 'Edit', edit_review_path(review)
-                      %td.text-center.px-4
-                        %a{ :href => "#" }
-                          %i.fas.fa-trash-alt
-                  -#%td= link_to 'Destroy', review, :method => :delete, :data => { :confirm => 'Are you sure?' }
-          %br
+              -# if the user is not signed in (guest) or a user is signed in but not a product owner then just display the live reviews
+              - if not user_signed_in? or cannot? :edit, @reviews
+                - @reviews.each do |review|
+                  - if review.is_live
+                    %tr.text-start
+                    %td.px-4= review.title
+                    %td.px-4{ :style => "min-width: 350px; "}= review.body
+                    %td.px-4= review.rating
+                    %td.px-4= review.likes
+              - else
+                - @reviews.each do |review|
+                  %tr.text-start
+                    %td.px-4= review.title
+                    %td.px-4{ :style => "min-width: 350px; "}= review.body
+                    %td.px-4= review.rating
+                    %td.px-4= review.likes
+                    - if user_signed_in?
+                      - if can? :edit, @reviews
+                        %td.text-center.px-4
+                          - if review.is_live
+                            %span.badge.rounded-pill.bg-danger Live
+                          - else
+                            %span.badge.rounded-pill.bg-secondary Offline
+                        %td.text-center.px-4
+                          %a{ :href => "#modal_edit", "data-bs-toggle" => "modal", "data-bs-target" => "#modal_edit_#{review.id}"}
+                            %i.fas.fa-edit
+                          .modal.fade{ :id => "modal_edit_#{review.id}", :tabindex => "-1" }
+                            .modal-dialog.modal-dialog-centered.modal-xl
+                              .modal-content
+                                .modal-header
+                                  %h5.modal-title Modal Title
+                                  %btn.btn-close{ "data-bs-dismiss" => "modal", "aria-label" => "Close" }
+                                .modal-body
+                                  %h5= review.title
+                                .modal-footer
+                                  %btn.btn.btn-secondary{ "data-bs-dismiss" => "modal"} Close
+                                  %btn.btn.btn-primary Update
+                        -#%td= link_to 'Edit', edit_review_path(review)
+                        %td.text-center.px-4
+                          %a{ :href => "#" }
+                            %i.fas.fa-trash-alt
+                    -#%td= link_to 'Destroy', review, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            %br
