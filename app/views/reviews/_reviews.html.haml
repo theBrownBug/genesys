@@ -1,5 +1,5 @@
 .row
-  - if not user_signed_in? or cannot? :edit , @reviews
+  - if not user_signed_in? or cannot? :edit , Review
     - @reviews.each do |review|
       - if review.is_live
         .card.p-0.mt-4

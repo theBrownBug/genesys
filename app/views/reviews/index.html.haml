@@ -12,15 +12,14 @@
                 %th.text-start.px-4{ :scope => "col" } Body
                 %th.text-start.px-4{ :scope => "col" } Rating
                 %th.text-start.px-4{ :scope => "col" } Likes
-                - if user_signed_in?
-                  - if can? :edit, @reviews
-                    %th.text-center.px-4{ :scope => "col" } Is live
-                    %th.text-center.px-4{ :scope => "col" } Edit
-                    %th.text-center.px-4{ :scope => "col" } Delete
+                - if user_signed_in? and can? :edit , Review
+                  %th.text-center.px-4{ :scope => "col" } Is live
+                  %th.text-center.px-4{ :scope => "col" } Edit
+                  %th.text-center.px-4{ :scope => "col" } Delete
 
             %tbody
               -# if the user is not signed in (guest) or a user is signed in but not a product owner then just display the live reviews
-              - if not user_signed_in? or cannot? :edit, @reviews
+              - if not user_signed_in? or cannot? :edit, Review
                 - @reviews.each do |review|
                   - if review.is_live
                     %tr.text-start
@@ -36,7 +35,7 @@
                     %td.px-4= review.rating
                     %td.px-4= review.likes
                     - if user_signed_in?
-                      - if can? :edit, @reviews
+                      - if can? :edit, Review
                         %td.text-center.px-4
                           - if review.is_live
                             %span.badge.rounded-pill.bg-danger Live

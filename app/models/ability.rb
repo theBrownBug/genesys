@@ -15,10 +15,10 @@ class Ability
       can :read , Register
     end
 
-    return unless user.is? :product_owner
+    return unless (user.is? :product_owner or user.is? :admin)
 
     if user.is? :product_owner
-      can [:read, :update], Review
+      can [:create, :read, :edit], Review, :all
       can [:read], Register
     end
 
