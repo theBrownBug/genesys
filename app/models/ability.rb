@@ -31,7 +31,7 @@ class Ability
 
     if user.is? :admin
       #set_live
-      cannot %i[edit destroy], Review
+      cannot %i[create edit destroy], Review
       can :manage, User
       cannot :destroy, User, id: user.id
 
