@@ -1,0 +1,46 @@
+.modal.fade{ :id => "modal_edit_#{review.id}", :tabindex => "-1" }
+  .modal-dialog.modal-dialog-centered.modal-lg
+    .modal-content
+      .modal-header
+        %h5.modal-title.ms-4 Review Details
+        %btn.btn-close{ "data-bs-dismiss" => "modal", "aria-label" => "Close" }
+      = simple_form_for(review, defaults: { label: false }) do |f|
+        .modal-body.m-4
+          .row
+            .col-2.text-start
+              %p.fw-bold.mb-4 #
+            .col-10.text-start
+              %p.mb-4= review.id
+          .row
+            .col-2.text-start
+              %p.fw-bold.mb-4 Title
+            .col-10.text-start
+              %p.mb-4= review.title
+          .row
+            .col-2.text-start
+              %p.fw-bold.mb-4 Body
+            .col-10.text-start
+              %p.mb-4= review.body
+          .row
+            .col-2.text-start
+              %p.fw-bold.mb-4 Rating
+            .col-10.text-start
+              .d-flex.flex-row.justify-content-start.align-items-baseline.mb-4
+                - review.rating.times do
+                  %span.text-warning
+                    %i.fas.fa-star.fa-sm
+          .row
+            .col-2.text-start
+              %p.fw-bold.mb-4 Likes
+            .col-10.text-start
+              %p.mb-4= review.likes
+          .row
+            .col-2.text-start
+              %p.fw-bold Is live
+            .col-10.text-start
+              .form-check.form-switch.p-0.ms-3
+                = f.input :is_live
+        .modal-footer
+          %btn.btn.btn-secondary{ "data-bs-dismiss" => "modal"} Close
+          .form-actions
+            = f.button :submit, class: "btn btn-primary"
