@@ -1535,6 +1535,11 @@ bootstrap-icons@^1.7.1:
   resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.7.1.tgz#c17840862845bc11dcc5f69e4ed6f853415df2fd"
   integrity sha512-Hkuoo0qrWegA9cdzwS68YPSOLf7d42gqnMzT1tIy/SWvnxnI+Y5PFvK2qIbM/L7knH8SdC8FPgjA+bktzmGcAw==
 
+bootstrap-rating@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/bootstrap-rating/-/bootstrap-rating-0.0.1.tgz#40bb97f8fa8950f3791e9a1b046df4f710df0dc0"
+  integrity sha1-QLuX+PqJUPN5HpobBG309xDfDcA=
+
 bootstrap@^5.0:
   version "5.1.3"
   resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-5.1.3.tgz"
