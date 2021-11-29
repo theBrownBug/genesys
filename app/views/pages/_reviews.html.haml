@@ -1,0 +1,21 @@
+%section.bg-light
+  .container
+    %h1 What our customers have to say.
+    .row{ "data-masonry" => '{"percentPosition": true }'}
+      - @reviews.each do |review|
+        .col-12.col-sm-12.col-md-4.mt-4
+          .card.hover-shadow
+            .card-body
+              .d-flex.flex-column.justify-content-around
+                %h4.card-title= review.title
+                .d-flex.flex-row.justify-content-start.align-items-baseline.mb-4
+                  - review.rating.times do
+                    %span.text-primary
+                      %i.fas.fa-star.fa-sm
+                  %p.small.text-muted.mb-0.ms-2= review.created_at.strftime("%d-%m-%Y")
+                %p.card-textSome.overflow-scroll{ :style => "max-height: 400px;" }= review.body
+                .d-flex.flex-row.justify-content-between
+                  %p.small.text-muted #{review.likes} people found this review helpful
+      .col-12.col-sm-12.col-md-6.col-lg-6.mt-4
+    .d-flex.flex-row.justify-content-center.align-items-center.mt-4
+      %btn.btn.btn-outline-primary{ onclick: "location.href = '/reviews'" } See all reviews
