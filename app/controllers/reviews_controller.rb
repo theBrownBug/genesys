@@ -8,6 +8,11 @@ class ReviewsController < ApplicationController
 
     ratings = Review.order(rating: :desc).group(:rating).count
     @ratings_metrics = ratings_metrics(ratings)
+
+    @review = Review.new
+    # #
+    # review = Review.new(title: "Title", body: "Lorem Ipsum", rating: 5, likes: 10, is_live: true)
+    # review.save
   end
 
   # GET /reviews/1
@@ -26,9 +31,9 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
 
     if @review.save
-      redirect_to @review, notice: 'Review was successfully created.'
+      redirect_to reviews_url
     else
-      render :new
+      redirect_to reviews_url, notice: 'Review could not be created at this time.'
     end
   end
 
