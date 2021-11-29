@@ -4,13 +4,8 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :title
-    %br
-    = f.text_area :body, :rows =>10, :class => "form-control" ,:placeholder => 'Enter Review.'
-    -#= f.input :rating
-    -#= f.input :likes
     - if user_signed_in? && current_user.internal?
-      - if can? :edit, @review
+      - if can? :set_live, @review
         = f.input :is_live
 
   .form-actions

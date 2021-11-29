@@ -47,10 +47,9 @@ class User < ApplicationRecord
     role = Role.find_by(role_type: requested_role)
     if role
       user_role = UserRole.find_by_sql("SELECT * FROM user_roles WHERE user_id=#{id} AND role_id=#{role.id}")
-      return true if user_role.length > 0
+      return true if user_role.length.positive?
     end
 
     false
-
   end
 end

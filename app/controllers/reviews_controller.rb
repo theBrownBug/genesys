@@ -25,9 +25,7 @@ class ReviewsController < ApplicationController
   # POST /reviews
   def create
     @review = Review.new(review_params)
-    if @review.is_live.nil?
-      @review.is_live = false
-    end
+    @review.is_live = false if @review.is_live.nil?
 
     if @review.save
       if user_signed_in? && current_user.is?(:product_owner)
@@ -35,19 +33,17 @@ class ReviewsController < ApplicationController
       else
         redirect_to root_path, notice: 'Review was successfully created.'
       end
+    elsif user_signed_in? && current_user.is?(:product_owner)
+      render :new
     else
-      if user_signed_in? && current_user.is?(:product_owner)
-        render :new
-      else
-        redirect_to root_path
-      end
+      redirect_to root_path
     end
   end
 
   # PATCH/PUT /reviews/1
   def update
     if @review.update(review_params)
-      redirect_to @review, notice: 'Review was successfully updated.'
+      redirect_to reviews_path, notice: 'Review was successfully updated.'
     else
       render :edit
     end
@@ -84,4 +80,11 @@ class ReviewsController < ApplicationController
 
     ratings_metrics
   end
+  '''
+  def set_live
+    @review = Review.find(params[:id])
+    @review.update_column(:is_live, false) if params[:is_live].nil?
+    @review.update_column(:is_live, params[:is_live])
+  end
+  '''
 end

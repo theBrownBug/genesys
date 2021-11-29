@@ -4,34 +4,42 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can [:create, :read], Review, is_live: true
-    #can :read, Review, is_live: true
+    can %i[create read], Review, is_live: true
+    # can :read, Review, is_live: true
     can :create, Register
 
-    return unless user.present?
+    return if user.blank?
     return unless user.internal?
 
     if user.is? :reporter
-      can :read , Register
+      can :read, Register
+      #set_live
+      cannot %i[create], Review
     end
 
-    return unless (user.is? :product_owner or user.is? :admin)
+    return unless user.is?(:product_owner) || user.is?(:admin)
 
     if user.is? :product_owner
-      can [:create, :read, :edit], Review, :all
+      #set_live
+      can %i[read edit], Review, :all
+      cannot :create, Review
+
       can [:read], Register
     end
 
     return unless user.is? :admin
+
     if user.is? :admin
+      #set_live
+      cannot %i[edit destroy], Review
       can :manage, User
       cannot :destroy, User, id: user.id
 
       can :manage, Role
-      #cannot :destroy, Role, role_type: :admin
+      # cannot :destroy, Role, role_type: :admin
 
       can :manage, UserRole
-      #cannot :manage, UserRole, user_id: user.id
+      # cannot :manage, UserRole, user_id: user.id
     end
     # Define abilities for the passed in user here. For example:
     #
