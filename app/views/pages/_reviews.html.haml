@@ -1,9 +1,9 @@
 %section.bg-light
   .container
-    %h1 What our customers have to say.
+    %h1 What our customers have to say...
     .row{ "data-masonry" => '{"percentPosition": true }'}
       - @reviews.each do |review|
-        .col-12.col-sm-12.col-md-4.mt-4
+        .col-12.col-md-6.col-lg-4.mt-4
           .card.hover-shadow
             .card-body
               .d-flex.flex-column.justify-content-around
