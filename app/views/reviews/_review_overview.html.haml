@@ -1,7 +1,7 @@
 .row.me-lg-4.mt-4
   .card
     .card-body
-      .d-flex.flex-row.justify-content-start.align-items-center.mb-4
+      .d-flex.flex-xl-row.flex-column.justify-content-start.align-items-center.mb-4
         %h1.mb-0.me-2= @ratings_metrics[:average]
         .d-flex.flex-row.justify-content-start.align-items-center.me-2
           - @ratings_metrics[:average].round.times do
