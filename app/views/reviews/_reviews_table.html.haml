@@ -28,7 +28,7 @@
                     - else
                       %span.badge.rounded-pill.bg-secondary Offline
                   %td.text-center.px-4
-                    %a{ :href => "#modal_review_edit", "data-bs-toggle" => "modal", "data-bs-target" => "#modal_edit_#{review.id}"}
+                    %a{ :href => "#modal_review_edit", "data-bs-toggle" => "modal", "data-bs-target" => "#review_edit_modal_#{review.id}"}
                       %i.fas.fa-edit
                     =render :partial => "review_edit_modal", locals: { review: review }
           %br
