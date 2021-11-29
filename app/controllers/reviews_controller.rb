@@ -10,9 +10,6 @@ class ReviewsController < ApplicationController
     @ratings_metrics = ratings_metrics(ratings)
 
     @review = Review.new
-    # #
-    # review = Review.new(title: "Title", body: "Lorem Ipsum", rating: 5, likes: 10, is_live: true)
-    # review.save
   end
 
   # GET /reviews/1
