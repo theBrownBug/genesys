@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  database: team05_dev
+  database: team05_dev_2
   min_messages: warning
   
   # uncomment these lines if you are connected to postgres over the network stack
@@ -10,7 +10,7 @@ development:
 
 test:
   adapter: postgresql
-  database: team05_test
+  database: team05_test_2
   min_messages: warning
 
   # uncomment these lines if you are connected to postgres over the network stack

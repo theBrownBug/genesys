@@ -1,14 +1,60 @@
 - content_for :title, "Home"
 
+/splash
 %section.bg-light
   .container
     .row
       .col-lg-6.order-2.order-lg-1.my-auto
         %h1.mb-4 Stay organised with university work every single week.
         %p.lead It's often difficult to keep up with a course when you only have a few hours of lectures a week and no day-to-day structure.
-        %p.lead This can leave students feeling unmotivated and eventually lead to falling behind on work.
-        %p
-          %a.btn.btn-primary.shadow.px-3.py-2{:href => "#"} Register Interest
-          %a.btn.btn-outline-primary.mx-3.px-3.py-2{:href => "#"} Extra button
-      .col-lg-6.order-1.order-lg-2.my-auto
+        %p.lead This can leave you feeling unmotivated and eventually lead to falling behind on work.
+        %p.lead
+          Our application solves this problem by allowing
+          %strong.text-primary automated management of your time
+          based on the credit weights of your modules, allowing you to focus on the actual studying.
+        .row
+          .col-sm-6.col-lg-6.mb-3.text-center
+            %a.btn.btn-primary.shadow.py-2.mr-1.w-100{:href => "registers/new"} I'm interested!
+          .col-sm-6.col-lg-4.mb-3.text-center
+            %a.btn.btn-outline-primary.py-2.w-100{:href => "#"} See the reviews
+      .col-lg-6.order-1.order-lg-2
         =image_tag "Learning-pana.svg", alt: "Girl sat at a laptop"
+
+/ Services
+%section
+  .container
+    %h2 A timetable to suit you
+    %p.text-muted.mb-5 Feature spotlight
+    .row
+      .col-sm-6.col-lg-4.mb-3.text-center
+        .text-primary
+          = render 'layouts/svg_academic_cap'
+        %h6 Automated timetable creation
+        %p.text-muted Our application creates a weekly timetable based on the work you need to complete.
+        %p.text-muted Simply choose your working hours and we'll fill out your day for you! Just think how much time and effort it woud take to do all that by hand.
+      .col-sm-6.col-lg-4.mb-3.text-center
+        .text-primary
+          = render 'layouts/svg_clock'
+        %h6 Account for last minute changes
+        %p.text-muted Life doesn't always go to schedule: unplanned lie-ins, one off appointments, or even a spontaneous date night! Your timetable needs to account for that.
+        %p.text-muted Our application will react to missed time, giving you a list of missed tasks to make up for at your own pace.
+      .col-sm-6.col-lg-4.mb-3
+        .h-50.img-fluid.max-width
+          =image_tag "placeholder.png", alt: "Image placeholder", class: "mw-100"
+    .row
+      .col-sm-6.col-lg-4.mb-3
+        .h-50.img-fluid.max-width
+          =image_tag "placeholder.png", alt: "Image placeholder", class: "mw-100"
+      .col-sm-6.col-lg-4.mb-3.text-center
+        .text-primary
+          = render 'layouts/svg_clipboard_check'
+        %h6 Track repeating tasks
+        %p.text-muted If you have worksheets or tasks that are repeated every week, you can track them and tick them off as you complete them.
+        %p.text-muted This allows you to stay focused on the tasks you need to be completing in your timetabled hours.
+      .col-sm-6.col-lg-4.text-center.my-auto
+        .text-primary
+          = render 'layouts/svg_lightbulb'
+        %h6 Interested?
+        %p
+          %a.btn.btn-primary.shadow.py-2.my-2.w-100{:href => "registers/new"} Let's get started
+          %a.btn.btn-outline-primary.py-2.my-2.w-100{:href => "#"} Ask a question
