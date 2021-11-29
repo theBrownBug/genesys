@@ -5,7 +5,7 @@
         %h1.mb-0.me-2= @ratings_metrics[:average]
         .d-flex.flex-row.justify-content-start.align-items-center.me-2
           - @ratings_metrics[:average].round.times do
-            %span.text-warning
+            %span.text-primary
               %i.fas.fa-star.fa-sm
         %p.small.mb-0.text-muted #{@reviews.count} reviews
       - @ratings_metrics.each do |rating, metrics|
