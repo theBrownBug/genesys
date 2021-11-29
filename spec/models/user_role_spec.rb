@@ -23,5 +23,15 @@
 require 'rails_helper'
 
 RSpec.describe UserRole, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject {UserRole.new(role_id: 1, user_id: 1)}
+
+  before{ subject.save }
+  it 'role_id should be present' do
+    subject.role_id = nil
+    expect(subject).to_not be_valid
+  end
+  it 'user_id should be present' do
+    subject.user_id = nil
+    expect(subject).to_not be_valid
+  end
 end
