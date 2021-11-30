@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   match '/500', to: 'errors#error_500', via: :all
 
   get :ie_warning, to: 'errors#ie_warning'
-  
+  post 'click', to: 'metrics#click'
+
   resources :metrics, only: [:create, :index]
   
   root to: 'pages#home'
