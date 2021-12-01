@@ -11,5 +11,12 @@
 #
 class Question < ApplicationRecord
   has_many :answer, dependent: :destroy
+  validates :popularity, numericality: { greater_than: 0}
+  before_save :set_default_values
+
+  def set_default_values
+    self.likes ||= 0
+    self.popularity ||= 0
+  end
 
 end
