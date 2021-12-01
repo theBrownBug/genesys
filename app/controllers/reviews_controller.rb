@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ReviewsController < ApplicationController
-
   load_and_authorize_resource
 
   before_action :set_review, only: %i[show edit update destroy]
@@ -13,7 +12,6 @@ class ReviewsController < ApplicationController
     @ratings_metrics = ratings_metrics(ratings)
 
     @review = Review.new
-
   end
 
   # GET /reviews/1
@@ -80,5 +78,4 @@ class ReviewsController < ApplicationController
 
     ratings_metrics
   end
-
 end

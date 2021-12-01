@@ -14,7 +14,6 @@
 #  updated_at :datetime         not null
 #
 class Review < ApplicationRecord
-
   validates :rating, :title, :body, presence: true
   validates :rating, numericality: { greater_than: 0, less_than: 6 }
 
@@ -25,5 +24,4 @@ class Review < ApplicationRecord
   def set_default_values
     self.likes ||= 0
   end
-
 end
