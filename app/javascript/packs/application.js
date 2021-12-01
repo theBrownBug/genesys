@@ -6,5 +6,6 @@
 import Rails from "@rails/ujs";
 import "bootstrap";
 import "bootstrap-rating/bootstrap-rating.min";
+import "masonry-layout/masonry";
 
 Rails.start();
