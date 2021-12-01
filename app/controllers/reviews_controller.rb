@@ -42,7 +42,7 @@ class ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/1
   def update
-    if @review.update(review_params)
+    if @review.update(params.require(:review).permit(:is_live))
       redirect_to reviews_path, notice: 'Review was successfully updated.'
     else
       render :edit

@@ -15,6 +15,9 @@ class Ability
       can :read, Register
       #set_live
       cannot %i[create], Review
+      cannot :manage , UserRole
+      cannot :manage , User
+      cannot :manage, Role
     end
 
     return unless user.is?(:product_owner) || user.is?(:admin)
@@ -25,6 +28,10 @@ class Ability
       cannot :create, Review
 
       can [:read], Register
+
+      cannot :manage , UserRole
+      cannot :manage , User
+      cannot :manage, Role
     end
 
     return unless user.is? :admin
@@ -36,7 +43,10 @@ class Ability
       cannot :destroy, User, id: user.id
 
       can :manage, Role
-      # cannot :destroy, Role, role_type: :admin
+      # cannot delete the user roles owned by the any particular user
+      cannot :destroy, Role do |role|
+        role.user_roles.size >0
+      end
 
       can :manage, UserRole
       # cannot :manage, UserRole, user_id: user.id
