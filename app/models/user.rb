@@ -42,4 +42,14 @@ class User < ApplicationRecord
   # accepts_nested_attributes_for :roles
 
   enum user_type: { internal: 0, external: 1 }
+
+  def is?(requested_role)
+    role = Role.find_by(role_type: requested_role)
+    if role
+      user_role = UserRole.find_by_sql("SELECT * FROM user_roles WHERE user_id=#{id} AND role_id=#{role.id}")
+      return true if user_role.length.positive?
+    end
+
+    false
+  end
 end

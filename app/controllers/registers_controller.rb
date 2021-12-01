@@ -2,6 +2,7 @@
 
 # For the registration of user interest
 class RegistersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_register, only: %i[show edit update destroy]
 
   # GET /registers

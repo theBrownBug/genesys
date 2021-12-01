@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ReviewsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_review, only: %i[show edit update destroy]
 
   def index
@@ -26,18 +28,20 @@ class ReviewsController < ApplicationController
   # POST /reviews
   def create
     @review = Review.new(review_params)
+    @review.is_live = false if @review.is_live.nil?
 
     if @review.save
       redirect_to reviews_url
     else
       redirect_to reviews_url, notice: 'Review could not be created at this time.'
+
     end
   end
 
   # PATCH/PUT /reviews/1
   def update
-    if @review.update(review_params)
-      redirect_to reviews_url, notice: "Review ##{@review.id} has been updated!"
+    if @review.update(params.require(:review).permit(:is_live))
+      redirect_to reviews_url, notice: 'Review has been updated!'
     else
       render :edit
     end
