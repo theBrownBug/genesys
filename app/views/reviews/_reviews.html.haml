@@ -6,7 +6,7 @@
           %h4.card-title.mb-0= review.title
           .d-flex.flex-row.justify-content-start.align-items-baseline.mb-4
             - review.rating.times do
-              %span.text-warning
+              %span.text-primary
                 %i.fas.fa-star.fa-sm
             %p.small.text-muted.mb-0.ms-2= review.created_at.strftime("%d-%m-%Y")
           %p.card-textSome.overflow-scroll{ :style => "max-height: 400px;" }= review.body

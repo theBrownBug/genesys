@@ -13,6 +13,7 @@
                 %th.text-start.px-4{ :scope => "col" } Rating
                 %th.text-start.px-4{ :scope => "col" } Likes
                 %th.text-center.px-4{ :scope => "col" } Is live
+                %th.text-center.px-4{ :scope => "col" } Is live on landing
                 %th.text-center.px-4{ :scope => "col" } Edit
             %tbody
               - @reviews.each do |review|
@@ -24,6 +25,11 @@
                   %td.px-4= review.likes
                   %td.text-center.px-4
                     - if review.is_live
+                      %span.badge.rounded-pill.bg-danger Live
+                    - else
+                      %span.badge.rounded-pill.bg-secondary Offline
+                  %td.text-center.px-4
+                    - if review.is_live_landing
                       %span.badge.rounded-pill.bg-danger Live
                     - else
                       %span.badge.rounded-pill.bg-secondary Offline
