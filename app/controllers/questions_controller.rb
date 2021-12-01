@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   # GET /questions
@@ -22,9 +23,10 @@ class QuestionsController < ApplicationController
   # POST /questions
   def create
     @question = Question.new(question_params)
-
+    @question.is_live = false if @question.is_live.nil?
+    @question.popularity = 0
     if @question.save
-      redirect_to @question, notice: 'Question was successfully created.'
+      redirect_to root_path, notice: 'Question was successfully created.'
     else
       render :new
     end
