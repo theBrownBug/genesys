@@ -1,0 +1,23 @@
+-# frozen_string_literal: true
+= simple_form_for(@user) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :first_name
+    %br
+    = f.input :last_name
+    %br
+    = f.input :email
+    %br
+    = f.input :password
+    %br
+    = f.input :user_type, :as => :select, :collection => User.user_types.keys.to_a
+    %br
+    .form-group
+      = f.label :role_ids, "User roles"
+      = f.collection_select :role_ids, Role.all.order(id: :asc), :id, :role_type, {}, { multiple: true, class: "form-control" }
+      .explanation Choose one or more roles
+
+  .form-actions
+    = f.button :submit

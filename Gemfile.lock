@@ -87,6 +87,7 @@ GEM
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
     bcrypt (3.1.16)
+    bcrypt_pbkdf (1.1.0)
     bindex (0.8.1)
     bootsnap (1.9.0)
       msgpack (~> 1.0)
@@ -156,6 +157,7 @@ GEM
       activesupport (>= 5.0)
       request_store (>= 1.0)
       ruby2_keywords
+    ed25519 (1.2.4)
     erubi (1.10.0)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
@@ -227,8 +229,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.4)
       mini_portile2 (~> 2.6.1)
-      racc (~> 1.4)
-    nokogiri (1.12.4-x86_64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.21.0)
@@ -392,6 +392,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-session_store
   annotate
+  bcrypt_pbkdf
   bootsnap
   bootstrap-will_paginate
   byebug
@@ -411,6 +412,7 @@ DEPENDENCIES
   devise_cas_authenticatable
   devise_ldap_authenticatable
   draper
+  ed25519
   epi_deploy!
   factory_bot_rails
   geocoder

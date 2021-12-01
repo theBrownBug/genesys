@@ -8,5 +8,6 @@ import "bootstrap";
 import "chartkick/chart.js"
 
 import '../scripts/metrics';
+import "bootstrap-rating/bootstrap-rating.min";
 
 Rails.start();
