@@ -14,7 +14,7 @@ class Ability
     if user.is? :reporter
       can :read, Register
       #set_live
-      cannot %i[create], Review
+      cannot [:create, :destroy], Review
       cannot :manage , UserRole
       cannot :manage , User
       cannot :manage, Role
@@ -25,7 +25,7 @@ class Ability
     if user.is? :product_owner
       #set_live
       can %i[read edit], Review, :all
-      cannot :create, Review
+      cannot [:create, :destroy], Review
 
       can [:read], Register
 
@@ -38,7 +38,8 @@ class Ability
 
     if user.is? :admin
       #set_live
-      cannot %i[create edit destroy], Review
+      cannot [:create, :destroy], Review
+
       can :manage, User
       cannot :destroy, User, id: user.id
 

@@ -7,9 +7,8 @@
       .col-lg-6.order-2.order-lg-1.my-auto
         %h1.mb-4 Stay organised with university work every single week.
         %p.lead It's often difficult to keep up with a course when you only have a few hours of lectures a week and no day-to-day structure.
-
         %p.lead This can leave you feeling unmotivated and eventually lead to falling behind on work.
-        %p.lead 
+        %p.lead
           Our application solves this problem by allowing
           %strong.text-primary automated management of your time
           based on the credit weights of your modules, allowing you to focus on the actual studying.
@@ -18,9 +17,6 @@
             %a.btn.btn-primary.shadow.py-2.mr-1.w-100{:href => "registers/new"} I'm interested!
           .col-sm-6.col-lg-4.mb-3.text-center
             %a.btn.btn-outline-primary.py-2.w-100{:href => "/reviews"} See the reviews
-        .row
-          .col-sm-6.col-lg-6.mb-3.text-center
-            %a.btn.btn-primary.shadow.py-2.mr-1.w-100{:href => "/reviews/new"} Add A Review
       .col-lg-6.order-1.order-lg-2
         =image_tag "Learning-pana.svg", alt: "Girl sat at a laptop"
 
@@ -34,13 +30,13 @@
         .text-primary
           = render 'layouts/svg_academic_cap'
         %h6 Automated timetable creation
-        %p.text-muted Our application creates a weekly timetable based on the work you need to complete. 
+        %p.text-muted Our application creates a weekly timetable based on the work you need to complete.
         %p.text-muted Simply choose your working hours and we'll fill out your day for you! Just think how much time and effort it woud take to do all that by hand.
       .col-sm-6.col-lg-4.mb-3.text-center
         .text-primary
           = render 'layouts/svg_clock'
         %h6 Account for last minute changes
-        %p.text-muted Life doesn't always go to schedule: unplanned lie-ins, one off appointments, or even a spontaneous date night! Your timetable needs to account for that. 
+        %p.text-muted Life doesn't always go to schedule: unplanned lie-ins, one off appointments, or even a spontaneous date night! Your timetable needs to account for that.
         %p.text-muted Our application will react to missed time, giving you a list of missed tasks to make up for at your own pace.
       .col-sm-6.col-lg-4.mb-3
         .h-50.img-fluid.max-width
@@ -62,5 +58,3 @@
         %p
           %a.btn.btn-primary.shadow.py-2.my-2.w-100{:href => "registers/new"} Let's get started
           %a.btn.btn-outline-primary.py-2.my-2.w-100{:href => "#"} Ask a question
-
-

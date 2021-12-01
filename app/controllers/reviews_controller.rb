@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class ReviewsController < ApplicationController
+
   load_and_authorize_resource
+
   before_action :set_review, only: %i[show edit update destroy]
 
   def index
@@ -9,6 +11,9 @@ class ReviewsController < ApplicationController
 
     ratings = Review.order(rating: :desc).group(:rating).count
     @ratings_metrics = ratings_metrics(ratings)
+
+    @review = Review.new
+
   end
 
   # GET /reviews/1
@@ -28,22 +33,17 @@ class ReviewsController < ApplicationController
     @review.is_live = false if @review.is_live.nil?
 
     if @review.save
-      if user_signed_in? && current_user.is?(:product_owner)
-        redirect_to @review, notice: 'Review was successfully created.'
-      else
-        redirect_to root_path, notice: 'Review was successfully created.'
-      end
-    elsif user_signed_in? && current_user.is?(:product_owner)
-      render :new
+      redirect_to reviews_url
     else
-      redirect_to root_path
+      redirect_to reviews_url, notice: 'Review could not be created at this time.'
+
     end
   end
 
   # PATCH/PUT /reviews/1
   def update
     if @review.update(params.require(:review).permit(:is_live))
-      redirect_to reviews_path, notice: 'Review was successfully updated.'
+      redirect_to reviews_url, notice: 'Review has been updated!'
     else
       render :edit
     end
@@ -80,11 +80,5 @@ class ReviewsController < ApplicationController
 
     ratings_metrics
   end
-  '''
-  def set_live
-    @review = Review.find(params[:id])
-    @review.update_column(:is_live, false) if params[:is_live].nil?
-    @review.update_column(:is_live, params[:is_live])
-  end
-  '''
+
 end

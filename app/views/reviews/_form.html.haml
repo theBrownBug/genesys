@@ -4,14 +4,22 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :title
-    %br
-    = f.text_area :body, :rows =>10, :class => "form-control" ,:placeholder => 'Enter Review.'
-    = f.input :rating, input_html: { min: '0', max: '5', step: 'any', :placeholder => 'Enter a value between 0 and 5.'}
+
+    .d-flex.flex-row.justify-content-start.align-items-center
+      %h6.me-4.mb-0 Title
+      %p.mb-0= @review.title
+    .d-flex.flex-row.justify-content-start.align-items-center
+      %h6.me-4.mb-0 Body
+      %p.mb-0= @review.body
+    .d-flex.flex-row.justify-content-start.align-items-center
+      %h6.me-4.mb-0 Rating
+      %p.mb-0= @review.rating
     -#= f.input :likes
     - if user_signed_in? && current_user.internal?
       - if can? :edit, @review
-        = f.input :is_live
+        .d-flex.flex-row.justify-content-start.align-items-center
+          %h6.me-4.mb-0 Is Live
+          %p.mb-0= @review.is_live
 
   .form-actions
     = f.button :submit

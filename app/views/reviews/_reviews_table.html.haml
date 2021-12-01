@@ -1,0 +1,47 @@
+%section.bg-light
+  .container
+    %h1 Reviews
+    .row.justify-content-center.p-0.mt-4
+      .col-12
+        .table-responsive
+          %table.table.table-striped.align-middle
+            %thead.table-dark.align-middle
+              %tr
+                %th.text-start.px-4{ :scope => "col" } #
+                %th.text-start.px-4{ :scope => "col" } Title
+                %th.text-start.px-4{ :scope => "col" } Body
+                %th.text-start.px-4{ :scope => "col" } Rating
+                %th.text-start.px-4{ :scope => "col" } Likes
+                - if user_signed_in? and can? :edit , Review
+                  %th.text-center.px-4{ :scope => "col" } Is live
+                  %th.text-center.px-4{ :scope => "col" } Edit
+            %tbody
+              - if not user_signed_in? or cannot? :edit, Review
+                - @reviews.each do |review|
+                  - if review.is_live
+                    %tr.text-start
+                    %td.px-4= review.id
+                    %td.px-4= review.title
+                    %td.px-4{ :style => "min-width: 350px; "}= review.body
+                    %td.px-4= review.rating
+                    %td.px-4= review.likes
+              - else
+                - @reviews.each do |review|
+                  %tr.text-start
+                    %td.px-4= review.id
+                    %td.px-4= review.title
+                    %td.px-4{ :style => "min-width: 350px; "}= review.body
+                    %td.px-4= review.rating
+                    %td.px-4= review.likes
+                    - if user_signed_in?
+                      - if can? :edit, Review
+                        %td.text-center.px-4
+                          - if review.is_live
+                            %span.badge.rounded-pill.bg-danger Live
+                          - else
+                            %span.badge.rounded-pill.bg-secondary Offline
+                        %td.text-center.px-4
+                          %a{ :href => "#modal_review_edit", "data-bs-toggle" => "modal", "data-bs-target" => "#review_edit_modal_#{review.id}"}
+                            %i.fas.fa-edit
+                          =render :partial => "review_edit_modal", locals: { review: review }
+          %br

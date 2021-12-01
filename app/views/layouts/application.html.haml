@@ -32,6 +32,12 @@
             %li
               %a.nav-link.px-2.link-dark{:href => "#"} FAQs
             - if user_signed_in?
+              - if can? :manage, User
+                %a.nav-link.px-2.link-dark{:href => "/users"} Manage Users
+              - if can? :manage, Role
+                %a.nav-link.px-2.link-dark{:href => "/roles"} Manage Roles
+              - if can? :edit, Review
+                %a.nav-link.px-2.link-dark{:href => "/reviews"} Manage Reviews
               %li
                 = link_to("Sign Out", destroy_user_session_path, method: :delete, class: "nav-link px-2 link-dark")
 
