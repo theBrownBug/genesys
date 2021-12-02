@@ -1,0 +1,49 @@
+%section.bg-light
+  .container
+    %h1 Questions
+    .row.justify-content-center.p-0.mt-4
+      .col-12
+        .table-responsive
+          %table.table.table-striped.align-middle
+            %thead.table-dark.align-middle
+              %tr
+                %th.text-start.px-4{ :scope => "col" } #
+                %th.text-start.px-4{ :scope => "col" } Question
+
+                - if user_signed_in? and can? :edit , Question
+                  %th.text-start.px-4{ :scope => "col" } Popularity
+                  %th.text-center.px-4{ :scope => "col" } Is live
+                  %th.text-center.px-4{ :scope => "col" } Edit
+
+                %th.text-start.px-4{ :scope => "col" } View Answers
+
+            %tbody
+              - if not user_signed_in? or cannot? :edit, Question
+                - @questions.each do |question|
+                  - if question.is_live
+                    %tr.text-start
+                    %td.px-4= question.id
+                    %td.px-4{ :style => "min-width: 350px; "}= question.question
+                    %td.px-4
+                      .btn.btn-primary{:href =>"#"} View Answers
+
+              - else
+                - @questions.each do |question|
+                  %tr.text-start
+                    %td.px-4= question.id
+                    %td.px-4{ :style => "min-width: 350px; "}= question.question
+                    %td.px-4= question.popularity
+                    - if user_signed_in?
+                      - if can? :edit, Question
+                        %td.text-center.px-4
+                          - if question.is_live
+                            %span.badge.rounded-pill.bg-danger Live
+                          - else
+                            %span.badge.rounded-pill.bg-secondary Offline
+                        %td.text-center.px-4
+                          %a{ :href => "#modal_review_edit", "data-bs-toggle" => "modal", "data-bs-target" => "#questions_edit_modal_#{question.id}"}
+                            %i.fas.fa-edit
+                          =render :partial => "questions_edit_modal", locals: { question: question}
+                    %td.px-4
+                      .btn.btn-primary{:href =>"#"} View Answers
+          %br

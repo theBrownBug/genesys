@@ -1,0 +1,33 @@
+.modal.fade{ :id => "questions_edit_modal_#{question.id}", :tabindex => "-1" }
+  .modal-dialog.modal-dialog-centered.modal-lg
+    .modal-content
+      .modal-header
+        %h5.modal-title.ms-4 Question Details
+        %btn.btn-close{ "data-bs-dismiss" => "modal", "aria-label" => "Close" }
+      = simple_form_for(question, defaults: { label: false }) do |f|
+        .modal-body.m-4
+          .row
+            .col-2.text-start
+              %p.fw-bold.mb-4 #
+            .col-10.text-start
+              %p.mb-4= question.id
+          .row
+            .col-2.text-start
+              %p.fw-bold.mb-4 Description
+            .col-10.text-start
+              %p.mb-4= question.question
+          .row
+            .col-2.text-start
+              %p.fw-bold.mb-4 Popularity
+            .col-10.text-start
+              %p.mb-4= question.popularity
+          .row
+            .col-2.text-start
+              %p.fw-bold Is live
+            .col-10.text-start
+              .form-check.form-switch.p-0.ms-3
+                = f.input :is_live
+        .modal-footer
+          %btn.btn.btn-secondary{ "data-bs-dismiss" => "modal"} Close
+          .form-actions
+            = f.button :submit, class: "btn btn-primary"

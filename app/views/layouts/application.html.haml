@@ -29,7 +29,7 @@
             %li
               %a.nav-link.px-2.link-dark{:href => "/reviews"} Reviews
             %li
-              %a.nav-link.px-2.link-dark{:href => "#"} FAQs
+              %a.nav-link.px-2.link-dark{:href => "/questions"} FAQs
             - if user_signed_in?
               - if can? :manage, User
                 %a.nav-link.px-2.link-dark{:href => "/users"} Manage Users
