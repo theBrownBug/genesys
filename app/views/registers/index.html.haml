@@ -1,8 +1,5 @@
-<<<<<<< HEAD
+- content_for :title, "Listing Registers"
 %h1 Listing registers
-=======
-%h1 Listing Registers
->>>>>>> 8a7fbcf0f8dc4b4988c3bfaf22d5043044cb5a6e
 
 %table
   %thead
@@ -17,11 +14,7 @@
     - @registers.each do |register|
       %tr
         %td= register.email
-<<<<<<< HEAD
         %td= register.option
-=======
-        %td= register.poption
->>>>>>> 8a7fbcf0f8dc4b4988c3bfaf22d5043044cb5a6e
         %td= link_to 'Show', register
         %td= link_to 'Edit', edit_register_path(register)
         %td= link_to 'Destroy', register, :method => :delete, :data => { :confirm => 'Are you sure?' }
