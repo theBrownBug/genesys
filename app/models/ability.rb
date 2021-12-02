@@ -7,8 +7,7 @@ class Ability
     can %i[create read], Review, is_live: true
     # can :read, Review, is_live: true
     can :create, Register
-    can [:create, :read], Question, is_live:true
-
+    can %i[create read], Question, is_live: true
 
     return if user.blank?
     return unless user.internal?
@@ -44,7 +43,7 @@ class Ability
 
     if user.is? :admin
 
-      if not user.is? :product_owner
+      unless user.is? :product_owner
         cannot :manage, Question
         cannot :manage, Answer
       end
