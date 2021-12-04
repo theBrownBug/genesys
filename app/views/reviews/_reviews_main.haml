@@ -4,4 +4,5 @@
       .col-12.col-lg-4.align-self-start.sticky-lg-top
         =render :partial => "review_overview"
       .col-12.col-lg-8
-        =render :partial => "reviews"
+        - if cannot? :update, Review
+          =render :partial => "reviews"
