@@ -1,25 +1,4 @@
-%h1 Listing questions
-
-%table
-  %thead
-    %tr
-      %th Question
-      %th Is live
-      %th Popularity
-      %th
-      %th
-      %th
-
-  %tbody
-    - @questions.each do |question|
-      %tr
-        %td= question.question
-        %td= question.is_live
-        %td= question.popularity
-        %td= link_to 'Show', question
-        %td= link_to 'Edit', edit_question_path(question)
-        %td= link_to 'Destroy', question, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Question', new_question_path
+- if current_user and can? :edit, Question
+  = render :partial => "question_table"
+- else
+  = render :partial => "question_card"

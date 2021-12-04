@@ -1,0 +1,32 @@
+%section.bg-light
+  .container
+    %h1 Questions
+    .row.justify-content-center.p-0.mt-4
+      .col-12
+        .table-responsive
+          %table.table.table-striped.align-middle
+            %thead.table-dark.align-middle
+              %tr
+                %th.text-start.px-4{ :scope => "col" } #
+                %th.text-start.px-4{ :scope => "col" } Body
+                %th.text-start.px-4{ :scope => "col" } Rating
+                %th.text-start.px-4{ :scope => "col" } Likes
+                %th.text-center.px-4{ :scope => "col" } Is live
+                %th.text-center.px-4{ :scope => "col" } Edit
+            %tbody
+              - @questions.each do |question|
+                %tr.text-start
+                  %td.px-4= question.id
+                  %td.px-4{ :style => "min-width: 350px; "}= question.question
+                  %td.px-4= question.rating
+                  %td.px-4= question.likes
+                  %td.text-center.px-4
+                    - if question.is_live
+                      %span.badge.rounded-pill.bg-danger Live
+                    - else
+                      %span.badge.rounded-pill.bg-secondary Offline
+                  %td.text-center.px-4
+                    %a{ :href => "#modal_question_edit", "data-bs-toggle" => "modal", "data-bs-target" => "#review_edit_modal_#{question.id}"}
+                      %i.fas.fa-edit
+                    =render :partial => "question_edit_modal", locals: { question: question }
+        %br

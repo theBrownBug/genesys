@@ -1,3 +1,4 @@
 =render partial: "reviews_main"
-=render partial: "reviews_table"
+- if can? :edit, Review
+  =render partial: "reviews_table"
 
