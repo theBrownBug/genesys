@@ -11,15 +11,14 @@
     = csrf_meta_tags
 
   %body.bg-light
-    = render 'layouts/svg_logo'
 
     %header.p-3.mb-3.border-bottom
       .container
         .d-flex.flex-wrap.align-items-center.justify-content-center.justify-content-lg-start
           %a.d-flex.align-items-center.mb-2.mb-lg-0.text-dark.text-decoration-none.px-2.border-right.border-primary{:href => "/"}
             .row.text-primary
-              .col.p-0
-                = render 'layouts/svg_table'
+              .col.my-auto
+                %i.fas.fa-table.fa-2x
               .col.my-auto.pt-2
                 %h4 Timetabled
           %ul.nav.col-12.col-lg-auto.me-lg-auto.mb-2.justify-content-center.mb-md-0
@@ -65,4 +64,4 @@
         %li.list-inline-item
           %a{:href => "https://storyset.com/people"} People illustrations by Storyset
         %li.list-inline-item
-          %a{:href => "https://heroicons.com/"} Icons by Heroicons
+          %a{:href => "https://fontawesome.com"} Icons by Font Awesome
