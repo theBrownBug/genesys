@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :answers
+  resources :questions
   resources :user_roles
   resources :roles
   devise_for :users
