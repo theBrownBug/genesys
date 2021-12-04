@@ -24,7 +24,7 @@ class Ability
 
     if user.is? :product_owner
       # set_live
-      can %i[read edit], Review, :all
+      can %i[read update], Review
       cannot %i[create destroy], Review
 
       can [:read], Register
