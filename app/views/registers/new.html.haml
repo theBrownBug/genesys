@@ -1,6 +1,8 @@
+- content_for :title, "Register Interest"
 %h1 Register Here!
 
 = render 'form'
+%br
 
 /= link_to 'Back', registers_path
-= link_to 'Home', root_path
+= link_to 'Home', root_path, class: 'btn btn-outline-secondary ms-3'

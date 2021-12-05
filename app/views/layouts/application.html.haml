@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title NewRailsProject - #{content_for(:title)}
+    %title Timetabled - #{content_for(:title)}
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     %meta{ :'http-equiv' => 'X-UA-Compatible', content: 'IE=edge' }
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "content-type"}
@@ -25,7 +25,8 @@
             %li
               = link_to 'Home', root_path, title: 'Go to the home page', class: 'nav-link px-2 link-secondary'
             %li
-              %a.nav-link.px-2.link-dark{:href => "#"} Register
+              = link_to 'Register Your Interest', new_register_path, title: 'Go to register page', class: 'nav-link px-2 link-secondary'
+              //%a.nav-link.px-2.link-dark{:href => "registers/new"} Register Your Interest
             %li
               %a.nav-link.px-2.link-dark{:href => "/reviews"} Reviews
             %li
