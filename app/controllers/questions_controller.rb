@@ -38,8 +38,8 @@ class QuestionsController < ApplicationController
 
   # PATCH/PUT /questions/1
   def update
-    unless question.get_answer
-      question[:is_live] = false
+    unless @question.get_answer
+      @question[:is_live] = false
     end
 
     if @question.update(question_params)
