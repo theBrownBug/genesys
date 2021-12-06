@@ -11,4 +11,14 @@
 #
 class Question < ApplicationRecord
   has_one :answer
+
+
+  def get_answer
+    answer = Answer.find_by(question_id: self.id)
+    if answer.nil?
+      return nil
+    end
+    answer = answer.answer
+  end
+
 end
