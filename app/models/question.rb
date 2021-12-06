@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: questions
@@ -14,11 +16,9 @@ class Question < ApplicationRecord
   validates :is_live, inclusion: [false], if: ->(question) { question.answer.blank? }
 
   def get_answer
-    answer = Answer.find_by(question_id: self.id)
-    if answer.nil?
-      return nil
-    end
+    answer = Answer.find_by(question_id: id)
+    return nil if answer.nil?
+
     answer = answer.answer
   end
-
 end

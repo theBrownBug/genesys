@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class AnswersController < ApplicationController
   before_action :get_question
-  before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  before_action :set_answer, only: %i[show edit update destroy]
 
   # GET /answers
   def index
@@ -8,8 +10,7 @@ class AnswersController < ApplicationController
   end
 
   # GET /answers/1
-  def show
-  end
+  def show; end
 
   # GET /answers/new
   def new
@@ -17,14 +18,13 @@ class AnswersController < ApplicationController
   end
 
   # GET /answers/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /answers
   def create
     @answer = @question.build_answer(answer_params)
-    @answer.likes =0
-    @answer.rating=0
+    @answer.likes = 0
+    @answer.rating = 0
     respond_to do |format|
       if @answer.save
         format.html { redirect_to question_path(@question), notice: 'Answer was successfully created.' }
@@ -47,7 +47,6 @@ class AnswersController < ApplicationController
         format.json { render json: @answer.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
   # DELETE /answers/1
@@ -60,18 +59,18 @@ class AnswersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_answer
-      @answer = @question.answer
-    end
 
-    # Only allow a list of trusted parameters through.
-    def answer_params
-      params.require(:answer).permit(:answer, :rating, :likes, :question_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_answer
+    @answer = @question.answer
+  end
 
-    def get_question
-      @question = Question.find(params[:question_id])
-    end
+  # Only allow a list of trusted parameters through.
+  def answer_params
+    params.require(:answer).permit(:answer, :rating, :likes, :question_id)
+  end
 
+  def get_question
+    @question = Question.find(params[:question_id])
+  end
 end

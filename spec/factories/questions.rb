@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: questions
@@ -11,7 +13,7 @@
 #
 FactoryBot.define do
   factory :question do
-    question { "MyString" }
+    question { 'MyString' }
     is_live { false }
     popularity { 1 }
   end

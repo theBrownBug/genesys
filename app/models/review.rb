@@ -24,5 +24,4 @@ class Review < ApplicationRecord
   def set_default_values
     self.likes ||= 0
   end
-
 end

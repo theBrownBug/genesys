@@ -13,19 +13,22 @@
 require 'rails_helper'
 
 RSpec.describe Register, type: :model do
-  subject {
-    described_class.new(email: "Email",
+  subject do
+    described_class.new(email: 'Email',
                         option: 1)
-  }
-  it "is valid with valid attributes" do
+  end
+
+  it 'is valid with valid attributes' do
     expect(subject).to be_valid
   end
-  it "is not valid without an email" do
+
+  it 'is not valid without an email' do
     subject.email = nil
-    expect(subject).to_not be_valid
+    expect(subject).not_to be_valid
   end
-  it "is not valid without an option chosen" do
+
+  it 'is not valid without an option chosen' do
     subject.option = nil
-    expect(subject).to_not be_valid
+    expect(subject).not_to be_valid
   end
 end
