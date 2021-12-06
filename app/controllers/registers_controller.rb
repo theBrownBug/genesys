@@ -27,7 +27,8 @@ class RegistersController < ApplicationController
 
     if @register.save
       #redirect_to @register, notice: 'Register was successfully created.'
-      redirect_to root_path, notice: 'Register was successfully created.'
+      #redirect_to root_path, notice: 'Register was successfully created.'
+      redirect_to root_path, :flash => { :notice => "Register was successfully created" }
     else
       render :new
     end
