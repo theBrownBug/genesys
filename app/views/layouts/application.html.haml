@@ -44,9 +44,11 @@
     .flash-messages
       - flash.each do |name, msg|
         - next unless name == 'alert' || name == 'notice'
-        .alert.fade.in
+        //.alert.fade.in
+        .alert
           .container
-            = msg
+            =msg
+            //=flash[:notice]
             %a{ href: '#', title: 'Hide this message', data: { bs_dismiss: :alert } } Dismiss
 
     %main
