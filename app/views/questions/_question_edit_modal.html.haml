@@ -15,7 +15,7 @@
             .col-2.text-start
               %p.fw-bold.mb-4 Question
             .col-10.text-start
-              %p.mb-4= question.question
+              = f.input :question, label: false, :as => :text, value: "#{question.question}", :input_html => { :rows => 7 , :style => 'width: 100%; resize: none;'}
           - if question.get_answer
             .row
               .col-2.text-start
