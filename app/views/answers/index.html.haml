@@ -1,27 +1,21 @@
-%h1 Listing answers
 
-%table
-  %thead
-    %tr
-      %th Answer
-      %th Rating
-      %th Likes
-      %th Question
-      %th
-      %th
-      %th
-
-  %tbody
-    - @answers.each do |answer|
-      %tr
-        %td= answer.answer
-        %td= answer.rating
-        %td= answer.likes
-        %td= answer.question
-        %td= link_to 'Show', answer
-        %td= link_to 'Edit', edit_answer_path(answer)
-        %td= link_to 'Destroy', answer, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Answer', new_answer_path
+.container
+  %h1 Listing answer
+  .row.justify-content-center.p-0.mt-4
+    .col-12
+      .table-responsive
+        %table.table.table-striped.align-middle
+          %thead.table-dark.align-middle
+            %tr
+              %th.text-center.px-4{:scope => "col"} Answer
+              %th.text-center.px-4{:scope => "col"} Rating
+              %th.text-center.px-4{:scope => "col"} Likes
+              %th.text-center.px-4{:scope => "col"} Question
+              %th.text-center.px-4{:scope => "col"} Delete Answer?
+          %tbody
+            %tr.text-start
+              %td.text-center.px-4= @answers.answer
+              %td.text-center.px-4= @answers.rating
+              %td.text-center.px-4= @answers.likes
+              %td.text-center.px-4= @answers.question.question
+              %td.text-center.px-4= link_to 'Destroy', question_answers_path, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -26,7 +26,11 @@ class QuestionsController < ApplicationController
     @question.is_live = false if @question.is_live.nil?
     @question.popularity = 0
     if @question.save
-      redirect_to @question, notice: 'Question was successfully created.'
+      if can? :edit, Question
+        redirect_to questions_path, notice: 'Question created.'
+      else
+        redirect_to questions_path, notice: 'Your question has been successfully submitted. We will update the FAQs soon.'
+      end
     else
       render :new
     end

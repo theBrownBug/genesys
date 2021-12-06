@@ -8,9 +8,8 @@
             %thead.table-dark.align-middle
               %tr
                 %th.text-start.px-4{ :scope => "col" } #
-                %th.text-start.px-4{ :scope => "col" } Body
-                %th.text-start.px-4{ :scope => "col" } Rating
-                %th.text-start.px-4{ :scope => "col" } Likes
+                %th.text-start.px-4{ :scope => "col" } Question
+                %th.text-start.px-4{ :scope => "col" } Popularity
                 %th.text-center.px-4{ :scope => "col" } Is live
                 %th.text-center.px-4{ :scope => "col" } Edit
             %tbody
@@ -18,8 +17,7 @@
                 %tr.text-start
                   %td.px-4= question.id
                   %td.px-4{ :style => "min-width: 350px; "}= question.question
-                  %td.px-4= question.rating
-                  %td.px-4= question.likes
+                  %td.text-center.px-4= question.popularity
                   %td.text-center.px-4
                     - if question.is_live
                       %span.badge.rounded-pill.bg-danger Live

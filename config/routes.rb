@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :answers
-  resources :questions
   resources :user_roles
   resources :roles
   devise_for :users
   resources :users
   resources :registers
   resources :reviews
+
+  resources :questions do
+    resources :answers
+  end
 
   match '/403', to: 'errors#error_403', via: :all
   match '/404', to: 'errors#error_404', via: :all
