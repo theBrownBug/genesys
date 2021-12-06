@@ -11,7 +11,7 @@
 #  updated_at :datetime         not null
 #
 class Register < ApplicationRecord
-  validates :email, presence: true, uniqueness: { message: 'Username already exists' }
+  validates :email, presence: true, uniqueness: { message: 'Email already exists' }
 
   validates :option, presence: true
 end
