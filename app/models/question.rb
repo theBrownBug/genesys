@@ -11,7 +11,7 @@
 #
 class Question < ApplicationRecord
   has_one :answer
-
+  validates :is_live, inclusion: [false], if: ->(question) { question.answer.blank? }
 
   def get_answer
     answer = Answer.find_by(question_id: self.id)
