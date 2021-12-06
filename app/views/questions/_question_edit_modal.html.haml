@@ -28,12 +28,13 @@
               %p.fw-bold.mb-4 Popularity (Clicks)
             .col-10.text-start
               %p.mb-4= question.popularity
-          .row
-            .col-2.text-start
-              %p.fw-bold Is live
-            .col-10.text-start
-              .form-check.form-switch.p-0.ms-3
-                = f.input :is_live
+          - if question.get_answer
+            .row
+              .col-2.text-start
+                %p.fw-bold Is live
+              .col-10.text-start
+                .form-check.form-switch.p-0.ms-3
+                  = f.input :is_live
         .modal-footer
           - if not question.answer
             %a.btn.btn-outline-primary.btn-{:href => "questions/#{question.id}/answers/new", :role => "button"} Write Answer
