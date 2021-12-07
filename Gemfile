@@ -30,6 +30,7 @@ gem 'cancancan'
 gem 'devise'
 gem 'devise_cas_authenticatable'
 gem 'devise_ldap_authenticatable'
+gem 'shoulda-matchers'
 
 gem 'daemons'
 gem 'delayed_job'
