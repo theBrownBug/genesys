@@ -1,0 +1,13 @@
+= simple_form_for([@question, @answer], local: true) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    .row.mb-4
+      = f.input :answer, label: false, :as => :text, placeholder: "Add the Answer", :input_html => { :rows => 7 , :style => 'width: 100%; resize: none;'}
+
+  .container
+    .row
+      .col.text-center
+        .form-actions
+          = f.button :submit, class: "btn btn-outline-primary"

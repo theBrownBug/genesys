@@ -24,19 +24,29 @@
           %ul.nav.col-12.col-lg-auto.me-lg-auto.mb-2.justify-content-center.mb-md-0
             %li
               = link_to 'Home', root_path, title: 'Go to the home page', class: 'nav-link px-2 link-dark'
-            %li
-              = link_to 'Register Your Interest', new_register_path, title: 'Go to register page', class: 'nav-link px-2 link-dark'
-            %li
-              %a.nav-link.px-2.link-dark{:href => "/reviews"} Reviews
-            %li
-              %a.nav-link.px-2.link-dark{:href => "#"} FAQs
+            - if not current_user
+              %li
+                = link_to 'Register Your Interest', new_register_path, title: 'Go to register page', class: 'nav-link px-2 link-dark'
+              //%a.nav-link.px-2.link-dark{:href => "registers/new"} Register Your Interest
+            - if cannot? :edit, Review
+              %li
+                %a.nav-link.px-2.link-dark{:href => "/reviews"} Reviews
+            - if cannot? :edit, Question
+              %li
+                %a.nav-link.px-2.link-dark{:href => "/questions"} FAQs
             - if user_signed_in?
               - if can? :manage, User
-                %a.nav-link.px-2.link-dark{:href => "/users"} Manage Users
+                %li
+                  %a.nav-link.px-2.link-dark{:href => "/users"} Manage Users
               - if can? :manage, Role
-                %a.nav-link.px-2.link-dark{:href => "/roles"} Manage Roles
+                %li
+                  %a.nav-link.px-2.link-dark{:href => "/roles"} Manage Roles
               - if can? :edit, Review
-                %a.nav-link.px-2.link-dark{:href => "/reviews"} Manage Reviews
+                %li
+                  %a.nav-link.px-2.link-dark{:href => "/reviews"} Manage Reviews
+              - if can? :edit, Question
+                %li
+                  %a.nav-link.px-2.link-dark{:href => "/questions"} Manage FAQs
               %li
                 = link_to("Sign Out", destroy_user_session_path, method: :delete, class: "nav-link px-2 link-dark")
 
@@ -45,7 +55,7 @@
         - next unless name == 'alert' || name == 'notice'
         .alert.alert-info
           .container
-            =msg
+            = msg
             %a.alert-link{ href: '#', title: 'Hide this message', data: { bs_dismiss: :alert } } Dismiss
 
     %main
