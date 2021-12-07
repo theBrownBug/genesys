@@ -12,6 +12,7 @@
 class Role < ApplicationRecord
   has_many :user_roles, dependent: :destroy
   has_many :users, through: :user_roles
-  validates :role_type, uniqueness: true
+
+  validates :role_type, uniqueness: true , presence: true
   enum role_type: { normal: 0, admin: 1, product_owner: 2, reporter: 3 }
 end

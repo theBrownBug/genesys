@@ -332,6 +332,8 @@ GEM
     semantic_range (3.0.0)
     sentry-raven (3.1.2)
       faraday (>= 1.0)
+    shoulda-matchers (5.0.0)
+      activesupport (>= 5.2.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -429,6 +431,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sentry-raven
+  shoulda-matchers
   simple_form
   simplecov
   sqlite3

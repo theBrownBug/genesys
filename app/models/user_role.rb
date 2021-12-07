@@ -23,4 +23,8 @@
 class UserRole < ApplicationRecord
   belongs_to :user
   belongs_to :role
+
+  # the combination of role_id and user_id should be always unique
+  validates :role_id, uniqueness: { scope: :user_id }
+
 end
