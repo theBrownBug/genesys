@@ -23,10 +23,10 @@
                 %h4 Timetabled
           %ul.nav.col-12.col-lg-auto.me-lg-auto.mb-2.justify-content-center.mb-md-0
             %li
-              = link_to 'Home', root_path, title: 'Go to the home page', class: 'nav-link px-2 link-secondary'
+              = link_to 'Home', root_path, title: 'Go to the home page', class: 'nav-link px-2 link-dark'
             - if not current_user
               %li
-                = link_to 'Register Your Interest', new_register_path, title: 'Go to register page', class: 'nav-link px-2 link-secondary'
+                = link_to 'Register Your Interest', new_register_path, title: 'Go to register page', class: 'nav-link px-2 link-dark'
               //%a.nav-link.px-2.link-dark{:href => "registers/new"} Register Your Interest
             - if cannot? :edit, Review
               %li
@@ -53,10 +53,10 @@
     .flash-messages
       - flash.each do |name, msg|
         - next unless name == 'alert' || name == 'notice'
-        .alert.fade.in
+        .alert.alert-info
           .container
             = msg
-            %a{ href: '#', title: 'Hide this message', data: { bs_dismiss: :alert } } Dismiss
+            %a.alert-link{ href: '#', title: 'Hide this message', data: { bs_dismiss: :alert } } Dismiss
 
     %main
       .container= yield
@@ -66,10 +66,6 @@
       %ul.list-inline
         %li.list-inline-item
           = link_to 'epiGenesys', 'https://www.epigenesys.org.uk', target: '_blank', title: 'Go to the epiGenesys website'
-        %li.list-inline-item
-          %a{:href => "#"} Terms
-        %li.list-inline-item
-          %a{:href => "#"} Support
       %ul.list-inline
         %li.list-inline-item
           %a{:href => "https://storyset.com/people"} People illustrations by Storyset
