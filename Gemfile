@@ -30,7 +30,6 @@ gem 'cancancan'
 gem 'devise'
 gem 'devise_cas_authenticatable'
 gem 'devise_ldap_authenticatable'
-gem 'shoulda-matchers'
 
 gem 'daemons'
 gem 'delayed_job'
@@ -48,6 +47,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'sqlite3'
+  gem 'shoulda-matchers'
 end
 
 group :development do
