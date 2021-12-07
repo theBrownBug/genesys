@@ -34,5 +34,118 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject {described_class.new}
+
+  # test email
+  it "is with invalid email" do
+    subject.first_name = "Anything"
+    subject.last_name = "Anything"
+    subject.email = "email.com"
+    subject.password = "Password_1"
+    subject.user_type = 0
+    expect(subject).not_to be_valid
+  end
+
+
+  it "is with Valid email" do
+    subject.first_name = "Anything"
+    subject.last_name = "Anything"
+    subject.email = "email@email.com"
+    subject.password = "Password_1"
+    subject.user_type = 0
+    expect(subject).to be_valid
+  end
+
+  it "cannot have A NULL email" do
+    subject.first_name = "Anything"
+    subject.last_name = "Anything"
+    subject.email = nil
+    subject.password = "Password_1"
+    subject.user_type = 1
+    expect(subject).not_to be_valid
+  end
+
+  # test user_type
+  it "is an internal user" do
+    subject.first_name = "Anything"
+    subject.last_name = "Anything"
+    subject.email = "email@email.com"
+    subject.password = "Password_1"
+    subject.user_type = 0
+    expect(subject).to be_internal
+  end
+
+  it "is an external user" do
+    subject.first_name = "Anything"
+    subject.last_name = "Anything"
+    subject.email = "email@email.com"
+    subject.password = "Password_1"
+    subject.user_type = 1
+    expect(subject).to be_external
+  end
+
+  it "has NULL user_type" do
+    subject.first_name = "Anything"
+    subject.last_name = "Anything"
+    subject.email = "email@email.com"
+    subject.password = "Password_1"
+    subject.user_type = nil
+    expect(subject).not_to be_valid
+  end
+
+
+  it "has an invalid password with no uppercase characters" do
+    subject.first_name = "Anything"
+    subject.last_name = "Anything"
+    subject.email = "email@email.com"
+    subject.password = "password_1"
+    subject.user_type = 1
+    expect(subject).not_to be_valid
+  end
+
+  it "has an invalid password with no lowercase characters" do
+    subject.first_name = "Anything"
+    subject.last_name = "Anything"
+    subject.email = "email@email.com"
+    subject.password = "PASSWORD_1"
+    subject.user_type = 1
+    expect(subject).not_to be_valid
+  end
+
+  it "has an invalid password with no special characters" do
+    subject.first_name = "Anything"
+    subject.last_name = "Anything"
+    subject.email = "email@email.com"
+    subject.password = "Password1"
+    subject.user_type = 1
+    expect(subject).not_to be_valid
+  end
+
+  it "has an invalid password with no numbers" do
+    subject.first_name = "Anything"
+    subject.last_name = "Anything"
+    subject.email = "email@email.com"
+    subject.password = "Password_"
+    subject.user_type = 1
+    expect(subject).not_to be_valid
+  end
+
+  it "has an invalid password with less than 8 characters" do
+    subject.first_name = "Anything"
+    subject.last_name = "Anything"
+    subject.email = "email@email.com"
+    subject.password = "Pass_1"
+    subject.user_type = 1
+    expect(subject).not_to be_valid
+  end
+
+  it "has an VALID password" do
+    subject.first_name = "Anything"
+    subject.last_name = "Anything"
+    subject.email = "email@email.com"
+    subject.password = "Password_1"
+    subject.user_type = 1
+    expect(subject).to be_valid
+  end
+
 end

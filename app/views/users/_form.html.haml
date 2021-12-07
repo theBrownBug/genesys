@@ -12,7 +12,7 @@
     %br
     = f.input :password
     %br
-    = f.input :user_type, :as => :select, :collection => User.user_types.keys.to_a
+    = f.input :user_type, :as => :select, :collection => User.user_types.keys.to_a, :required => true
     %br
     .form-group
       = f.label :role_ids, "User roles"

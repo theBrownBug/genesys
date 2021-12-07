@@ -48,7 +48,7 @@ class User < ApplicationRecord
 
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, presence:true, uniqueness: true,  format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password,
             presence: true,
             length: { in: Devise.password_length },
@@ -62,6 +62,8 @@ class User < ApplicationRecord
             format: { with: PASSWORD_FORMAT },
             confirmation: true,
             on: :update
+
+  validates :user_type, presence: true
 
   enum user_type: { internal: 0, external: 1 }
 
