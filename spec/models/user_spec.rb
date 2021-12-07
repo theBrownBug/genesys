@@ -149,4 +149,15 @@ RSpec.describe User, type: :model do
     expect(subject).to be_valid
   end
 
+  #test associations
+  it "should have many Roles" do
+    t = User.reflect_on_association(:roles)
+    expect(t.macro).to eq(:has_many)
+  end
+
+  it "should have many User Roles" do
+    t = User.reflect_on_association(:user_roles)
+    expect(t.macro).to eq(:has_many)
+  end
+
 end
