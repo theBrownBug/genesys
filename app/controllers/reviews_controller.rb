@@ -38,7 +38,6 @@ class ReviewsController < ApplicationController
   def update
     if @review.update(review_params)
       render json: @review
-      # redirect_to reviews_url, notice: "Review ##{@review.id} has been updated!"
     else
       render :edit
     end
