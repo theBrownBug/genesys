@@ -36,7 +36,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   subject {described_class.new}
 
-  # test email
+  # test email - Invalid
   it "is with invalid email" do
     subject.first_name = "Anything"
     subject.last_name = "Anything"
@@ -44,16 +44,6 @@ RSpec.describe User, type: :model do
     subject.password = "Password_1"
     subject.user_type = 0
     expect(subject).not_to be_valid
-  end
-
-
-  it "is with Valid email" do
-    subject.first_name = "Anything"
-    subject.last_name = "Anything"
-    subject.email = "email@email.com"
-    subject.password = "Password_1"
-    subject.user_type = 0
-    expect(subject).to be_valid
   end
 
   it "cannot have A NULL email" do
@@ -65,7 +55,17 @@ RSpec.describe User, type: :model do
     expect(subject).not_to be_valid
   end
 
-  # test user_type
+  # test email - valid
+  it "is with Valid email" do
+    subject.first_name = "Anything"
+    subject.last_name = "Anything"
+    subject.email = "email@email.com"
+    subject.password = "Password_1"
+    subject.user_type = 0
+    expect(subject).to be_valid
+  end
+
+  # test user_type - Valid
   it "is an internal user" do
     subject.first_name = "Anything"
     subject.last_name = "Anything"
@@ -83,7 +83,7 @@ RSpec.describe User, type: :model do
     subject.user_type = 1
     expect(subject).to be_external
   end
-
+  # test user_type - Invalid
   it "has NULL user_type" do
     subject.first_name = "Anything"
     subject.last_name = "Anything"
@@ -93,7 +93,7 @@ RSpec.describe User, type: :model do
     expect(subject).not_to be_valid
   end
 
-
+  #test passwords - Invalid
   it "has an invalid password with no uppercase characters" do
     subject.first_name = "Anything"
     subject.last_name = "Anything"
@@ -139,6 +139,7 @@ RSpec.describe User, type: :model do
     expect(subject).not_to be_valid
   end
 
+  #test passwords - valid
   it "has an VALID password" do
     subject.first_name = "Anything"
     subject.last_name = "Anything"
