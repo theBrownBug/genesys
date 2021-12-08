@@ -1,6 +1,8 @@
 - content_for :title, "Home"
+= javascript_pack_tag "collapse"
+= stylesheet_link_tag "collapse", media: :all
 
-/splash
+/ Splash
 %section.bg-light
   .container
     .row
@@ -16,28 +18,50 @@
           .col-sm-6.col-lg-6.mb-3.text-center
             %a.btn.btn-primary.shadow.py-2.mr-1.w-100{:href => "registers/new"} I'm interested!
           .col-sm-6.col-lg-4.mb-3.text-center
-            %a.btn.btn-outline-primary.py-2.w-100{:href => "#"} See the reviews
+            %a.btn.btn-outline-primary.py-2.w-100{:href => "/reviews"} See the reviews
       .col-lg-6.order-1.order-lg-2
         =image_tag "Learning-pana.svg", alt: "Girl sat at a laptop"
 
 / Services
-%section.mb-4
+%section
   .container
     %h2 A timetable to suit you
     %p.text-muted.mb-5 Feature spotlight
     .row
       .col-sm-6.col-lg-4.mb-3.text-center
-        .text-primary
-          = render 'layouts/svg_academic_cap'
+        .text-primary.p-2
+          %i.fas.fa-graduation-cap.fa-5x
         %h6 Automated timetable creation
-        %p.text-muted Our application creates a weekly timetable based on the work you need to complete.
-        %p.text-muted Simply choose your working hours and we'll fill out your day for you! Just think how much time and effort it woud take to do all that by hand.
+        %p#featureText1.grad.text-muted Our application creates a weekly timetable based on the work you need to complete.
+        #feature1.collapse
+          %p.text-muted Simply choose your working hours and we'll fill out your day for you! Just think how much time and effort it woud take to do all that by hand.
+        %p
+          %a#featureButton1{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-bs-toggle" => "collapse", :href => "#feature1", :role => "button"}
+            Show details
+        %p
+          %a.text-decoration-none{:href => "https://twitter.com/intent/tweet?text=Look+at+this+awesome+application+for+automated+time+management+for+students%21+https%3A%2F%2Fteam05.demo1.genesys.shefcompsci.org.uk%2F.%0D%0AMy+favourite+feature+is+the+automated+timetable+creation.", :title => "Share on twitter"}
+            %i.fab.fa-twitter-square.fa-2x
+          %a.text-decoration-none{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fteam05.demo1.genesys.shefcompsci.org.uk%2F&amp;src=sdkpreparse%22&quote=My+favourite+feature+is+the+automated+timetable+creation.", :title => "Share on facebook"}
+            %i.fab.fa-facebook-square.fa-2x
+          %a.text-decoration-none{:href => "mailto:?subject=Check this out!&body=Look at this awesome application for automated time management for students! https://team05.demo1.genesys.shefcompsci.org.uk/. %0D%0AMy favourite feature is the automated timetable creation.", :title => "Share by Email"}
+            %i.fas.fa-envelope.fa-2x
       .col-sm-6.col-lg-4.mb-3.text-center
-        .text-primary
-          = render 'layouts/svg_clock'
+        .text-primary.p-2
+          %i.fas.fa-clock.fa-5x
         %h6 Account for last minute changes
-        %p.text-muted Life doesn't always go to schedule: unplanned lie-ins, one off appointments, or even a spontaneous date night! Your timetable needs to account for that.
-        %p.text-muted Our application will react to missed time, giving you a list of missed tasks to make up for at your own pace.
+        %p#featureText2.grad.text-muted Life doesn't always go to schedule: unplanned lie-ins, one off appointments, or even a spontaneous date night! Your timetable needs to account for that.
+        #feature2.collapse
+          %p.text-muted Our application will react to missed time, giving you a list of missed tasks to make up for at your own pace.
+        %p
+          %a#featureButton2{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-bs-toggle" => "collapse", :href => "#feature2", :role => "button"}
+            Show details
+        %p
+          %a.text-decoration-none{:href => "https://twitter.com/intent/tweet?text=Look+at+this+awesome+application+for+automated+time+management+for+students%21+https%3A%2F%2Fteam05.demo1.genesys.shefcompsci.org.uk%2F.%0D%0AMy+favourite+feature+is+the+ability+to+account+for+last+minute+changes.", :title => "Share on twitter"}
+            %i.fab.fa-twitter-square.fa-2x
+          %a.text-decoration-none{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fteam05.demo1.genesys.shefcompsci.org.uk%2F&amp;src=sdkpreparse%22&quote=My+favourite+feature+is+the+ability+to+account+for+last+minute+changes.", :title => "Share on facebook"}
+            %i.fab.fa-facebook-square.fa-2x
+          %a.text-decoration-none{:href => "mailto:?subject=Check this out!&body=Look at this awesome application for automated time management for students! https://team05.demo1.genesys.shefcompsci.org.uk/. %0D%0AMy favourite feature is the ability to account for last minute changes.", :title => "Share by Email"}
+            %i.fas.fa-envelope.fa-2x
       .col-sm-6.col-lg-4.mb-3
         .h-50.img-fluid.max-width
           =image_tag "placeholder.png", alt: "Image placeholder", class: "mw-100"
@@ -46,14 +70,25 @@
         .h-50.img-fluid.max-width
           =image_tag "placeholder.png", alt: "Image placeholder", class: "mw-100"
       .col-sm-6.col-lg-4.mb-3.text-center
-        .text-primary
-          = render 'layouts/svg_clipboard_check'
+        .text-primary.p-2
+          %i.fas.fa-clipboard-check.fa-5x
         %h6 Track repeating tasks
-        %p.text-muted If you have worksheets or tasks that are repeated every week, you can track them and tick them off as you complete them.
-        %p.text-muted This allows you to stay focused on the tasks you need to be completing in your timetabled hours.
+        %p#featureText3.grad.text-muted If you have worksheets or tasks that are repeated every week, you can track them and tick them off as you complete them.
+        #feature3.collapse
+          %p.text-muted This allows you to stay focused on the tasks you need to be completing in your timetabled hours.
+        %p
+          %a#featureButton3{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-bs-toggle" => "collapse", :href => "#feature3", :role => "button"}
+            Show details
+        %p
+          %a.text-decoration-none{:href => "https://twitter.com/intent/tweet?text=Look+at+this+awesome+application+for+automated+time+management+for+students%21+https%3A%2F%2Fteam05.demo1.genesys.shefcompsci.org.uk%2F.%0D%0AMy+favourite+feature+is+the+ability+to+track+repeating+tasks.", :title => "Share on twitter"}
+            %i.fab.fa-twitter-square.fa-2x
+          %a.text-decoration-none{:href => "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fteam05.demo1.genesys.shefcompsci.org.uk%2F&amp;src=sdkpreparse%22&quote=My+favourite+feature+is+the+ability+to+track+repeating+tasks.", :title => "Share on facebook"}
+            %i.fab.fa-facebook-square.fa-2x
+          %a{:href => "mailto:?subject=Check this out!&body=Look at this awesome application for automated time management for students! https://team05.demo1.genesys.shefcompsci.org.uk/. %0D%0AMy favourite feature is the ability to track repeating tasks.", :title => "Share by Email"}
+            %i.fas.fa-envelope.fa-2x
       .col-sm-6.col-lg-4.text-center.my-auto
-        .text-primary
-          = render 'layouts/svg_lightbulb'
+        .text-primary.p-2
+          %i.fas.fa-lightbulb.fa-5x
         %h6 Interested?
         %p
           %a.btn.btn-primary.shadow.py-2.my-2.w-100{:href => "registers/new"} Let's get started

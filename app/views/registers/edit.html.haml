@@ -1,8 +1,10 @@
+- content_for :title, "Edit Register"
 %h1 Editing register
 
 = render 'form'
 
-= link_to 'Show', @register
-\|
+%br
+= link_to 'Show', @register, class: 'btn btn-outline-secondary ms-3'
+/|
 /= link_to 'Back', registers_path
-= link_to 'Home', root_path
+= link_to 'Home', root_path, class: 'btn btn-outline-secondary ms-3'

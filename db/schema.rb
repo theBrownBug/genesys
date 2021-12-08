@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_203643) do
+ActiveRecord::Schema.define(version: 2021_12_07_200310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string "answer"
+    t.integer "rating"
+    t.integer "likes"
+    t.bigint "question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
@@ -28,6 +38,14 @@ ActiveRecord::Schema.define(version: 2021_11_29_203643) do
     t.datetime "created_at", precision: 6
     t.datetime "updated_at", precision: 6
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "question"
+    t.boolean "is_live"
+    t.integer "popularity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "registers", force: :cascade do |t|
@@ -46,6 +64,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_203643) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_live_landing"
+    t.integer "order_no"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -97,6 +116,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_203643) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "questions"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end

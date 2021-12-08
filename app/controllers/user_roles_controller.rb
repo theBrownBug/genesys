@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UserRolesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user_role, only: %i[show edit update destroy]
 
   # GET /user_roles

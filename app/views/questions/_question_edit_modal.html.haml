@@ -1,0 +1,45 @@
+.modal.fade{ :id => "review_edit_modal_#{question.id}", :tabindex => "-1" }
+  .modal-dialog.modal-dialog-centered.modal-lg
+    .modal-content
+      .modal-header
+        %h5.modal-title.ms-4 Question Details
+        %btn.btn-close{ "data-bs-dismiss" => "modal", "aria-label" => "Close" }
+      = simple_form_for(question, defaults: { label: false }) do |f|
+        .modal-body.m-4
+          .row
+            .col-2.text-start
+              %p.fw-bold.mb-4 #
+            .col-10.text-start
+              %p.mb-4= question.id
+          .row
+            .col-2.text-start
+              %p.fw-bold.mb-4 Question
+            .col-10.text-start
+              = f.input :question, label: false, :as => :text, value: "#{question.question}", :input_html => { :rows => 7 , :style => 'width: 100%; resize: none;'}
+          - if question.get_answer
+            .row
+              .col-2.text-start
+                %p.fw-bold.mb-4 Answer
+              .col-10.text-start
+                %p.mb-4= question.get_answer
+
+          .row
+            .col-2.text-start
+              %p.fw-bold.mb-4 Popularity (Clicks)
+            .col-10.text-start
+              %p.mb-4= question.popularity
+          - if question.get_answer
+            .row
+              .col-2.text-start
+                %p.fw-bold Is live
+              .col-10.text-start
+                .form-check.form-switch.p-0.ms-3
+                  = f.input :is_live
+        .modal-footer
+          - if not question.answer
+            %a.btn.btn-outline-primary.btn-{:href => "questions/#{question.id}/answers/new", :role => "button"} Write Answer
+          - else
+            %a.btn.btn-outline-primary.btn-{:href => "questions/#{question.id}/answers/#{question.answer.id}/edit", :role => "button"} Update Answer
+          %btn.btn.btn-secondary{ "data-bs-dismiss" => "modal"} Close
+          .form-actions
+            = f.button :submit, class: "btn btn-primary"
