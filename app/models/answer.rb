@@ -22,4 +22,8 @@
 #
 class Answer < ApplicationRecord
   belongs_to :question
+  validates :answer, presence: true
+  validates :likes , presence:true
+  validates :rating, presence:true
+
 end

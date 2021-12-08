@@ -23,7 +23,7 @@ class QuestionsController < ApplicationController
   # POST /questions
   def create
     @question = Question.new(question_params)
-    @question.is_live = false if @question.is_live.nil?
+    @question.is_live = false # by default the question wont be live, because a new question does not have an associated answer
     @question.popularity = 0
     if @question.save
       if can? :edit, Question
@@ -38,7 +38,7 @@ class QuestionsController < ApplicationController
 
   # PATCH/PUT /questions/1
   def update
-    @question[:is_live] = false unless @question.get_answer
+    @question.is_live = false unless @question.get_answer
 
     if @question.update(question_params)
       redirect_to @question, notice: 'Question was successfully updated.'
