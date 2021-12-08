@@ -9,8 +9,9 @@ class MetricsController < ApplicationController
     registrations = Register.all
     @Registrations = Register.where.not(country: nil).pluck(:country).tally
     @Metrics = {'Sessions' => sessions, 'Registrations' => registrations}
-    @Clicks_2 = {'1' => Click.where(category: 'tier').where(value: '1'), '2' => Click.where(category: 'tier').where(value: '2') }
-
+    tier_1 = Click.where(category: 'tier').where(value: '1')
+    tier_2 = Click.where(category: 'tier').where(value: '2') 
+    @pricing = {'1' => tier_1, '2' => tier_2}
 
     @features = Click.where(category: 'feature').where.not(value: nil).pluck(:value).tally
     @features_time = Click.where(category: 'feature').where.not(value: nil)
@@ -19,7 +20,8 @@ class MetricsController < ApplicationController
     social_keys = Click.where(category: ['email', 'facebook', 'twitter']).where.not(value: nil).group(:value).count
     @social_keys = social_keys.keys
     puts "=====Clicks_2======="
-    puts Click.all
+    @test = Click.where(category: 'tier').where(value: '1')
+    puts @test
   end
 
   def create 
