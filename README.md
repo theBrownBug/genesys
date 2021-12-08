@@ -1,20 +1,18 @@
 # App name
 
----
+TimeTabled
 
 ## App / Project Info
 
 ### URLs
 
-Live site / staging urls etc...
+Live site: https://team05.demo1.genesys.shefcompsci.org.uk/
 
-### Customer Contact
-
-Some Customer <some.customer@epigenesys.co.uk>
+Live database: https://db.genesys.shefcompsci.org.uk/demo/team05.php
 
 ### Description
 
-Customer X needed to solve problem Y and we created this app to A, B, C...
+Website for a student time management solution, created for the Genesys module.
 
 ## Development
 
@@ -48,8 +46,8 @@ TODO: Fail if RSpec / Jest tests fail or if Brakeman finds a "medium" issue.
 
 A style guide is maintained for reference at `/style_guide`.
 
-- Run Rubocop linting with `rubocop`
-- Run Prettier linting with `yarn prettier --check .`
+- Run Rubocop linting with `rubocop` or `rubocop -a` to auto-correct offenses
+- Run Prettier linting with `yarn prettier --check .` or `yarn prettier --write .` to auto-correct offenses
 
 ### Deployment
 
