@@ -5,5 +5,7 @@ class PagesController < ApplicationController
 
   def home
     @current_nav_identifier = :home
+
+    @reviews = Review.where(is_live_landing: true)
   end
 end

@@ -27,7 +27,7 @@
             .col-10.text-start
               .d-flex.flex-row.justify-content-start.align-items-baseline.mb-4
                 - review.rating.times do
-                  %span.text-warning
+                  %span.text-primary
                     %i.fas.fa-star.fa-sm
           .row
             .col-2.text-start
@@ -40,6 +40,12 @@
             .col-10.text-start
               .form-check.form-switch.p-0.ms-3
                 = f.input :is_live
+          .row
+            .col-2.text-start
+              %p.fw-bold Is live on landing
+            .col-10.text-start
+              .form-check.form-switch.p-0.ms-3
+                = f.input :is_live_landing
         .modal-footer
           %btn.btn.btn-secondary{ "data-bs-dismiss" => "modal"} Close
           .form-actions

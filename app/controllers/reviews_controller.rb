@@ -34,14 +34,15 @@ class ReviewsController < ApplicationController
       redirect_to reviews_url
     else
       redirect_to reviews_url, notice: 'Review could not be created at this time.'
-
     end
   end
 
   # PATCH/PUT /reviews/1
   def update
-    if @review.update(review_params)
-      redirect_to reviews_url, notice: 'Review has been updated!'
+    if @review.update(review_params) && (can? :update, Review, :all)
+      redirect_to reviews_url, notice: "Review ##{@review.id} has been updated!"
+    elsif @review.update(review_params) && (can? :update, Review, :likes)
+      render json: @review
     else
       render :edit
     end
@@ -62,7 +63,7 @@ class ReviewsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def review_params
-    params.require(:review).permit(:title, :body, :rating, :likes, :dislikes, :is_live)
+    params.require(:review).permit(:title, :body, :rating, :likes, :dislikes, :is_live, :is_live_landing)
   end
 
   def rating_metrics(rating, count)
