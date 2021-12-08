@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: visits
@@ -14,9 +16,9 @@
 #
 FactoryBot.define do
   factory :visit do
-    from { "" }
-    to { "" }
-    longitude { "9.99" }
-    latitude { "9.99" }
+    from { '' }
+    to { '' }
+    longitude { '9.99' }
+    latitude { '9.99' }
   end
 end

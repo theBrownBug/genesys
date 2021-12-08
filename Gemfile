@@ -4,16 +4,16 @@ source 'https://rubygems.org'
 ruby '2.7.4'
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}.git" }
 
-gem 'sentry-raven'
 gem 'groupdate'
+gem 'sentry-raven'
 
 gem 'activerecord-session_store'
 gem 'bootsnap'
+gem 'chartkick'
+gem 'geocoder'
 gem 'puma'
 gem 'rails', '~> 6.1', '>= 6.1.4'
 gem 'responders'
-gem "chartkick"
-gem 'geocoder'
 gem 'webpacker'
 
 gem 'pg'

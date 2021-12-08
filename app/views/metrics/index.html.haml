@@ -18,10 +18,10 @@
                                                     %th Country
                                                     %th Visits
                                                 %tbody
-                                                    - @Locations.sort_by { |k,v| v }[0..1].to_h.keys.each do |key|
+                                                    - @locations.sort_by { |k,v| v }[0..1].to_h.keys.each do |key|
                                                         %tr 
                                                             %td= key
-                                                            %td= @Locations[key]
+                                                            %td= @locations[key]
                             .row
                                 .col
                                     .card.shadow-sm.sticky-top.mb-3
@@ -33,10 +33,10 @@
                                                     %th Country
                                                     %th Visits
                                                 %tbody
-                                                    - @Registrations.sort_by { |k,v| v }[0..1].to_h.keys.each do |key|
+                                                    - @registrations.sort_by { |k,v| v }[0..1].to_h.keys.each do |key|
                                                         %tr 
                                                             %td= key
-                                                            %td= @Registrations[key]
+                                                            %td= @registrations[key]
                 .col-md-9
                     .row.mb-3{:style=>"scroll-snap-align: start;"}
                         .col
@@ -44,7 +44,7 @@
                                 .card-header
                                     %h5 Session Location
                                 .card-body.w-100.ratio.ratio-16x9
-                                    = geo_chart @Locations, height: "100%", width: "100%", colors: ["#3467eb", "#3467eb"]
+                                    = geo_chart @locations, height: "100%", width: "100%", colors: ["#3467eb", "#3467eb"]
 
                     .row.mb-3{:style=>"scroll-snap-align: center;"}
                         .col
@@ -52,14 +52,14 @@
                                 .card-header
                                     %h5 Registration Location
                                 .card-body.w-100.ratio.ratio-16x9
-                                    = geo_chart @Registrations, id: "test", height: "100%", width: "100%"
+                                    = geo_chart @registrations, id: "test", height: "100%", width: "100%"
     .row
         .col-12.mb-3
             .card.shadow-sm.sticky-top
                 .card-header
                     %h5 Sessions
                 .card-body
-                    = line_chart @Metrics.keys.map{|key| {name: key, data: @Metrics[key].group_by_day(:created_at).count}}
+                    = line_chart @metrics.keys.map{|key| {name: key, data: @metrics[key].group_by_day(:created_at).count}}
     .row
         .col-md-3.mb-3
             .card.shadow-sm.sticky-top
