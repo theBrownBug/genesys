@@ -39,8 +39,10 @@ class ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/1
   def update
-    if @review.update(review_params)
+    if @review.update(review_params) && (can? :update, Review, :all)
       redirect_to reviews_url, notice: "Review ##{@review.id} has been updated!"
+    elsif @review.update(review_params) && (can? :update, Review, :likes)
+      render json: @review
     else
       render :edit
     end
