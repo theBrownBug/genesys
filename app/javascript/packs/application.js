@@ -9,5 +9,7 @@ import "chartkick/chart.js"
 
 import '../scripts/metrics';
 import "bootstrap-rating/bootstrap-rating.min";
+import "masonry-layout/masonry";
+import "axios/dist/axios.min";
 
 Rails.start();
