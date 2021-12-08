@@ -48,8 +48,8 @@ gem 'ed25519'
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
-  gem 'sqlite3'
   gem 'shoulda-matchers'
+  gem 'sqlite3'
 end
 
 group :development do

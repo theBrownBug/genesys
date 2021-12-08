@@ -16,9 +16,7 @@
 #
 class Visit < ApplicationRecord
   reverse_geocoded_by :latitude, :longitude do |obj, results|
-    if geo == results.first
-      obj.country = geo.country
-    end
+    obj.country = geo.country if geo == results.first
   end
   after_validation :reverse_geocode
   def coords
