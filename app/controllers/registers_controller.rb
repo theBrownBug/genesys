@@ -2,6 +2,7 @@
 
 # For the registration of user interest
 class RegistersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_register, only: %i[show edit update destroy]
 
   # GET /registers
@@ -30,7 +31,9 @@ class RegistersController < ApplicationController
                              country: location.first.country)
 
     if @register.save
-      redirect_to @register, notice: 'Register was successfully created.'
+      # redirect_to @register, notice: 'Register was successfully created.'
+      # redirect_to root_path, notice: 'Register was successfully created.'
+      redirect_to root_path, flash: { notice: 'Register was successfully created' }
     else
       render :new
     end

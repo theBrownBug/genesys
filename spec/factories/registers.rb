@@ -13,7 +13,7 @@
 #
 FactoryBot.define do
   factory :register do
-    email { 'MyString' }
+    sequence(:email) { |i| "example#{i}@example.com" }
     option { 1 }
   end
 end

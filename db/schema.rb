@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_202801) do
+ActiveRecord::Schema.define(version: 2021_12_04_121250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2021_11_29_202801) do
     t.string "value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+  create_table "answers", force: :cascade do |t|
+    t.string "answer"
+    t.integer "rating"
+    t.integer "likes"
+    t.bigint "question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -37,6 +46,14 @@ ActiveRecord::Schema.define(version: 2021_11_29_202801) do
     t.datetime "created_at", precision: 6
     t.datetime "updated_at", precision: 6
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "question"
+    t.boolean "is_live"
+    t.integer "popularity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "registers", force: :cascade do |t|
@@ -117,6 +134,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_202801) do
     t.string "path"
   end
 
+  add_foreign_key "answers", "questions"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end
