@@ -2,8 +2,8 @@
 
 # For the registration of user interest
 class RegistersController < ApplicationController
-  load_and_authorize_resource
-  before_action :set_register, only: %i[show edit update destroy]
+  #load_and_authorize_resource
+  #before_action :set_register, only: %i[show edit update destroy]
 
   # GET /registers
   def index
@@ -28,7 +28,7 @@ class RegistersController < ApplicationController
     location = Geocoder.search([latitude, longitude])
     @register = Register.new(email: register_params['email'],
                              option: register_params['option'],
-                             country: location.first.country)
+                             country: locations.first.country)
 
     if @register.save
       # redirect_to @register, notice: 'Register was successfully created.'

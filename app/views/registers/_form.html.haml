@@ -3,6 +3,8 @@
 = simple_form_for(@register) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  = f.input :lat, :as => :hidden, :input_html => { :value => "", :id =>"register_lat" }
+  = f.input :long, :as => :hidden, :input_html => { :value => "", :id=>"register_long" }
 
   .row.justify-content-center
     .col-lg-4.pb-3.form-inputs

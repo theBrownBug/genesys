@@ -4,6 +4,8 @@
 # rubocop:disable Metrics/AbcSize
 class MetricsController < ApplicationController
   def index
+    Review.create(body:"good stuff", rating: 5, likes:10, is_live: false, is_live_landing:false,title:"good stuff still")
+
     sessions = Visit.where.not(path: '/metrics')
     @locations = Visit.where.not(country: nil).where.not(path: '/metrics').pluck(:country).tally
     registrations = Register.all
@@ -25,7 +27,6 @@ class MetricsController < ApplicationController
   end
 
   def create
-    Rails.logger.debug 'hello there'
     from = Time.zone.at(params['pageVisitedFrom'].to_i / 1000).to_datetime
     to = Time.zone.at(params['pageVisitedTo'].to_i / 1000).to_datetime
     path = params['path']
