@@ -15,14 +15,6 @@ ActiveRecord::Schema.define(version: 2021_12_04_121250) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "clicks", force: :cascade do |t|
-    t.string "session_id"
-    t.string "path"
-    t.string "category"
-    t.string "value"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
   create_table "answers", force: :cascade do |t|
     t.string "answer"
     t.integer "rating"
@@ -31,6 +23,15 @@ ActiveRecord::Schema.define(version: 2021_12_04_121250) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "clicks", force: :cascade do |t|
+    t.string "session_id"
+    t.string "path"
+    t.string "category"
+    t.string "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "delayed_jobs", force: :cascade do |t|

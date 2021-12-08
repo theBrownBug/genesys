@@ -136,4 +136,4 @@
                 .card-header
                     %h5 Feature Shares
                 .card-body
-                    = line_chart @Clicks_2.keys.map{|key| {name: key, data: @Clicks_2[key].group_by_day(:created_at).count}}
+                    = line_chart @pricing.keys.map{|key| {name: key, data: @pricing[key].group_by_day(:created_at).count}}

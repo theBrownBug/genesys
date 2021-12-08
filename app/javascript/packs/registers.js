@@ -2,8 +2,8 @@
 document.addEventListener('DOMContentLoaded', ()=>{
   //getGeolocation();
   var prices = document.getElementsByClassName("tier_price");
-  document.getElementById("register_option_1").addEventListener('click', function(){getClick('tier', '1')});
-  document.getElementById("register_option_2").addEventListener('click', function(){ getClick('tier', '2')});
+  document.getElementById("option1").addEventListener('click', function(){getClick('tier', '1')});
+  document.getElementById("option2").addEventListener('click', function(){ getClick('tier', '2')});
 });
 
 function getClick(category, value){

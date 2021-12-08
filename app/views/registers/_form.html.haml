@@ -5,20 +5,6 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
   
   .form-inputs
-<<<<<<< HEAD
-    = f.input :email
-    = f.label :option, "Option 1", :value => 1, :input_html => { :class => 'tier_price' }
-    = f.radio_button :option, 1
-    = f.label :option, "Option 2", :value => 2, :input_html => { :class => 'tier_price' }
-    = f.radio_button :option, 2, :checked => true
-    = f.input :lat, :as => :hidden, :input_html => { :value => "" }
-    = f.input :long, :as => :hidden, :input_html => { :value => "" }
-
-
-  .form-actions
-    = f.button :submit
-
-=======
   = f.input :email, class: 'form-group', placeholder: 'Enter Email'
   %br
   %section
@@ -30,15 +16,14 @@
         %p= f.label :option, "Manual adding of learning blocks.", :value => 1 
         %p= f.label :option, "Manual adding of constant blocks such as appointments or lectures.", :value => 1
         %p= f.label :option, "Free", :value => 1
-        = f.radio_button :option, 1
+        #option1= f.radio_button :option, 1
       .col-lg-6
         .text-primary
         %h6= f.label :option, "Option 2", :value => 2
         %p= f.label :option, "Automated adding of learning blocks.", :value => 2
         %p=f.label :option, "Automated adding of constant blocks such as appointments or lectures.", :value => 2
         %p= f.label :option, "£2 per month", :value => 2 
-        = f.radio_button :option, 2, :checked => true
+        #option2= f.radio_button :option, 2, :checked => true
   %br
   .form-actions
   = f.button :submit, "Register Interest", class: 'btn btn-outline-primary ms-3'
->>>>>>> master
