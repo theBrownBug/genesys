@@ -9,12 +9,21 @@ class MetricsController < ApplicationController
     registrations = Register.all
     @Registrations = Register.where.not(country: nil).pluck(:country).tally
     @Metrics = {'Sessions' => sessions, 'Registrations' => registrations}
-    @Clicks = Click.where(category: 'tier').where.not(value: nil).pluck(:value).tally
     @Clicks_2 = {'1' => Click.where(category: 'tier').where(value: '1'), '2' => Click.where(category: 'tier').where(value: '2') }
-    
+
+
+    @features = Click.where(category: 'feature').where.not(value: nil).pluck(:value).tally
+    @features_time = Click.where(category: 'feature').where.not(value: nil)
+
+    @socials = Click.where(category: ['email', 'facebook', 'twitter']).where.not(value: nil).group(:value, :category).count
+    social_keys = Click.where(category: ['email', 'facebook', 'twitter']).where.not(value: nil).group(:value).count
+    @social_keys = social_keys.keys
+    puts "=====Clicks_2======="
+    puts Click.all
   end
 
-  def create
+  def create 
+    puts "hello there"
     from = Time.at(params["pageVisitedFrom"].to_i / 1000).to_datetime
     to = Time.at(params["pageVisitedTo"].to_i / 1000).to_datetime
     path = params["path"]
@@ -35,6 +44,7 @@ class MetricsController < ApplicationController
     path = params["path"]
     category = params["category"]
     value = params["value"]
+    puts category
     Click.create(session_id: session_id,
                  path: path,
                  category: category,

@@ -1,7 +1,7 @@
 = javascript_include_tag "https://www.gstatic.com/charts/loader.js"
 
 .container.m-0.p-0.w-100
-    .row.mb-3#sessions
+    .row#sessions
         .cotntainer
             .row
                 .col-md-3
@@ -71,10 +71,10 @@
                             %th Tier
                             %th Clicks
                         %tbody
-                            - @Clicks.keys.each do |key|
+                            - @features.keys.each do |key|
                                 %tr 
                                     %td= key
-                                    %td= @Clicks[key]
+                                    %td= @features[key]
         .col-md-9.mb-3
             .card.shadow-sm.sticky-top
                 .card-header
@@ -94,17 +94,16 @@
                             %th Feature
                             %th Clicks
                         %tbody
-                            - @Clicks.keys.each do |key|
+                            - @features.keys.each do |key|
                                 %tr 
                                     %td= key
-                                    %td= @Clicks[key]
+                                    %td= @features[key]
         .col-md-9.mb-3
             .card.shadow-sm
                 .card-header
                     %h5 Feature Clicks
                 .card-body
-                    = line_chart @Clicks_2.keys.map{|key| {name: key, data: @Clicks_2[key].group_by_day(:created_at).count}}
-
+                    = line_chart @features_time.group_by_day(:created_at).count
 
     .row
         .col-md-5
@@ -125,10 +124,13 @@
 
                             %th Total
                         %tbody
-                            - @Clicks.keys.each do |key|
+                            - @social_keys.each do |key|
                                 %tr 
                                     %td= key
-                                    %td= @Clicks[key]
+                                    %td= @socials[[key, "facebook"]] ? @socials[[key, "facebook"]] : 0
+                                    %td= @socials[[key, "twitter"]] ? @socials[[key, "twitter"]] : 0
+                                    %td= @socials[[key, "email"]] ? @socials[[key, "email"]] : 0
+                                    %td= (@socials[[key, "email"]] ? @socials[[key, "email"]] : 0) + (@socials[[key, "twitter"]] ? @socials[[key, "twitter"]] : 0) + (@socials[[key, "facebook"]] ? @socials[[key, "facebook"]] : 0)
         .col-md-7.mb-9
             .card.shadow-sm
                 .card-header
