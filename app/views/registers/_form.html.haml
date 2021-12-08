@@ -11,19 +11,23 @@
   .container
     .row
       .col-lg-6
-        .text-primary
-        %h6= f.label :option, "Option 1", :value => 1 
-        %p= f.label :option, "Manual adding of learning blocks.", :value => 1 
-        %p= f.label :option, "Manual adding of constant blocks such as appointments or lectures.", :value => 1
-        %p= f.label :option, "Free", :value => 1
-        #option1= f.radio_button :option, 1
+        .card.mb-3.border-3
+          .card-body.text-center
+            .text-primary
+            %h6= f.label :option, "Option 1", :value => 1 
+            %p= f.label :option, "Manual adding of learning blocks.", :value => 1 
+            %p= f.label :option, "Manual adding of constant blocks such as appointments or lectures.", :value => 1
+            %p= f.label :option, "Free", :value => 1
+            #option1= f.radio_button :option, 1
       .col-lg-6
-        .text-primary
-        %h6= f.label :option, "Option 2", :value => 2
-        %p= f.label :option, "Automated adding of learning blocks.", :value => 2
-        %p=f.label :option, "Automated adding of constant blocks such as appointments or lectures.", :value => 2
-        %p= f.label :option, "£2 per month", :value => 2 
-        #option2= f.radio_button :option, 2, :checked => true
+        .card.mb-3.border-3
+          .card-body.text-center
+            .text-primary
+            %h6= f.label :option, "Option 2", :value => 2
+            %p= f.label :option, "Automated adding of learning blocks.", :value => 2
+            %p=f.label :option, "Automated adding of constant blocks such as appointments or lectures.", :value => 2
+            %p= f.label :option, "£2 per month", :value => 2 
+            #option2= f.radio_button :option, 2, :checked => true
   %br
   .form-actions
   = f.button :submit, "Register Interest", class: 'btn btn-outline-primary ms-3'
