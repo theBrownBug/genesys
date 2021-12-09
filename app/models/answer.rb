@@ -23,7 +23,7 @@
 class Answer < ApplicationRecord
   belongs_to :question
   validates :answer, presence: true
-  validates :likes , presence:true
-  validates :rating, presence:true
+  validates :likes , presence:true , numericality: {greater_than_or_equal_to:  0 }
+  validates :rating, presence:true , numericality: {greater_than_or_equal_to:  0 }
 
 end

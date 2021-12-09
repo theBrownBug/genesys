@@ -24,5 +24,51 @@ require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
   it { should belong_to(:question) }
+  subject {described_class.new}
+
+  it "is cannot have a NULL Answer field" do
+    subject.answer = nil
+    subject.likes = 0
+    subject.rating = 0
+    expect(subject).not_to be_valid
+  end
+
+  it "is cannot have a NULL 'Likes' field" do
+    subject.answer = Faker::Hipster.sentences.sample
+    subject.likes = nil
+    subject.rating = 0
+    expect(subject).not_to be_valid
+  end
+
+  it "is cannot have a NULL 'Rating' field" do
+    subject.answer = Faker::Hipster.sentences.sample
+    subject.likes =  0
+    subject.rating = nil
+    expect(subject).not_to be_valid
+  end
+
+
+  it "is cannot have a Negative 'Likes' field" do
+    subject.answer = Faker::Hipster.sentences.sample
+    subject.likes = -1
+    subject.rating = 0
+    expect(subject).not_to be_valid
+  end
+
+  it "is cannot have a Negative 'Rating' field" do
+    subject.answer = Faker::Hipster.sentences.sample
+    subject.likes =  0
+    subject.rating = -1
+    expect(subject).not_to be_valid
+  end
+
+  it "is cannot have a NULL Question_id field" do
+    subject.answer = Faker::Hipster.sentences.sample
+    subject.likes = 0
+    subject.rating = 0
+    subject.question_id = nil
+    expect(subject).not_to be_valid
+  end
+
 
 end
