@@ -45,13 +45,12 @@ class Ability
     return unless user.is? :admin
 
     if user.is? :admin
-
+      cannot %i[create destroy], Review
       unless user.is? :product_owner
         cannot :manage, Question
         cannot :manage, Answer
+        cannot :update , Review
       end
-
-      cannot %i[create destroy update], Review
 
       can :manage, User
       cannot :destroy, User, id: user.id
