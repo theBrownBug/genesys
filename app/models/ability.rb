@@ -9,8 +9,7 @@ class Ability
     can :create, Register
     can %i[create read], Question, is_live: true
     can :update, Review, :likes
-    can :manage, Question
-    can :manage, Answer
+
     return if user.blank?
     return unless user.internal?
 
@@ -32,7 +31,8 @@ class Ability
       # set_live
       can %i[read update], Review
       cannot %i[create destroy], Review
-
+      can :manage, Question
+      can :manage, Answer
       can [:read], Register
 
       cannot :destroy, Question

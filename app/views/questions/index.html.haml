@@ -1,2 +1,4 @@
-= render :partial => "question_table"
-= render :partial => "question_card"
+- if current_user and can? :edit, Question
+  = render :partial => "question_table"
+- else
+  = render :partial => "question_card"

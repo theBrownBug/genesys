@@ -22,10 +22,9 @@ class MetricsController < ApplicationController
     @social_keys = social_keys.keys
     @test = Click.where(category: 'tier').where(value: '1')
     @reviews = Review.order(likes: :desc).limit(5)
-    
+
     @questions = Click.where(category: 'FAQ').where.not(value: nil).pluck(:value).tally
     @questions_time = Click.where(category: 'FAQ').where.not(value: nil)
-
   end
 
   def create
