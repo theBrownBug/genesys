@@ -14,5 +14,6 @@
 require 'rails_helper'
 
 RSpec.describe Question, type: :model do
-
+  # association tests
+  it { should have_one(:answer)}
 end
