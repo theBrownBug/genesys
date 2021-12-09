@@ -423,12 +423,9 @@ DEPENDENCIES
   ed25519
   epi_deploy!
   factory_bot_rails
-<<<<<<< HEAD
   geocoder
   groupdate
-=======
   faker
->>>>>>> master
   hamlit
   hamlit-rails
   launchy

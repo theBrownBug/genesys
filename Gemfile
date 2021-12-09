@@ -49,11 +49,8 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
-<<<<<<< HEAD
   gem 'sqlite3'
-=======
   gem 'faker'
->>>>>>> master
 end
 
 group :development do

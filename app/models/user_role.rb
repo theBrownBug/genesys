@@ -24,13 +24,8 @@ class UserRole < ApplicationRecord
   belongs_to :user
   belongs_to :role
 
-<<<<<<< HEAD
-  validates :role_id, presence: true
-  validates :user_id, presence: true
-=======
   #validates :role_id , presence:true
   #validates :user_id , presence:true
->>>>>>> master
   # the combination of role_id and user_id should be always unique
   validates :role_id, uniqueness: { scope: :user_id }
 end
