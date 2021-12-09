@@ -33,10 +33,48 @@
 #
 FactoryBot.define do
   factory :user do
-    first_name { 'MyString' }
-    last_name { 'MyString' }
-    email { 'MyString' }
-    password { 'MyString' }
-    user_type { 1 }
+    factory :admin_user do
+      first_name { 'admin' }
+      last_name { 'admin' }
+      email { 'admin@admin.com' }
+      password { 'Passsword_1' }
+      user_type { 0 }
+
+      after(:build)  do |user|
+        user.roles << FactoryBot.build(:admin_role)
+      end
+    end
+
+    factory :product_owner_user do
+      first_name { 'product_owner' }
+      last_name { 'product_owner' }
+      email { 'po@po.com' }
+      password { 'Passsword_1' }
+      user_type { 0 }
+
+      after(:build)  do |user|
+        user.roles << FactoryBot.build(:product_owner_role)
+      end
+
+    end
+
+    factory :reporter_user do
+      first_name { 'reporter' }
+      last_name { 'reporter' }
+      email { 'reporter@reporter.com' }
+      password { 'Passsword_1' }
+      user_type { 0 }
+      after(:build) do |user|
+        user.roles << FactoryBot.build(:reporter_role)
+      end
+    end
+
+
+
+
+
+
+
+
   end
 end
