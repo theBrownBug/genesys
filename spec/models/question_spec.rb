@@ -16,4 +16,26 @@ require 'rails_helper'
 RSpec.describe Question, type: :model do
   # association tests
   it { should have_one(:answer)}
+  it "is cannot have a NULL question field" do
+    subject.question = nil
+    subject.popularity = 0
+    subject.is_live = false
+    expect(subject).not_to be_valid
+  end
+
+  it "is cannot have a NULL Popularity field" do
+    subject.question = Faker::Hipster.sentences.sample
+    subject.popularity = nil
+    subject.is_live = false
+    expect(subject).not_to be_valid
+  end
+
+  it "is cannot have a NULL 'is_live' field" do
+    subject.question = Faker::Hipster.sentences.sample
+    subject.popularity = 0
+    subject.is_live = nil
+    expect(subject).not_to be_valid
+  end
+
+
 end
