@@ -156,7 +156,7 @@
 
 
     .row
-        .col-md-12
+        .col-md-3
             .card.shadow-sm.sticky-top.mb-3
                 .card-header
                     %h5 FAQ Clicks
@@ -172,4 +172,10 @@
                                         =k
                                     %td
                                         =@questions[k]
+        .col-md-9.mb-3
+            .card.shadow-sm
+                .card-header
+                    %h5 FAQ Clicks
+                .card-body
+                    = line_chart @questions_time.group_by_day(:created_at).count
 

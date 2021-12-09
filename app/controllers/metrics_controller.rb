@@ -4,8 +4,6 @@
 # rubocop:disable Metrics/AbcSize
 class MetricsController < ApplicationController
   def index
-    # Review.create(body:"good stuff2", rating: 5, likes:11, is_live: false, is_live_landing:false,title:"good stuff still")
-    # Click.create(category: 'FAQ', value: 'question')
     @locations = Visit.where.not(country: nil).where.not(path: '/metrics').pluck(:country).tally
     @registrations = Register.where.not(country: nil).pluck(:country).tally
 
@@ -24,8 +22,10 @@ class MetricsController < ApplicationController
     @social_keys = social_keys.keys
     @test = Click.where(category: 'tier').where(value: '1')
     @reviews = Review.order(likes: :desc).limit(5)
-
+    
     @questions = Click.where(category: 'FAQ').where.not(value: nil).pluck(:value).tally
+    @questions_time = Click.where(category: 'FAQ').where.not(value: nil)
+
   end
 
   def create
