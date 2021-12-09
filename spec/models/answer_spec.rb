@@ -83,7 +83,7 @@ describe Answer do
     @answer.question = @question
   end
   subject {@answer}
-  it "is a valid anwer" do
+  it "is a valid answer" do
     expect(subject).to be_valid
   end
 end

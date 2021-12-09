@@ -54,3 +54,23 @@ RSpec.describe Question, type: :model do
   end
 
 end
+
+describe Question do
+  before do
+    @question = FactoryBot.build(:question)
+    @answer = FactoryBot.build(:answer)
+  end
+  subject {@question}
+
+  it "Question cannot be set to Live until it has an Answer" do
+    subject.answer = nil
+    subject.is_live = true
+    expect(subject).not_to be_valid
+  end
+
+  it "Question can be set to Live if it has an Associated answer" do
+    subject.answer = @answer
+    subject.is_live = true
+    expect(subject).to be_valid
+  end
+end
