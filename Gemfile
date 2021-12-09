@@ -48,6 +48,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'sqlite3'
   gem 'shoulda-matchers'
+  gem 'faker'
 end
 
 group :development do
