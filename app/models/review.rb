@@ -4,14 +4,16 @@
 #
 # Table name: reviews
 #
-#  id         :bigint           not null, primary key
-#  body       :string
-#  is_live    :boolean
-#  likes      :integer
-#  rating     :integer
-#  title      :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :bigint           not null, primary key
+#  body            :string
+#  is_live         :boolean
+#  is_live_landing :boolean
+#  likes           :integer
+#  order_no        :integer
+#  rating          :integer
+#  title           :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 class Review < ApplicationRecord
   validates :rating, :title, :body, presence: true
