@@ -51,7 +51,7 @@ class Ability
         cannot :manage, Answer
       end
 
-      cannot %i[create destroy], Review
+      cannot %i[create destroy update], Review
 
       can :manage, User
       cannot :destroy, User, id: user.id
