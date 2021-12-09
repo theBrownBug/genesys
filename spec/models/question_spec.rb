@@ -37,5 +37,11 @@ RSpec.describe Question, type: :model do
     expect(subject).not_to be_valid
   end
 
+  it "is cannot have a NEGATIVE popularity field" do
+    subject.question = Faker::Hipster.sentences.sample
+    subject.popularity = -1
+    subject.is_live = false
+    expect(subject).not_to be_valid
+  end
 
 end
