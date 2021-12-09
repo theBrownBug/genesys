@@ -1,0 +1,20 @@
+.row
+    .col-md-12
+        .card.shadow-sm.sticky-top.mb-3
+            .card-header
+                %h5 Most Popular Reviews
+            .card-body
+                %table.table
+                    %tr
+                        %th Title
+                        %th Rating
+                        %th Likes
+                    %tbody
+                        - reviews.each do |r|
+                            %tr 
+                                %td= r.title
+                                %td= r.rating
+                                %td= r.likes
+                                %td.text-center.px-4
+                                    %a{:href => "#modal_review_edit", "data-bs-toggle" => "modal", "data-bs-target" => "#review_view_modal_#{r.id}"}
+                                        %button.btn.btn-primary
