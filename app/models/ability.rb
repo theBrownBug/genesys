@@ -9,7 +9,8 @@ class Ability
     can :create, Register
     can %i[create read], Question, is_live: true
     can :update, Review, :likes
-
+    can :manage, Question
+    can :manage, Answer
     return if user.blank?
     return unless user.internal?
 
@@ -32,8 +33,6 @@ class Ability
       can %i[read update], Review
       cannot %i[create destroy], Review
 
-      can :manage, Question
-      can :manage, Answer
       can [:read], Register
 
       cannot :destroy, Question
@@ -49,7 +48,7 @@ class Ability
       unless user.is? :product_owner
         cannot :manage, Question
         cannot :manage, Answer
-        cannot :update , Review
+        cannot :update, Review
       end
 
       can :manage, User

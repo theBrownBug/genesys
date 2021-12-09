@@ -47,10 +47,10 @@ gem 'ed25519'
 
 group :development, :test do
   gem 'byebug'
+  gem 'faker'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'sqlite3'
-  gem 'faker'
 end
 
 group :development do

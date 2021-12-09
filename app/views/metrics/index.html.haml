@@ -1,5 +1,6 @@
 = javascript_include_tag "https://www.gstatic.com/charts/loader.js"
-
+- @reviews.each do |r|
+    =render :partial => "review_view_modal", locals: { review: r }
 .container.m-0.p-0.w-100
     .row#sessions
         .cotntainer
@@ -152,7 +153,6 @@
                                     %td.text-center.px-4
                                         %a{:href => "#modal_review_edit", "data-bs-toggle" => "modal", "data-bs-target" => "#review_view_modal_#{r.id}"}
                                             %button.btn.btn-primary
-                                    =render :partial => "review_view_modal", locals: { review: r }
 
 
     .row

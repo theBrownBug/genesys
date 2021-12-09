@@ -423,9 +423,9 @@ DEPENDENCIES
   ed25519
   epi_deploy!
   factory_bot_rails
+  faker
   geocoder
   groupdate
-  faker
   hamlit
   hamlit-rails
   launchy

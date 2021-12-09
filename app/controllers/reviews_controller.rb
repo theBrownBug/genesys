@@ -4,16 +4,16 @@ class ReviewsController < ApplicationController
   load_and_authorize_resource
 
   before_action :set_review, only: %i[show edit update destroy]
-#  id              :bigint           not null, primary key
-#  body            :string
-#  is_live         :boolean
-#  is_live_landing :boolean
-#  likes           :integer
-#  rating          :integer
-#  title           :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-  def index    
+  #  id              :bigint           not null, primary key
+  #  body            :string
+  #  is_live         :boolean
+  #  is_live_landing :boolean
+  #  likes           :integer
+  #  rating          :integer
+  #  title           :string
+  #  created_at      :datetime         not null
+  #  updated_at      :datetime         not null
+  def index
     @reviews = Review.all.order(created_at: :desc)
 
     ratings = Review.order(rating: :desc).group(:rating).count
