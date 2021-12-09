@@ -50,6 +50,7 @@ FactoryBot.define do
       last_name { 'product_owner' }
       email { 'po@po.com' }
       password { 'Passsword_1' }
+      user_type { 0 }
 
       after(:build)  do |user|
         user.roles << FactoryBot.build(:product_owner_role)
