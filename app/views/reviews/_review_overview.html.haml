@@ -1,11 +1,11 @@
-.row.me-lg-4.mt-4
+.row.mt-4
   .card
     .card-body
-      .d-flex.flex-row.justify-content-start.align-items-center.mb-4
+      .d-flex.flex-xl-row.flex-column.justify-content-start.align-items-center.mb-4
         %h1.mb-0.me-2= @ratings_metrics[:average]
         .d-flex.flex-row.justify-content-start.align-items-center.me-2
           - @ratings_metrics[:average].round.times do
-            %span.text-warning
+            %span.text-primary
               %i.fas.fa-star.fa-sm
         %p.small.mb-0.text-muted #{@reviews.count} reviews
       - @ratings_metrics.each do |rating, metrics|
@@ -18,4 +18,3 @@
             %div{ :style => "width: 60px;" }
               %p.small.fw-bold.mb-0.ms-2.text-end #{metrics[:rating_percentage]}%
       =render :partial => "review_create"
-

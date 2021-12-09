@@ -32,7 +32,7 @@
         .text-primary.p-2
           %i.fas.fa-graduation-cap.fa-5x
         %h6 Automated timetable creation
-        %p#featureText1.grad.text-muted Our application creates a weekly timetable based on the work you need to complete. 
+        %p#featureText1.grad.text-muted Our application creates a weekly timetable based on the work you need to complete.
         #feature1.collapse
           %p.text-muted Simply choose your working hours and we'll fill out your day for you! Just think how much time and effort it woud take to do all that by hand.
         %p
@@ -49,7 +49,7 @@
         .text-primary.p-2
           %i.fas.fa-clock.fa-5x
         %h6 Account for last minute changes
-        %p#featureText2.grad.text-muted Life doesn't always go to schedule: unplanned lie-ins, one off appointments, or even a spontaneous date night! Your timetable needs to account for that. 
+        %p#featureText2.grad.text-muted Life doesn't always go to schedule: unplanned lie-ins, one off appointments, or even a spontaneous date night! Your timetable needs to account for that.
         #feature2.collapse
           %p.text-muted Our application will react to missed time, giving you a list of missed tasks to make up for at your own pace.
         %p
@@ -93,3 +93,6 @@
         %p
           %a.btn.btn-primary.shadow.py-2.my-2.w-100{:href => "registers/new"} Let's get started
           %a.btn.btn-outline-primary.py-2.my-2.w-100{:href => "#"} Ask a question
+
+- unless @reviews.empty?
+  =render :partial => "reviews"
