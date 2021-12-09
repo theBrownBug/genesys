@@ -106,7 +106,7 @@
                     = line_chart @features_time.group_by_day(:created_at).count
 
     .row
-        .col-md-5
+        .col-md-12
             .card.shadow-sm.sticky-top.mb-3
                 .card-header
                     %h5 Feature Shares
@@ -131,9 +131,45 @@
                                     %td= @socials[[key, "twitter"]] ? @socials[[key, "twitter"]] : 0
                                     %td= @socials[[key, "email"]] ? @socials[[key, "email"]] : 0
                                     %td= (@socials[[key, "email"]] ? @socials[[key, "email"]] : 0) + (@socials[[key, "twitter"]] ? @socials[[key, "twitter"]] : 0) + (@socials[[key, "facebook"]] ? @socials[[key, "facebook"]] : 0)
-        .col-md-7.mb-9
-            .card.shadow-sm
+
+    .row
+        .col-md-12
+            .card.shadow-sm.sticky-top.mb-3
                 .card-header
-                    %h5 Feature Shares
+                    %h5 Most Popular Reviews
                 .card-body
-                    = line_chart @pricing.keys.map{|key| {name: key, data: @pricing[key].group_by_day(:created_at).count}}
+                    %table.table
+                        %tr
+                            %th Title
+                            %th Rating
+                            %th Likes
+                        %tbody
+                            - @reviews.each do |r|
+                                %tr 
+                                    %td= r.title
+                                    %td= r.rating
+                                    %td= r.likes
+                                    %td.text-center.px-4
+                                        %a{:href => "#modal_review_edit", "data-bs-toggle" => "modal", "data-bs-target" => "#review_view_modal_#{r.id}"}
+                                            %button.btn.btn-primary
+                                    =render :partial => "review_view_modal", locals: { review: r }
+
+
+    .row
+        .col-md-12
+            .card.shadow-sm.sticky-top.mb-3
+                .card-header
+                    %h5 FAQ Clicks
+                .card-body
+                    %table.table
+                        %tr
+                            %th Question
+                            %th Clicks
+                        %tbody
+                            -@questions.keys.each do |k|
+                                %tr
+                                    %td
+                                        =k
+                                    %td
+                                        =@questions[k]
+
