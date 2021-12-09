@@ -24,11 +24,6 @@ require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
 
-  before do
-    @question = FactoryBot.build(:question)
-    @answer = FactoryBot.build(:answer)
-    @answer.question = @question
-  end
 
   it { should belong_to(:question) }
   subject {described_class.new}
