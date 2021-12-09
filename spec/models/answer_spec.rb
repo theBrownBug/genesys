@@ -23,6 +23,13 @@
 require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
+
+  before do
+    @question = FactoryBot.build(:question)
+    @answer = FactoryBot.build(:answer)
+    @answer.question = @question
+  end
+
   it { should belong_to(:question) }
   subject {described_class.new}
 
@@ -70,5 +77,21 @@ RSpec.describe Answer, type: :model do
     expect(subject).not_to be_valid
   end
 
-
 end
+
+
+# In order to be a valid Answer, it should have a question_id
+describe Answer do
+  before do
+    @question = FactoryBot.build(:question)
+    @answer = FactoryBot.build(:answer)
+    @answer.question = @question
+  end
+  subject {@answer}
+  it "is a valid anwer" do
+    expect(subject).to be_valid
+  end
+end
+
+
+
