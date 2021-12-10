@@ -11,7 +11,7 @@ describe 'errors/error_404' do
 
     it 'displays the first paragraph' do
       render
-      expect(rendered).to have_selector('p', text: "The requested page could not be found. Please check the address and try again. If you are unsure you may", visible: :all)
+      expect(rendered).to have_selector('p', text: 'The requested page could not be found. Please check the address and try again. If you are unsure you may', visible: :all)
     end
   end
 end
