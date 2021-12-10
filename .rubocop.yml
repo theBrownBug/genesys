@@ -21,3 +21,8 @@ Style/Documentation:
 Layout/LineLength:
   Max: 200
 
+RSpec/ExampleLength:
+  Max: 20
+
+RSpec/MultipleExpectations:
+  Max: 10

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Guest review interaction' do
@@ -8,7 +10,7 @@ describe 'Guest review interaction' do
     review.save
 
     visit '/reviews'
-    first('input#rating', visible: false).set("5")
+    first('input#rating', visible: false).set('5')
     fill_in 'title', with: 'Title'
     fill_in 'body', with: 'Body'
     click_button 'Create Review'

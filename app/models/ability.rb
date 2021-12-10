@@ -49,7 +49,7 @@ class Ability
       unless user.is? :product_owner
         cannot :manage, Question
         cannot :manage, Answer
-        cannot :update , Review
+        cannot :update, Review
       end
 
       can :manage, User

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module ReviewsHelper
   def ratings_metrics(ratings, reviews_count)
     ratings_metrics = ratings.map { |rating, count| [rating, rating_metrics(rating, count, reviews_count)] }.to_h

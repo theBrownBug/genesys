@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RATING_COLOR = {
   5 => '8CD47E',
   4 => '7ABD7E',
