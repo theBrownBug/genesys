@@ -22,7 +22,21 @@
 #
 FactoryBot.define do
   factory :user_role do
-    user { nil }
-    role { nil }
+    '''
+    factory :admin_user_role_entry do
+      factory :admin_user
+      factory :admin_role
+    end
+
+    factory :product_owner_user_role_entry do
+      factory :product_owner_user
+      factory :product_role
+    end
+
+    factory :reporter_user_role_entry do
+      factory :reporter_user
+      factory :reporter_role
+    end
+  '''
   end
 end

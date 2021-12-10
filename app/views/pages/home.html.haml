@@ -94,5 +94,5 @@
           %a.btn.btn-primary.shadow.py-2.my-2.w-100{:href => "registers/new"} Let's get started
           %a.btn.btn-outline-primary.py-2.my-2.w-100{:href => "#"} Ask a question
 
-- unless @reviews.empty?
+- unless @reviews.blank?
   =render :partial => "reviews"
