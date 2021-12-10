@@ -67,3 +67,7 @@ _QA -> Demo -> Production_ using the `epi-deploy` gem.
 Go to `/users/sign_in` to Login using a particular Role
 
 Note that you can add additional users as an admin
+
+### Accessing Metrics
+
+Go to `/metrics` to view the metrics

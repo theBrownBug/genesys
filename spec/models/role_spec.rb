@@ -13,14 +13,14 @@ require 'rails_helper'
 
 RSpec.describe Role, type: :model do
   # association tests
-  subject { described_class.new }
+  subject(:role) { described_class.new }
 
   it { is_expected.to have_many(:users).through(:user_roles) }
   it { is_expected.to have_many(:user_roles) }
 
   it 'cannot have empty(NULL) Role Type' do
-    subject.role_type = nil
-    expect(subject).not_to be_valid
+    role.role_type = nil
+    expect(role).not_to be_valid
   end
 end
 

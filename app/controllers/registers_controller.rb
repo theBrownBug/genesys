@@ -21,15 +21,14 @@ class RegistersController < ApplicationController
   # GET /registers/1/edit
   def edit; end
 
+  # rubocop:disable Metrics/AbcSize
   # POST /registers
   def create
     longitude = register_params['long']
     latitude = register_params['lat']
     location = Geocoder.search([latitude, longitude])
     country = nil
-    if location.nil? && location.first.nil? && location.first.country.nil? then
-      country = location.first.country
-    end
+    country = location.first.country if location.nil? && location.first.nil? && location.first.country.nil?
     @register = Register.new(email: register_params['email'],
                              option: register_params['option'],
                              country: country)
@@ -42,6 +41,7 @@ class RegistersController < ApplicationController
       render :new
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   # PATCH/PUT /registers/1
   def update
