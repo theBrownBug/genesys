@@ -78,10 +78,6 @@ const updateReview = (likeId, likeMessageId, id, reviewData) => {
   });
 };
 
-            storeLikedReviews(id);
-        });
-}
-
 isLiveLandingChanged = (id) => {
     const orderNoId = `#order_no_${id}_div`;
 
