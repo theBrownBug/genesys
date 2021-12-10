@@ -1,4 +1,6 @@
+
 = javascript_include_tag "https://www.gstatic.com/charts/loader.js"
+- content_for :title, "Metrics"
 - @reviews.each do |r|
     =render :partial => "review_view_modal", locals: { review: r }
 
