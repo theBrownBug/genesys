@@ -2,8 +2,8 @@
 
 # For the registration of user interest
 class RegistersController < ApplicationController
-  load_and_authorize_resource
-  before_action :set_register, only: %i[show edit update destroy]
+  # load_and_authorize_resource
+  # before_action :set_register, only: %i[show edit update destroy]
 
   # GET /registers
   def index
@@ -23,7 +23,12 @@ class RegistersController < ApplicationController
 
   # POST /registers
   def create
-    @register = Register.new(register_params)
+    longitude = register_params['long']
+    latitude = register_params['lat']
+    location = Geocoder.search([latitude, longitude])
+    @register = Register.new(email: register_params['email'],
+                             option: register_params['option'],
+                             country: location.first.country)
 
     if @register.save
       # redirect_to @register, notice: 'Register was successfully created.'
@@ -58,6 +63,6 @@ class RegistersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def register_params
-    params.require(:register).permit(:email, :option)
+    params.require(:register).permit(:email, :option, :lat, :long)
   end
 end

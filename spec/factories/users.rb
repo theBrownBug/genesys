@@ -40,7 +40,7 @@ FactoryBot.define do
       password { 'Passsword_1' }
       user_type { 0 }
 
-      after(:build)  do |user|
+      after(:build) do |user|
         user.roles << FactoryBot.build(:admin_role)
       end
     end
@@ -52,10 +52,9 @@ FactoryBot.define do
       password { 'Passsword_1' }
       user_type { 0 }
 
-      after(:build)  do |user|
+      after(:build) do |user|
         user.roles << FactoryBot.build(:product_owner_role)
       end
-
     end
 
     factory :reporter_user do
@@ -68,13 +67,5 @@ FactoryBot.define do
         user.roles << FactoryBot.build(:reporter_role)
       end
     end
-
-
-
-
-
-
-
-
   end
 end

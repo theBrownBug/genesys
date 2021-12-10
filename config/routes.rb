@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :metrics
   resources :user_roles
   resources :roles
   devise_for :users
   resources :users
   resources :registers
-  resources :reviews
+  resources :reviews, only: %i[index create update]
 
   resources :questions do
     resources :answers
@@ -18,8 +19,12 @@ Rails.application.routes.draw do
   match '/500', to: 'errors#error_500', via: :all
 
   get :ie_warning, to: 'errors#ie_warning'
+  post 'click', to: 'metrics#click'
+
+  resources :metrics, only: %i[create index]
+
+  get '*path' => redirect('/')
 
   root to: 'pages#home'
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

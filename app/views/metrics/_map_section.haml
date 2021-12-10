@@ -1,0 +1,52 @@
+.row#sessions
+    .cotntainer
+        .row
+            .col-md-3
+                .row.sticky-top{:style => "top:1.0rem"}
+                    .col
+                        .row.mb-3
+                            .col
+                                .card.shadow-sm.sticky-top.mb-3
+                                    .card-header
+                                        %h5 Sessions
+                                    .card-body
+                                        %table.table
+                                            %tr
+                                                %th Country
+                                                %th Visits
+                                            %tbody
+                                                - locations.sort_by { |k,v| v }[0..1].to_h.keys.each do |key|
+                                                    %tr 
+                                                        %td= key
+                                                        %td= locations[key]
+                        .row
+                            .col
+                                .card.shadow-sm.sticky-top.mb-3
+                                    .card-header
+                                        %h5 Registrations
+                                    .card-body
+                                        %table.table
+                                            %tr
+                                                %th Country
+                                                %th Visits
+                                            %tbody
+                                                - registrations.sort_by { |k,v| v }[0..1].to_h.keys.each do |key|
+                                                    %tr 
+                                                        %td= key
+                                                        %td= registrations[key]
+            .col-md-9
+                .row.mb-3{:style=>"scroll-snap-align: start;"}
+                    .col
+                        .card.shadow-sm.sticky-top.mb-3
+                            .card-header
+                                %h5 Session Location
+                            .card-body.w-100.ratio.ratio-16x9
+                                = geo_chart locations, height: "100%", width: "100%", colors: ["#3467eb", "#3467eb"]
+
+                .row.mb-3{:style=>"scroll-snap-align: center;"}
+                    .col
+                        .card.shadow-sm.sticky-top
+                            .card-header
+                                %h5 Registration Location
+                            .card-body.w-100.ratio.ratio-16x9
+                                = geo_chart registrations, id: "test", height: "100%", width: "100%"

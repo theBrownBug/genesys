@@ -34,130 +34,130 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject {described_class.new}
+  subject { described_class.new }
 
   # test email - Invalid
-  it "is with invalid email" do
-    subject.first_name = "Anything"
-    subject.last_name = "Anything"
-    subject.email = "email.com"
-    subject.password = "Password_1"
+  it 'is with invalid email' do
+    subject.first_name = 'Anything'
+    subject.last_name = 'Anything'
+    subject.email = 'email.com'
+    subject.password = 'Password_1'
     subject.user_type = 0
     expect(subject).not_to be_valid
   end
 
-  it "cannot have A NULL email" do
-    subject.first_name = "Anything"
-    subject.last_name = "Anything"
+  it 'cannot have A NULL email' do
+    subject.first_name = 'Anything'
+    subject.last_name = 'Anything'
     subject.email = nil
-    subject.password = "Password_1"
+    subject.password = 'Password_1'
     subject.user_type = 1
     expect(subject).not_to be_valid
   end
 
   # test email - valid
-  it "is with Valid email" do
-    subject.first_name = "Anything"
-    subject.last_name = "Anything"
-    subject.email = "email@email.com"
-    subject.password = "Password_1"
+  it 'is with Valid email' do
+    subject.first_name = 'Anything'
+    subject.last_name = 'Anything'
+    subject.email = 'email@email.com'
+    subject.password = 'Password_1'
     subject.user_type = 0
     expect(subject).to be_valid
   end
 
   # test user_type - Valid
-  it "is an internal user" do
-    subject.first_name = "Anything"
-    subject.last_name = "Anything"
-    subject.email = "email@email.com"
-    subject.password = "Password_1"
+  it 'is an internal user' do
+    subject.first_name = 'Anything'
+    subject.last_name = 'Anything'
+    subject.email = 'email@email.com'
+    subject.password = 'Password_1'
     subject.user_type = 0
     expect(subject).to be_internal
   end
 
-  it "is an external user" do
-    subject.first_name = "Anything"
-    subject.last_name = "Anything"
-    subject.email = "email@email.com"
-    subject.password = "Password_1"
+  it 'is an external user' do
+    subject.first_name = 'Anything'
+    subject.last_name = 'Anything'
+    subject.email = 'email@email.com'
+    subject.password = 'Password_1'
     subject.user_type = 1
     expect(subject).to be_external
   end
   # test user_type - Invalid
-  it "has NULL user_type" do
-    subject.first_name = "Anything"
-    subject.last_name = "Anything"
-    subject.email = "email@email.com"
-    subject.password = "Password_1"
+
+  it 'has NULL user_type' do
+    subject.first_name = 'Anything'
+    subject.last_name = 'Anything'
+    subject.email = 'email@email.com'
+    subject.password = 'Password_1'
     subject.user_type = nil
     expect(subject).not_to be_valid
   end
 
-  #test passwords - Invalid
-  it "has an invalid password with no uppercase characters" do
-    subject.first_name = "Anything"
-    subject.last_name = "Anything"
-    subject.email = "email@email.com"
-    subject.password = "password_1"
+  # test passwords - Invalid
+  it 'has an invalid password with no uppercase characters' do
+    subject.first_name = 'Anything'
+    subject.last_name = 'Anything'
+    subject.email = 'email@email.com'
+    subject.password = 'password_1'
     subject.user_type = 1
     expect(subject).not_to be_valid
   end
 
-  it "has an invalid password with no lowercase characters" do
-    subject.first_name = "Anything"
-    subject.last_name = "Anything"
-    subject.email = "email@email.com"
-    subject.password = "PASSWORD_1"
+  it 'has an invalid password with no lowercase characters' do
+    subject.first_name = 'Anything'
+    subject.last_name = 'Anything'
+    subject.email = 'email@email.com'
+    subject.password = 'PASSWORD_1'
     subject.user_type = 1
     expect(subject).not_to be_valid
   end
 
-  it "has an invalid password with no special characters" do
-    subject.first_name = "Anything"
-    subject.last_name = "Anything"
-    subject.email = "email@email.com"
-    subject.password = "Password1"
+  it 'has an invalid password with no special characters' do
+    subject.first_name = 'Anything'
+    subject.last_name = 'Anything'
+    subject.email = 'email@email.com'
+    subject.password = 'Password1'
     subject.user_type = 1
     expect(subject).not_to be_valid
   end
 
-  it "has an invalid password with no numbers" do
-    subject.first_name = "Anything"
-    subject.last_name = "Anything"
-    subject.email = "email@email.com"
-    subject.password = "Password_"
+  it 'has an invalid password with no numbers' do
+    subject.first_name = 'Anything'
+    subject.last_name = 'Anything'
+    subject.email = 'email@email.com'
+    subject.password = 'Password_'
     subject.user_type = 1
     expect(subject).not_to be_valid
   end
 
-  it "has an invalid password with less than 8 characters" do
-    subject.first_name = "Anything"
-    subject.last_name = "Anything"
-    subject.email = "email@email.com"
-    subject.password = "Pass_1"
+  it 'has an invalid password with less than 8 characters' do
+    subject.first_name = 'Anything'
+    subject.last_name = 'Anything'
+    subject.email = 'email@email.com'
+    subject.password = 'Pass_1'
     subject.user_type = 1
     expect(subject).not_to be_valid
   end
 
-  #test passwords - valid
-  it "has an VALID password" do
-    subject.first_name = "Anything"
-    subject.last_name = "Anything"
-    subject.email = "email@email.com"
-    subject.password = "Password_1"
+  # test passwords - valid
+  it 'has an VALID password' do
+    subject.first_name = 'Anything'
+    subject.last_name = 'Anything'
+    subject.email = 'email@email.com'
+    subject.password = 'Password_1'
     subject.user_type = 1
     expect(subject).to be_valid
   end
 
-  #test associations
-  it "should have many Roles" do
-    t = User.reflect_on_association(:roles)
+  # test associations
+  it 'has many Roles' do
+    t = described_class.reflect_on_association(:roles)
     expect(t.macro).to eq(:has_many)
   end
 
-  it "should have many User Roles" do
-    t = User.reflect_on_association(:user_roles)
+  it 'has many User Roles' do
+    t = described_class.reflect_on_association(:user_roles)
     expect(t.macro).to eq(:has_many)
   end
-
 end

@@ -17,11 +17,11 @@
 #
 FactoryBot.define do
   factory :review do
-    title { 'MyString' }
-    body { 'MyString' }
+    title { 'Lorem Ipsum' }
+    body { 'Lorem ipsum body.' }
     rating { 1 }
     likes { 1 }
-    dislikes { 1 }
-    is_live { false }
+    is_live { true }
+    is_live_landing { true }
   end
 end

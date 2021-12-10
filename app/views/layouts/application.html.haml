@@ -28,7 +28,6 @@
               %li
                 = link_to 'Register Your Interest', new_register_path, title: 'Go to register page', class: 'nav-link px-2 link-dark'
               //%a.nav-link.px-2.link-dark{:href => "registers/new"} Register Your Interest
-            - if cannot? :edit, Review
               %li
                 %a.nav-link.px-2.link-dark{:href => "/reviews"} Reviews
             - if cannot? :edit, Question
