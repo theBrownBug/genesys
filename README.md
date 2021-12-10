@@ -59,7 +59,7 @@ _QA -> Demo -> Production_ using the `epi-deploy` gem.
 ### LOGIN ACCOUNT DETAILS
 
 - Admin - **email: admin@timetabled.com , password: Password_1**
-- Product Owner - **email: product_owner@timetabled.com , password: Password_1**
+- Product Owner - **email: po@timetabled.com , password: Password_1**
 - Reporter - **email: reporter@timetabled.com , password: Password_1**
 
 ### Basic Login

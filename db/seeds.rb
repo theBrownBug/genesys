@@ -47,8 +47,15 @@ users.each do |user_details|
   end
 end
 
+counter = 0
 (1..10).each do |_r|
-  Review.create(title: "Review Title", body: "This is a review.", is_live: rand(10) < 5, likes: rand(1..100), rating: rand(1..5), is_live_landing: rand(10) < 5)
+  is_live_landing = rand(10) < 5
+  if is_live_landing
+    counter+=1
+    Review.create(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, is_live: rand(10) < 5, likes: rand(1..100), rating: rand(1..5), is_live_landing: is_live_landing , order_no: counter)
+  else
+    Review.create(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, is_live: rand(10) < 5, likes: rand(1..100), rating: rand(1..5), is_live_landing: is_live_landing, order_no: nil)
+  end
 end
 
 (1..10).each do |q|
