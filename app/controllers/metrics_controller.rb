@@ -3,29 +3,36 @@
 # Tracking of user metrics
 # rubocop:disable Metrics/AbcSize
 class MetricsController < ApplicationController
+  CATEGORY_FAQ = 'FAQ'
+  CATEGORY_FEATURE = 'feature'
+  CATEGORY_TIER = 'tier'
+  CATEGORY_SOCIALS = %w[email facebook twitter].freeze
   def index
-    @locations = Visit.where.not(country: nil).where.not(path: '/metrics').pluck(:country).tally
+    @locations = Visit.where.not(country: nil).where(path: '/').pluck(:country).tally
+
     @registrations = Register.where.not(country: nil).pluck(:country).tally
 
-    sessions = Visit.where.not(path: '/metrics')
+    sessions = Visit.where(path: '/')
+
     registrations = Register.all
     @metrics = { 'Sessions' => sessions, 'Registrations' => registrations }
 
-    tier1 = Click.where(category: 'tier').where(value: '1')
-    tier2 = Click.where(category: 'tier').where(value: '2')
+    tier1 = Click.where(category: CATEGORY_TIER).where(value: '1')
+    tier2 = Click.where(category: CATEGORY_TIER).where(value: '2')
     @pricing = { '1' => tier1, '2' => tier2 }
 
-    @features = Click.where(category: 'feature').where.not(value: nil).pluck(:value).tally
-    @features_time = Click.where(category: 'feature').where.not(value: nil)
+    @features = Click.where(category: CATEGORY_FEATURE).where.not(value: nil).pluck(:value).tally
+    @features_time = Click.where(category: CATEGORY_FAQ).where.not(value: nil)
 
-    @socials = Click.where(category: %w[email facebook twitter]).where.not(value: nil).group(:value, :category).count
-    social_keys = Click.where(category: %w[email facebook twitter]).where.not(value: nil).group(:value).count
+    @socials = Click.where(category: CATEGORY_SOCIALS).where.not(value: nil).group(:value, :category).count
+    social_keys = Click.where(category: CATEGORY_SOCIALS).where.not(value: nil).group(:value).count
     @social_keys = social_keys.keys
 
     @reviews = Review.order(likes: :desc).limit(5)
 
-    @questions = Click.where(category: 'FAQ').where.not(value: nil).pluck(:value).tally
-    @questions_time = Click.where(category: 'FAQ').where.not(value: nil)
+    @questions = Click.where(category: CATEGORY_FAQ).where.not(value: nil).limit(5).pluck(:value).tally
+    @question_body = Question.where(id: @questions.keys)
+    @questions_time = Click.where(category: CATEGORY_FAQ).where.not(value: nil)
   end
 
   def create
@@ -34,7 +41,6 @@ class MetricsController < ApplicationController
     path = params['path']
     longitude = params['longitude']
     latitude = params['latitude']
-
     location = Geocoder.search([latitude, longitude])
 
     Visit.create(from: from,
@@ -42,12 +48,13 @@ class MetricsController < ApplicationController
                  path: path,
                  longitude: longitude,
                  latitude: latitude,
-                 country: location.first ? location.first.country : nil)
+                 country: location.first ? location.first.country : nil,
+                 session_id: session.id)
     head :ok
   end
 
   def click
-    session_id = params['session_id']
+    session_id = session.id
     path = params['path']
     category = params['category']
     value = params['value']
@@ -56,6 +63,10 @@ class MetricsController < ApplicationController
                  category: category,
                  value: value)
     head :ok
+  end
+
+  def register_params
+    params.require(:register).permit(:email, :option, :lat, :long)
   end
 end
 # rubocop:enable Metrics/AbcSize
