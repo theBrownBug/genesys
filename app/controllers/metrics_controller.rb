@@ -17,7 +17,7 @@ class MetricsController < ApplicationController
 
     @features = Click.where(category: 'feature').where.not(value: nil).pluck(:value).tally
     @features_time = Click.where(category: 'feature').where.not(value: nil)
-    
+
     @socials = Click.where(category: %w[email facebook twitter]).where.not(value: nil).group(:value, :category).count
     social_keys = Click.where(category: %w[email facebook twitter]).where.not(value: nil).group(:value).count
     @social_keys = social_keys.keys
