@@ -59,7 +59,7 @@ counter = 0
 end
 
 (1..10).each do |q|
-  Question.create(question: Faker::Lorem.sentence, popularity: 0, is_live: false)
+  Question.create(question: Faker::Lorem.question, popularity: 0, is_live: false)
   Answer.create(question_id: q, answer: Faker::Lorem.paragraph, likes: rand(1..100), rating: rand(1..5))
 end
 
