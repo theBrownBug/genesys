@@ -40,12 +40,21 @@
             .col-10.text-start
               .form-check.form-switch.p-0.ms-3
                 = f.input :is_live
-          .row
+          .row#is_live_landing_row
             .col-2.text-start
               %p.fw-bold Is live on landing
             .col-10.text-start
               .form-check.form-switch.p-0.ms-3
-                = f.input :is_live_landing
+                = f.input :is_live_landing, input_html: { id: "is_live_landing_#{review.id}", onchange: "isLiveLandingChanged(#{review.id});", required: true }
+          %div{ id: "order_no_#{review.id}_div", onload: "isLiveLandingChanged(#{review.id});"}
+            .row
+              .col-2.text-start
+                %p.fw-bold Order #
+              .col-2.text-start
+                - if review.order_no
+                  = f.input :order_no, input_html: { min: 1, max: @reviews_live_landing.size }
+                - else
+                  = f.input :order_no, input_html: { min: 1, max: @reviews_live_landing.size + 1, value: @reviews_live_landing.size + 1 }
         .modal-footer
           %btn.btn.btn-secondary{ "data-bs-dismiss" => "modal"} Close
           .form-actions

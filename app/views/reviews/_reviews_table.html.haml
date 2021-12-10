@@ -40,7 +40,7 @@
                     - else
                       = review.order_no
                   %td.text-center.px-4
-                    %a{ :href => "#modal_review_edit", "data-bs-toggle" => "modal", "data-bs-target" => "#review_edit_modal_#{review.id}"}
+                    %a{ onclick: "isLiveLandingChanged(#{review.id});", :href => "#review_edit_modal", "data-bs-toggle" => "modal", "data-bs-target" => "#review_edit_modal_#{review.id}"}
                       %i.fas.fa-edit
                     =render :partial => "review_edit_modal", locals: { review: review }
           %br
