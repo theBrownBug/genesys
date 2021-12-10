@@ -1,5 +1,6 @@
 const axios = require("axios");
 let reviewReturned = {};
+let orderNos = {};
 
 $(document).ready(() => {
   if (!localStorage.liked_reviews) {
@@ -66,12 +67,31 @@ const updateReview = (likeId, likeMessageId, id, reviewData) => {
     },
   };
 
-  axios.patch(`/reviews/${id}`, reviewData, config).then(({ data }) => {
-    $(likeId).toggleClass("far fas");
-    reviewReturned[id] = data;
+    axios.patch(`/reviews/${id}`, { likes: reviewData.likes }, config)
+        .then(({ data }) => {
+            $(likeId).toggleClass("far fas");
+            reviewReturned[id] = data;
 
     $(likeMessageId).text(`${data.likes} people found this review helpful`);
 
     storeLikedReviews(id);
   });
 };
+
+isLiveLandingChanged = (id) => {
+    const orderNoId = `#order_no_${id}_div`;
+
+    if ($(`#is_live_landing_${id}`).is(":checked")) {
+        console.log("checked.");
+        console.log(orderNos[id]);
+        console.log(orderNoId);
+
+        $(orderNoId).html(orderNos[id]);
+    } else {
+        if (!orderNos[id]) {
+            orderNos[id] = $(orderNoId).html();
+        }
+
+        $(orderNoId).empty();
+    }
+}
