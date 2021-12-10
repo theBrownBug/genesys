@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :registers
-  resources :reviews
+  resources :reviews, only: %i[index create update]
 
   resources :questions do
     resources :answers
@@ -19,7 +19,8 @@ Rails.application.routes.draw do
 
   get :ie_warning, to: 'errors#ie_warning'
 
-  root to: 'pages#home'
+  get '*path' => redirect('/')
 
+  root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
