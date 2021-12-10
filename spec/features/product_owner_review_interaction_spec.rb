@@ -30,7 +30,7 @@ describe 'Product owner review table interaction' do
   end
 
   specify 'view review contents in table' do
-    expect(page).to have_content('1', count: 2)
+    expect(page).to have_content('1')
     expect(page).to have_content('Lorem ipsum')
     expect(page).to have_content('Lorem ipsum body.')
   end

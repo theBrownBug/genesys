@@ -156,12 +156,6 @@ namespace :deploy do
   end
 end
 
-## Notify Errbit after deployment
-after 'deploy:finished', 'airbrake:deploy'
-
 ## Restart delayed_job during the deployment process
 after  'deploy:updated',  'delayed_job:stop'
 before 'deploy:finished', 'delayed_job:start'
-
-## Tell Airbrake deployment has completed
-after 'deploy:finished', 'airbrake:deploy'
