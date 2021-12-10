@@ -12,7 +12,7 @@ describe 'Product owner review table interaction' do
 
   specify 'View table' do
     expect(page).to have_css('table.table.table-striped.align-middle')
-    expect(page).to have_css('th', count: 8)
+    expect(page).to have_css('th', count: 9)
   end
 
   specify 'View table headers' do
@@ -23,6 +23,7 @@ describe 'Product owner review table interaction' do
     expect(page).to have_content('Likes')
     expect(page).to have_content('Is live')
     expect(page).to have_content('Is live on landing')
+    expect(page).to have_content("Order")
     expect(page).to have_content('Edit')
   end
 end
