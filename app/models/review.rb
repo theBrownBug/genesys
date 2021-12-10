@@ -9,6 +9,7 @@
 #  is_live         :boolean
 #  is_live_landing :boolean
 #  likes           :integer
+#  order_no        :integer
 #  rating          :integer
 #  title           :string
 #  created_at      :datetime         not null

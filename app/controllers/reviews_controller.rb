@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all.order(created_at: :desc)
+    @reviews_live_landing = @reviews.where(is_live_landing: true)
 
     ratings = Review.order(rating: :desc).group(:rating).count
 
@@ -16,7 +17,6 @@ class ReviewsController < ApplicationController
   # POST /reviews
   def create
     @review = Review.new(review_params)
-    @review.is_live = false if @review.is_live.nil?
 
     if @review.save
       redirect_to reviews_url, notice: 'Thank you - your review was successfully created! '
@@ -27,9 +27,10 @@ class ReviewsController < ApplicationController
 
   # PATCH/PUT /reviews/1
   def update
-    if @review.update(review_params) && (can? :update, Review, :all)
-      redirect_to reviews_url, notice: "Review ##{@review.id} has been updated!"
-    elsif @review.update(review_params) && (can? :update, Review, :likes)
+    if can? :update, Review, :all
+      helpers.check_if_order_no_updated(@review, review_params)
+      redirect_to reviews_url, notice: "Review ##{@review.id} has been updated!" if @review.update(review_params)
+    elsif (can? :update, Review, :likes) && @review.update(review_params_likes)
       render json: @review
     else
       redirect_to reviews_url, notice: 'Review failed to update.'
@@ -39,6 +40,10 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :body, :rating, :likes, :dislikes, :is_live, :is_live_landing)
+    params.require(:review).permit(:title, :body, :rating, :likes, :dislikes, :is_live, :is_live_landing, :order_no)
+  end
+
+  def review_params_likes
+    params.require(:review).permit(:likes)
   end
 end

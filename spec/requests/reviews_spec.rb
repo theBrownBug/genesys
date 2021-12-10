@@ -67,6 +67,10 @@ RSpec.describe '/reviews', type: :request do
         { title: 'Lorem Ipsum', body: 'Lorem ipsum.', rating: 4 }
       end
 
+      let(:new_attributes_likes_only) do
+        { likes: 3 }
+      end
+
       it 'as product owner, updates requested review and rerenders' do
         user = FactoryBot.create :product_owner_user
         login_as(user)
@@ -79,20 +83,12 @@ RSpec.describe '/reviews', type: :request do
         expect(response).to redirect_to(reviews_url)
       end
 
-      it 'as a guest, updating review returns 200' do
+      it 'as a guest, updating review with likes returns 200' do
         review = Review.create! valid_attributes
-        patch review_url(review), params: { review: new_attributes }
+        patch review_url(review), params: { review: new_attributes_likes_only }
         review.reload
 
         expect(response).to be_successful
-      end
-    end
-
-    context 'with invalid parameters' do
-      it 'renders a successful response' do
-        review = Review.create! valid_attributes
-        patch review_url(review), params: { review: invalid_attributes }
-        expect(response).to redirect_to(reviews_url)
       end
     end
   end

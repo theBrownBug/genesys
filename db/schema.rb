@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2021_12_10_110141) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_live_landing"
+    t.integer "order_no"
   end
 
   create_table "roles", force: :cascade do |t|
