@@ -51,16 +51,16 @@ counter = 0
 (1..10).each do |_r|
   is_live_landing = rand(10) < 5
   if is_live_landing
-    counter+=1
-    Review.create(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, is_live: rand(10) < 5, likes: rand(1..100), rating: rand(1..5), is_live_landing: is_live_landing , order_no: counter)
+    counter += 1
+    Review.create(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, is_live: rand(10) < 5, likes: rand(1..100), rating: rand(1..5), is_live_landing: is_live_landing, order_no: counter)
   else
     Review.create(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, is_live: rand(10) < 5, likes: rand(1..100), rating: rand(1..5), is_live_landing: is_live_landing, order_no: nil)
   end
 end
 
 (1..10).each do |q|
-  Question.create(question: "This is a question?", popularity: 0, is_live: false)
-  Answer.create(question_id: q, answer: "This is an answer.", likes: rand(1..100), rating: rand(1..5))
+  Question.create(question: 'This is a question?', popularity: 0, is_live: false)
+  Answer.create(question_id: q, answer: 'This is an answer.', likes: rand(1..100), rating: rand(1..5))
 end
 
 # go through each question and randomly make them live

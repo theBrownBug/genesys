@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/AbcSize
 module ReviewsHelper
   def ratings_metrics(ratings, reviews_count)
     ratings_metrics = ratings.map { |rating, count| [rating, rating_metrics(rating, count, reviews_count)] }.to_h
@@ -54,3 +55,4 @@ module ReviewsHelper
       color: RATING_COLOR[rating] }
   end
 end
+# rubocop:enable Metrics/AbcSize

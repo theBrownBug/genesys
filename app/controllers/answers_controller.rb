@@ -70,7 +70,9 @@ class AnswersController < ApplicationController
     params.require(:answer).permit(:answer, :rating, :likes, :question_id)
   end
 
+  # rubocop:disable Naming/AccessorMethodName
   def get_question
     @question = Question.find(params[:question_id])
   end
+  # rubocop:enable Naming/AccessorMethodName
 end
