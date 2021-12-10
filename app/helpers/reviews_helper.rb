@@ -30,6 +30,7 @@ module ReviewsHelper
     if order_no_difference.negative?
       reviews_to_update.each do |review|
         next unless review.order_no.between?(order_no_new, order_no) && review.id != id
+
         review.order_no += 1
         review.save
       end
@@ -40,7 +41,7 @@ module ReviewsHelper
         review.order_no -= 1
         review.save
 
-        puts review.order_no
+        Rails.logger.debug review.order_no
       end
     end
   end

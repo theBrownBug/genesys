@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 describe 'Product owner review table interaction' do
+  let!(:review) { FactoryBot.create :review }
+
   before do
     user = FactoryBot.create :product_owner_user
     login_as(user)
@@ -23,19 +25,8 @@ describe 'Product owner review table interaction' do
     expect(page).to have_content('Likes')
     expect(page).to have_content('Is live')
     expect(page).to have_content('Is live on landing')
-    expect(page).to have_content("Order")
+    expect(page).to have_content('Order')
     expect(page).to have_content('Edit')
-  end
-end
-
-describe 'Product owner review table content interaction' do
-  let!(:review) { FactoryBot.create :review }
-
-  before do
-    user = FactoryBot.create :product_owner_user
-    login_as(user)
-
-    visit '/reviews'
   end
 
   specify 'view review contents in table' do
