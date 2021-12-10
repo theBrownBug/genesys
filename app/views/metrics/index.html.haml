@@ -1,6 +1,10 @@
 = javascript_include_tag "https://www.gstatic.com/charts/loader.js"
 - @reviews.each do |r|
     =render :partial => "review_view_modal", locals: { review: r }
+
+-@question_body.each do |q|
+    =render :partial => "faq_view_modal", locals: { question: q }
+
 .container.m-0.p-0.w-100
     =render :partial => "map_section", locals: { locations: @locations, registrations: @registrations }
     =render :partial => "session_section", locals: { metrics: @metrics }

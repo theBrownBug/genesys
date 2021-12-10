@@ -4,10 +4,14 @@
 # rubocop:disable Metrics/AbcSize
 class MetricsController < ApplicationController
   def index
-    @locations = Visit.where.not(country: nil).where.not(path: '/metrics').pluck(:country).tally
+    session_ids = Visit.select(:session_id).distinct.pluck(:session_id)
+
+    @locations = Visit.where.not(country: nil).where(path: '/').pluck(:country).tally
+
     @registrations = Register.where.not(country: nil).pluck(:country).tally
 
-    sessions = Visit.where.not(path: '/metrics')
+    sessions = Visit.where(path: '/')
+    
     registrations = Register.all
     @metrics = { 'Sessions' => sessions, 'Registrations' => registrations }
 
@@ -24,7 +28,8 @@ class MetricsController < ApplicationController
 
     @reviews = Review.order(likes: :desc).limit(5)
 
-    @questions = Click.where(category: 'FAQ').where.not(value: nil).pluck(:value).tally
+    @questions = Click.where(category: 'FAQ').where.not(value: nil).limit(5).pluck(:value).tally
+    @question_body = Question.where(id: @questions.keys)
     @questions_time = Click.where(category: 'FAQ').where.not(value: nil)
   end
 
@@ -34,15 +39,15 @@ class MetricsController < ApplicationController
     path = params['path']
     longitude = params['longitude']
     latitude = params['latitude']
-
     location = Geocoder.search([latitude, longitude])
-
+    
     Visit.create(from: from,
                  to: to,
                  path: path,
                  longitude: longitude,
                  latitude: latitude,
-                 country: location.first ? location.first.country : nil)
+                 country: location.first ? location.first.country : nil,
+                session_id: session.id)
     head :ok
   end
 
