@@ -11,7 +11,7 @@ class MetricsController < ApplicationController
     @registrations = Register.where.not(country: nil).pluck(:country).tally
 
     sessions = Visit.where(path: '/')
-    
+
     registrations = Register.all
     @metrics = { 'Sessions' => sessions, 'Registrations' => registrations }
 
@@ -40,14 +40,14 @@ class MetricsController < ApplicationController
     longitude = params['longitude']
     latitude = params['latitude']
     location = Geocoder.search([latitude, longitude])
-    
+
     Visit.create(from: from,
                  to: to,
                  path: path,
                  longitude: longitude,
                  latitude: latitude,
                  country: location.first ? location.first.country : nil,
-                session_id: session.id)
+                 session_id: session.id)
     head :ok
   end
 
