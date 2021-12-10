@@ -26,9 +26,13 @@ class RegistersController < ApplicationController
     longitude = register_params['long']
     latitude = register_params['lat']
     location = Geocoder.search([latitude, longitude])
+    country = nil
+    if location.nil? && location.first.nil? && location.first.country.nil? then
+      country = location.first.country
+    end
     @register = Register.new(email: register_params['email'],
                              option: register_params['option'],
-                             country: location.first.country)
+                             country: country)
 
     if @register.save
       # redirect_to @register, notice: 'Register was successfully created.'

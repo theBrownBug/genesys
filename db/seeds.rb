@@ -59,8 +59,8 @@ counter = 0
 end
 
 (1..10).each do |q|
-  Question.create(question: Faker::Lorem.sentence, popularity: 0, is_live: false)
-  Answer.create(question_id: q, answer: Faker::Lorem.paragraph, likes: rand(1..100), rating: rand(1..5))
+  Question.create(question: "This is a question?", popularity: 0, is_live: false)
+  Answer.create(question_id: q, answer: "This is an answer.", likes: rand(1..100), rating: rand(1..5))
 end
 
 # go through each question and randomly make them live

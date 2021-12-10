@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 2021_12_07_200310) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "country"
     t.string "path"
+    t.string "session_id"
   end
 
   add_foreign_key "answers", "questions"

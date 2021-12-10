@@ -45,9 +45,10 @@ gem 'rubocop-rspec', require: false
 gem 'bcrypt_pbkdf'
 gem 'ed25519'
 
+gem 'faker'
+
 group :development, :test do
   gem 'byebug'
-  gem 'faker'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'sqlite3'
