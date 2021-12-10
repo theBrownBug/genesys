@@ -13,4 +13,6 @@
 #  session_id :string
 #
 class Click < ApplicationRecord
+  validates :category, presence: true
+  validates :value, presence: true
 end
