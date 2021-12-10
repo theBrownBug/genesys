@@ -8,8 +8,6 @@ class MetricsController < ApplicationController
   CATEGORY_TIER = 'tier'
   CATEGORY_SOCIALS = %w[email facebook twitter].freeze
   def index
-    session_ids = Visit.select(:session_id).distinct.pluck(:session_id)
-
     @locations = Visit.where.not(country: nil).where(path: '/').pluck(:country).tally
 
     @registrations = Register.where.not(country: nil).pluck(:country).tally
