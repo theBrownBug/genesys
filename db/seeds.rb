@@ -48,7 +48,7 @@ users.each do |user_details|
 end
 
 (1..10).each do |_r|
-  Review.create(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, is_live: rand(10) < 5, likes: rand(1..100), rating: rand(1..5), is_live_landing: false)
+  Review.create(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph, is_live: rand(10) < 5, likes: rand(1..100), rating: rand(1..5), is_live_landing: rand(10) < 5)
 end
 
 (1..10).each do |q|
