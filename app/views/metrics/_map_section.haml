@@ -15,7 +15,7 @@
                                                 %th Country
                                                 %th Visits
                                             %tbody
-                                                - locations.sort_by { |k,v| v }[0..1].to_h.keys.each do |key|
+                                                - locations.sort_by { |k,v| v }[0..4].to_h.keys.each do |key|
                                                     %tr 
                                                         %td= key
                                                         %td= locations[key]
@@ -30,7 +30,7 @@
                                                 %th Country
                                                 %th Visits
                                             %tbody
-                                                - registrations.sort_by { |k,v| v }[0..1].to_h.keys.each do |key|
+                                                - registrations.sort_by { |k,v| v }[0..4].to_h.keys.each do |key|
                                                     %tr 
                                                         %td= key
                                                         %td= registrations[key]

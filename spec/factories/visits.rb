@@ -13,6 +13,7 @@
 #  to         :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  session_id :string
 #
 FactoryBot.define do
   factory :visit do
