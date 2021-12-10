@@ -1,4 +1,4 @@
-- if can? :update, Review, :likes
-  =render partial: "reviews_main"
-- if can? :update, Review
+- if can? :update, Review, :all
   =render partial: "reviews_table"
+- elsif can? :update, Review, :likes
+  =render partial: "reviews_main"

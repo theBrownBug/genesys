@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :registers
-  resources :reviews
+  resources :reviews, only: %i[index create update]
 
   resources :questions do
     resources :answers
@@ -23,7 +23,8 @@ Rails.application.routes.draw do
 
   resources :metrics, only: %i[create index]
 
-  root to: 'pages#home'
+  get '*path' => redirect('/')
 
+  root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

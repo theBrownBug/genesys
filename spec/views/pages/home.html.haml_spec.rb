@@ -46,7 +46,6 @@ describe 'pages/home' do
       expect(rendered).to have_selector('p', text: 'Feature spotlight', visible: :all)
     end
 
-    # rubocop:disable Rspec/MultipleExpectations
     it 'displays the feature titles' do
       render
       expect(rendered).to have_selector('h6', text: 'Automated timetable creation', visible: :all)
@@ -54,11 +53,10 @@ describe 'pages/home' do
       expect(rendered).to have_selector('h6', text: 'Track repeating tasks', visible: :all)
       expect(rendered).to have_selector('h6', text: 'Interested?', visible: :all)
     end
-    # rubocop:enable Rspec/MultipleExpectations
   end
 
   describe '#landing_sharing' do
-    # rubocop:disable Rspec/MultipleExpectations, Layout/LineLength
+    # rubocop:disable Rspec/Layout/LineLength
     it 'displays the email links' do
       render
       expect(rendered).to have_link(nil, href: 'mailto:?subject=Check this out!&body=Look at this awesome application for automated time management for students! https://team05.demo1.genesys.shefcompsci.org.uk/. %0D%0AMy favourite feature is the automated timetable creation.', visible: :all)
@@ -79,6 +77,5 @@ describe 'pages/home' do
       expect(rendered).to have_link(nil, href: 'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fteam05.demo1.genesys.shefcompsci.org.uk%2F&amp;src=sdkpreparse%22&quote=My+favourite+feature+is+the+ability+to+account+for+last+minute+changes.', visible: :all)
       expect(rendered).to have_link(nil, href: 'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fteam05.demo1.genesys.shefcompsci.org.uk%2F&amp;src=sdkpreparse%22&quote=My+favourite+feature+is+the+ability+to+track+repeating+tasks.', visible: :all)
     end
-    # rubocop:enable Rspec/MultipleExpectations, Layout/LineLength
   end
 end
