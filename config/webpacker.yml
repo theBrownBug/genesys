@@ -66,6 +66,7 @@ development:
     use_local_ip: false
     quiet: false
     pretty: false
+    watch: true 
     headers:
       'Access-Control-Allow-Origin': '*'
     watch_options:

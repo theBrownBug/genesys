@@ -1,0 +1,21 @@
+.row
+    .col-md-3.mb-3
+        .card.shadow-sm.sticky-top
+            .card-header
+                %h5 Pricing Options
+            .card-body
+                %table.table
+                    %tr
+                        %th Tier
+                        %th Clicks
+                    %tbody
+                        - pricing.keys.each do |key|
+                            %tr 
+                                %td= key
+                                %td= pricing[key].count
+    .col-md-9.mb-3
+        .card.shadow-sm.sticky-top
+            .card-header
+                %h5 Pricing Options
+            .card-body
+                = line_chart pricing.keys.map{|key| {name: key, data: pricing[key].group_by_day(:created_at).count}}

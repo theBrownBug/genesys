@@ -18,40 +18,17 @@ RSpec.describe '/reviews', type: :request do
   # Review. As you add validations to Review, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    { title: 'Lorem Ipsum', body: 'Lorem ipsum.', rating: 5 }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    { title: 'Lorem Ipsum', body: 'Lorem ipsum.', rating: false }
   end
 
   describe 'GET /index' do
     it 'renders a successful response' do
       Review.create! valid_attributes
       get reviews_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /show' do
-    it 'renders a successful response' do
-      review = Review.create! valid_attributes
-      get review_url(review)
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /new' do
-    it 'renders a successful response' do
-      get new_review_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'GET /edit' do
-    it 'render a successful response' do
-      review = Review.create! valid_attributes
-      get edit_review_url(review)
       expect(response).to be_successful
     end
   end
@@ -64,9 +41,9 @@ RSpec.describe '/reviews', type: :request do
         end.to change(Review, :count).by(1)
       end
 
-      it 'redirects to the created review' do
+      it 'redirects to the reviews page' do
         post reviews_url, params: { review: valid_attributes }
-        expect(response).to redirect_to(review_url(Review.last))
+        expect(response).to redirect_to(reviews_url)
       end
     end
 
@@ -77,9 +54,9 @@ RSpec.describe '/reviews', type: :request do
         end.to change(Review, :count).by(0)
       end
 
-      it "renders a successful response (i.e. to display the 'new' template)" do
+      it 'redirects to the reviews page' do
         post reviews_url, params: { review: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to redirect_to(reviews_url)
       end
     end
   end
@@ -87,45 +64,36 @@ RSpec.describe '/reviews', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        { title: 'Lorem Ipsum', body: 'Lorem ipsum.', rating: 4 }
       end
 
-      it 'updates the requested review' do
+      it 'as product owner, updates requested review and rerenders' do
+        user = FactoryBot.create :product_owner_user
+        login_as(user)
+
         review = Review.create! valid_attributes
         patch review_url(review), params: { review: new_attributes }
         review.reload
-        skip('Add assertions for updated state')
+
+        expect(review.rating).to eq 4
+        expect(response).to redirect_to(reviews_url)
       end
 
-      it 'redirects to the review' do
+      it 'as a guest, updating review returns 200' do
         review = Review.create! valid_attributes
         patch review_url(review), params: { review: new_attributes }
         review.reload
-        expect(response).to redirect_to(review_url(review))
+
+        expect(response).to be_successful
       end
     end
 
     context 'with invalid parameters' do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
+      it 'renders a successful response' do
         review = Review.create! valid_attributes
         patch review_url(review), params: { review: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to redirect_to(reviews_url)
       end
-    end
-  end
-
-  describe 'DELETE /destroy' do
-    it 'destroys the requested review' do
-      review = Review.create! valid_attributes
-      expect do
-        delete review_url(review)
-      end.to change(Review, :count).by(-1)
-    end
-
-    it 'redirects to the reviews list' do
-      review = Review.create! valid_attributes
-      delete review_url(review)
-      expect(response).to redirect_to(reviews_url)
     end
   end
 end

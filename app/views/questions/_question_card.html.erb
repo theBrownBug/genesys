@@ -1,3 +1,4 @@
+<%= javascript_pack_tag "FAQs" %>
 <section>
   <h3 class="text-center mb-4 pb-2 text-primary fw-bold">FAQs</h3>
   <p class="text-center mb-5">
@@ -19,7 +20,7 @@
 <div class="accordion accordion-flush" id="accordionFlush">
   <% @questions.each do |question| %>
     <% if question.is_live and not question.get_answer.nil? %>
-      <div class="accordion-item">
+      <div id="<%=question.id%>" class="accordion-item question_card">
         <h2 class="accordion-header" id="flush-heading<%question.id%>">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%question.id%>" aria-expanded="false" aria-controls="flush-collapse<%question.id%>">
             <strong> <%=question.question %> </strong>

@@ -13,6 +13,8 @@
 #
 class Question < ApplicationRecord
   has_one :answer
+  validates :question, presence: true
+  validates :popularity, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :is_live, inclusion: [false], if: ->(question) { question.answer.blank? }
 
   def get_answer

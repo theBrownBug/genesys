@@ -1,6 +1,10 @@
 .container
   .row.justify-content-center
-    .col-12.col-lg-4.align-self-start.sticky-lg-top
-      =render :partial => "review_overview"
-    .col-12.col-lg-8
-      =render :partial => "reviews"
+    - if !@reviews.blank? && @reviews.any? {|h| h[:is_live] == true}
+      .col-12.col-lg-4.align-self-start.sticky-lg-top
+        =render :partial => "review_overview"
+      .col-12.col-lg-8
+        =render :partial => "reviews"
+    - else
+      .col-12.align-self-start.sticky-lg-top
+        =render :partial => "review_overview"

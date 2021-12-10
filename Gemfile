@@ -4,14 +4,16 @@ source 'https://rubygems.org'
 ruby '2.7.4'
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}.git" }
 
+gem 'groupdate'
 gem 'sentry-raven'
 
 gem 'activerecord-session_store'
 gem 'bootsnap'
+gem 'chartkick'
+gem 'geocoder'
 gem 'puma'
 gem 'rails', '~> 6.1', '>= 6.1.4'
 gem 'responders'
-
 gem 'webpacker'
 
 gem 'pg'
@@ -45,10 +47,11 @@ gem 'ed25519'
 
 group :development, :test do
   gem 'byebug'
-  gem 'rspec-rails'
-  gem 'sqlite3'
-  gem 'shoulda-matchers'
   gem 'faker'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'sqlite3'
+
 end
 
 group :development do

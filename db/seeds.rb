@@ -46,3 +46,29 @@ users.each do |user_details|
   end
 end
 
+(1..10).each do |r|
+  Review.create( title: Faker::Lorem.sentence , body: Faker::Lorem.paragraph, is_live: rand(10)< 5 , likes: 1 + rand(100), rating: 1 + rand(5) , is_live_landing: false )
+end
+
+
+(1..10).each do |q|
+  Question.create(question: Faker::Lorem.sentence , popularity: 0 , is_live: false)
+  Answer.create(question_id:q , answer: Faker::Lorem.paragraph, likes: 1 + rand(100) , rating: 1 + rand(5))
+end
+
+# go through each question and randomly make them live
+(1..10).each do |q|
+  q = Question.where(:id =>q).first
+  q.is_live =  rand(10)< 5
+  q.save
+end
+
+
+
+
+
+
+
+
+
+

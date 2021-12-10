@@ -1,0 +1,48 @@
+.row
+    .col-md-3.mb-3
+        .card.shadow-sm.sticky-top
+            .card-header
+                %h5 Feature Clicks
+            .card-body
+                %table.table
+                    %tr
+                        %th Feature
+                        %th Clicks
+                    %tbody
+                        - features.keys.each do |key|
+                            %tr 
+                                %td= key
+                                %td= features[key]
+    .col-md-9.mb-3
+        .card.shadow-sm
+            .card-header
+                %h5 Feature Clicks
+            .card-body
+                = line_chart features_time.group_by_day(:created_at).count
+
+.row
+    .col-md-12
+        .card.shadow-sm.sticky-top.mb-3
+            .card-header
+                %h5 Feature Shares
+            .card-body
+                %table.table
+                    %tr
+                        %th
+                            Feature
+                        %th 
+                            %i.fab.fa-facebook-f
+                        %th 
+                            %i.fab.fa-twitter
+                        %th 
+                            %i.fas.fa-envelope-square
+
+                        %th Total
+                    %tbody
+                        - social_keys.each do |key|
+                            %tr 
+                                %td= key
+                                %td= socials[[key, "facebook"]] ? socials[[key, "facebook"]] : 0
+                                %td= socials[[key, "twitter"]] ? socials[[key, "twitter"]] : 0
+                                %td= socials[[key, "email"]] ? socials[[key, "email"]] : 0
+                                %td= (socials[[key, "email"]] ? socials[[key, "email"]] : 0) + (socials[[key, "twitter"]] ? socials[[key, "twitter"]] : 0) + (socials[[key, "facebook"]] ? socials[[key, "facebook"]] : 0)

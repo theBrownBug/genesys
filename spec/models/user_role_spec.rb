@@ -27,6 +27,9 @@ RSpec.describe UserRole, type: :model do
 
   before { subject.save }
 
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to belong_to(:role) }
+
   it 'role_id should be present' do
     subject.role_id = nil
     expect(subject).not_to be_valid

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_200310) do
+ActiveRecord::Schema.define(version: 2021_12_04_121250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 2021_12_07_200310) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "clicks", force: :cascade do |t|
+    t.string "session_id"
+    t.string "path"
+    t.string "category"
+    t.string "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -53,6 +62,7 @@ ActiveRecord::Schema.define(version: 2021_12_07_200310) do
     t.integer "option"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "country"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -64,7 +74,6 @@ ActiveRecord::Schema.define(version: 2021_12_07_200310) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_live_landing"
-    t.integer "order_no"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -114,6 +123,17 @@ ActiveRecord::Schema.define(version: 2021_12_07_200310) do
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "visits", force: :cascade do |t|
+    t.datetime "from"
+    t.datetime "to"
+    t.decimal "longitude"
+    t.decimal "latitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "country"
+    t.string "path"
   end
 
   add_foreign_key "answers", "questions"

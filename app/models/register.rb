@@ -5,6 +5,7 @@
 # Table name: registers
 #
 #  id         :bigint           not null, primary key
+#  country    :string
 #  email      :string
 #  option     :integer
 #  created_at :datetime         not null

@@ -29,9 +29,8 @@ class Ability
 
     if user.is? :product_owner
       # set_live
-      can %i[read update], Review
+      can %i[read update], Review, :all
       cannot %i[create destroy], Review
-
       can :manage, Question
       can :manage, Answer
       can [:read], Register
@@ -45,13 +44,12 @@ class Ability
     return unless user.is? :admin
 
     if user.is? :admin
-
+      cannot %i[create destroy], Review
       unless user.is? :product_owner
         cannot :manage, Question
         cannot :manage, Answer
+        cannot :update, Review
       end
-
-      cannot %i[create destroy], Review
 
       can :manage, User
       cannot :destroy, User, id: user.id
