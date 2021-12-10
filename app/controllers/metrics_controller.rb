@@ -6,7 +6,7 @@ class MetricsController < ApplicationController
   CATEGORY_FAQ = 'FAQ'
   CATEGORY_FEATURE = 'feature'
   CATEGORY_TIER = 'tier'
-  CATEGORY_SOCIALS = %w[email facebook twitter]
+  CATEGORY_SOCIALS = %w[email facebook twitter].freeze
   def index
     session_ids = Visit.select(:session_id).distinct.pluck(:session_id)
 
@@ -36,7 +36,6 @@ class MetricsController < ApplicationController
     @question_body = Question.where(id: @questions.keys)
     @questions_time = Click.where(category: CATEGORY_FAQ).where.not(value: nil)
   end
-  
 
   def create
     from = Time.zone.at(params['pageVisitedFrom'].to_i / 1000).to_datetime
@@ -67,8 +66,9 @@ class MetricsController < ApplicationController
                  value: value)
     head :ok
   end
-    def register_params
-      params.require(:register).permit(:email, :option, :lat, :long)
-    end
+
+  def register_params
+    params.require(:register).permit(:email, :option, :lat, :long)
+  end
 end
 # rubocop:enable Metrics/AbcSize
