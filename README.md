@@ -54,23 +54,16 @@ A style guide is maintained for reference at `/style_guide`.
 
 _QA -> Demo -> Production_ using the `epi-deploy` gem.
 
-
-
-
-## Logging In and using Different Roles 
-
+## Logging In and using Different Roles
 
 ### LOGIN ACCOUNT DETAILS
 
-- Admin           -  **email: admin@timetabled.com , password: Password_1** 
-- Product Owner   -  **email: product_owner@timetabled.com , password: Password_1**
-- Reporter        -  **email: reporter@timetabled.com , password: Password_1**
-
+- Admin - **email: admin@timetabled.com , password: Password_1**
+- Product Owner - **email: product_owner@timetabled.com , password: Password_1**
+- Reporter - **email: reporter@timetabled.com , password: Password_1**
 
 ### Basic Login
 
 Go to `/users/sign_in` to Login using a particular Role
 
 Note that you can add additional users as an admin
-
-
