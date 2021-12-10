@@ -1,20 +1,21 @@
 .row.mt-4
   .card
     .card-body
-      .d-flex.flex-xl-row.flex-column.justify-content-start.align-items-center.mb-4
-        %h1.mb-0.me-2= @ratings_metrics[:average]
-        .d-flex.flex-row.justify-content-start.align-items-center.me-2
-          - @ratings_metrics[:average].round.times do
-            %span.text-primary
-              %i.fas.fa-star.fa-sm
-        %p.small.mb-0.text-muted #{@reviews.count} reviews
-      - @ratings_metrics.each do |rating, metrics|
-        - if metrics.is_a?(Hash)
-          .d-flex.flex-row.justify-content-start.align-items-center.mb-2
-            %div{ :style => "width: 20px;" }
-              %p.small.mb-0.me-2.text-muted= rating
-            .progress.w-100{ :style => "height: 20px;"}
-              .progress-bar{ :role => "progressbar", :style => "width: #{metrics[:rating_percentage]}%; background-color: ##{metrics[:color]};"}
-            %div{ :style => "width: 60px;" }
-              %p.small.fw-bold.mb-0.ms-2.text-end #{metrics[:rating_percentage]}%
+      - if !@reviews.blank?
+        .d-flex.flex-xl-row.flex-column.justify-content-start.align-items-center.mb-4
+          %h1.mb-0.me-2= @ratings_metrics[:average]
+          .d-flex.flex-row.justify-content-start.align-items-center.me-2
+            - @ratings_metrics[:average].round.times do
+              %span.text-primary
+                %i.fas.fa-star.fa-sm
+          %p.small.mb-0.text-muted #{@reviews.count} reviews
+        - @ratings_metrics.each do |rating, metrics|
+          - if metrics.is_a?(Hash)
+            .d-flex.flex-row.justify-content-start.align-items-center.mb-2
+              %div{ :style => "width: 20px;" }
+                %p.small.mb-0.me-2.text-muted= rating
+              .progress.w-100{ :style => "height: 20px;"}
+                .progress-bar{ :role => "progressbar", :style => "width: #{metrics[:rating_percentage]}%; background-color: ##{metrics[:color]};"}
+              %div{ :style => "width: 60px;" }
+                %p.small.fw-bold.mb-0.ms-2.text-end #{metrics[:rating_percentage]}%
       =render :partial => "review_create"
