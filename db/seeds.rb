@@ -17,7 +17,7 @@ users = [
     "email" => "admin@timetabled.com" ,
     "password" => "Password_1" ,
     "user_type"=> 0 ,
-    "role_ids" => [Role.role_types[:admin]]
+    "role_ids" => [2]
   },
   {
     "first_name"=> "product_owner",
@@ -25,7 +25,7 @@ users = [
     "email" => "po@timetabled.com" ,
     "password" => "Password_1" ,
     "user_type" => 0,
-    "role_ids" => [Role.role_types[:product_owner]]
+    "role_ids" => [3]
   },
   {
     "first_name"=> "reporter",
@@ -33,7 +33,7 @@ users = [
     "email" => "reporter@timetabled.com" ,
     "password" => "Password_1",
     "user_type"=> 0,
-    "role_ids" => [Role.role_types[:reporter]]
+    "role_ids" => [4]
   }
 ]
 
