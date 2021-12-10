@@ -12,13 +12,13 @@
 FactoryBot.define do
   factory :role do
     factory :admin_role do
-      role_type {1}
+      role_type { 1 }
     end
     factory :product_owner_role do
-      role_type {2}
+      role_type { 2 }
     end
     factory :reporter_role do
-      role_type {3}
+      role_type { 3 }
     end
   end
 end
