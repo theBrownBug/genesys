@@ -1,3 +1,1 @@
-# frozen_string_literal: true
-
-APP_VERSION = '15'
+APP_VERSION = '16'
