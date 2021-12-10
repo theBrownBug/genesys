@@ -16,7 +16,7 @@ require 'rails_helper'
 #  session_id :string
 
 RSpec.describe Click, type: :model do
-  subject do
+  subject(:click) do
     described_class.new(category: 'FAQ',
                         path: '/',
                         value: '1452',
@@ -24,16 +24,16 @@ RSpec.describe Click, type: :model do
   end
 
   it 'is valid with all appropriate fields' do
-    expect(subject).to be_valid
+    expect(click).to be_valid
   end
 
   it 'is not valid without category' do
-    subject.category = nil
-    expect(subject).not_to be_valid
+    click.category = nil
+    expect(click).not_to be_valid
   end
 
   it 'is not valid without value' do
-    subject.value = nil
-    expect(subject).not_to be_valid
+    click.value = nil
+    expect(click).not_to be_valid
   end
 end

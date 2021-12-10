@@ -23,57 +23,57 @@
 require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
-  subject { described_class.new }
+  subject(:answer) { described_class.new }
 
   it { is_expected.to belong_to(:question) }
 
   it 'is cannot have a NULL Answer field' do
-    subject.answer = nil
-    subject.likes = 0
-    subject.rating = 0
-    expect(subject).not_to be_valid
+    answer.answer = nil
+    answer.likes = 0
+    answer.rating = 0
+    expect(answer).not_to be_valid
   end
 
   it "is cannot have a NULL 'Likes' field" do
-    subject.answer = Faker::Hipster.sentences.sample
-    subject.likes = nil
-    subject.rating = 0
-    expect(subject).not_to be_valid
+    answer.answer = Faker::Hipster.sentences.sample
+    answer.likes = nil
+    answer.rating = 0
+    expect(answer).not_to be_valid
   end
 
   it "is cannot have a NULL 'Rating' field" do
-    subject.answer = Faker::Hipster.sentences.sample
-    subject.likes =  0
-    subject.rating = nil
-    expect(subject).not_to be_valid
+    answer.answer = Faker::Hipster.sentences.sample
+    answer.likes =  0
+    answer.rating = nil
+    expect(answer).not_to be_valid
   end
 
   it "is cannot have a Negative 'Likes' field" do
-    subject.answer = Faker::Hipster.sentences.sample
-    subject.likes = -1
-    subject.rating = 0
-    expect(subject).not_to be_valid
+    answer.answer = Faker::Hipster.sentences.sample
+    answer.likes = -1
+    answer.rating = 0
+    expect(answer).not_to be_valid
   end
 
   it "is cannot have a Negative 'Rating' field" do
-    subject.answer = Faker::Hipster.sentences.sample
-    subject.likes =  0
-    subject.rating = -1
-    expect(subject).not_to be_valid
+    answer.answer = Faker::Hipster.sentences.sample
+    answer.likes =  0
+    answer.rating = -1
+    expect(answer).not_to be_valid
   end
 
   it 'is cannot have a NULL Question_id field' do
-    subject.answer = Faker::Hipster.sentences.sample
-    subject.likes = 0
-    subject.rating = 0
-    subject.question_id = nil
-    expect(subject).not_to be_valid
+    answer.answer = Faker::Hipster.sentences.sample
+    answer.likes = 0
+    answer.rating = 0
+    answer.question_id = nil
+    expect(answer).not_to be_valid
   end
 end
 
 # In order to be a valid Answer, it should have a question_id
 describe Answer do
-  subject { @answer }
+  subject(:answer) { @answer }
 
   before do
     @question = FactoryBot.build(:question)
@@ -82,6 +82,6 @@ describe Answer do
   end
 
   it 'is a valid answer' do
-    expect(subject).to be_valid
+    expect(answer).to be_valid
   end
 end

@@ -18,7 +18,7 @@
 require 'rails_helper'
 
 RSpec.describe Visit, type: :model do
-  subject do
+  subject(:visit) do
     described_class.new(country: 'United Kingdom',
                         from: DateTime.now,
                         latitude: 2.456,
@@ -28,56 +28,56 @@ RSpec.describe Visit, type: :model do
   end
 
   it 'is valid with valid attributes' do
-    expect(subject).to be_valid
+    expect(visit).to be_valid
   end
 
   it 'is not valid without path' do
-    subject.path = nil
-    expect(subject).not_to be_valid
+    visit.path = nil
+    expect(visit).not_to be_valid
   end
 
   it 'is not valid without from' do
-    subject.from = nil
-    expect(subject).not_to be_valid
+    visit.from = nil
+    expect(visit).not_to be_valid
   end
 
   it 'is not valid without to' do
-    subject.to = nil
-    expect(subject).not_to be_valid
+    visit.to = nil
+    expect(visit).not_to be_valid
   end
 
   it 'is valid without longitude' do
-    subject.longitude = nil
-    expect(subject).to be_valid
+    visit.longitude = nil
+    expect(visit).to be_valid
   end
 
   it 'is valid without latitude' do
-    subject.latitude = nil
-    expect(subject).to be_valid
+    visit.latitude = nil
+    expect(visit).to be_valid
   end
 
   it 'is valid without country' do
-    subject.country = nil
-    expect(subject).to be_valid
+    visit.country = nil
+    expect(visit).to be_valid
   end
 
   it 'is not valid with latitude greater than 90' do
-    subject.latitude = 100
-    expect(subject).not_to be_valid
+    visit.latitude = 100
+    expect(visit).not_to be_valid
   end
 
   it 'is not valid with latitude less than -90' do
-    subject.latitude = -100
-    expect(subject).not_to be_valid
+    visit.latitude = -100
+    expect(visit).not_to be_valid
   end
 
   it 'is not valid with longitude greater than 180' do
-    subject.longitude = 190
-    expect(subject).not_to be_valid
+    visit.longitude = 190
+    expect(visit).not_to be_valid
   end
 
   it 'is not valid with longitude less than -90' do
-    subject.longitude = -190
-    expect(subject).not_to be_valid
+    visit.longitude = -190
+    expect(visit).not_to be_valid
   end
 end
