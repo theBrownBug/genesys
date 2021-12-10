@@ -46,8 +46,8 @@ class Ability
     if user.is? :admin
       cannot %i[create destroy], Review
       unless user.is? :product_owner
-        cannot :manage, Question
-        cannot :manage, Answer
+        cannot %i[update destroy], Question
+        cannot %i[update destroy], Answer
         cannot :update, Review
       end
 
