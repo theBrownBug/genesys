@@ -1,4 +1,4 @@
-%section.bg-light
-  .container
-    =render partial: "reviews_main"
-    =render partial: "reviews_table"
+- if can? :update, Review, :likes
+  =render partial: "reviews_main"
+- if can? :update, Review
+  =render partial: "reviews_table"

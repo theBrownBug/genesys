@@ -1,0 +1,12 @@
+%section.mt-5
+  %hr.mb-4
+  = simple_form_for @question do |f|
+    .form_inputs
+      .row.mb-4
+        = f.input :question, label: false, :as => :text, placeholder: "Add the question", :input_html => { :rows => 7 , :style => 'width: 100%; resize: none;'}
+      - if can? :edit, Question
+        .row.mb-4
+          = f.input :is_live
+    .form-actions
+      .d-flex.flex-row.justify-content-center.align-items-center.mb-2
+        = f.button :submit, class: "btn btn-outline-primary"

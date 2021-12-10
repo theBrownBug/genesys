@@ -144,3 +144,10 @@ Capybara.automatic_label_click = true
 def sleep_for_js
   sleep 0.5
 end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end

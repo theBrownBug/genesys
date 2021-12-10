@@ -1,14 +1,15 @@
-%section.mt-5
-  %h5.text-center Write a Review
-  %hr.mb-4
-  = simple_form_for @review do |f|
-    .form_inputs
-      .d-flex.flex-row.justify-content-center.align-items-center.mb-4
-        = f.input :rating, label: false, placeholder: "Rating", input_html: { class: "rating", type: "hidden", "data-filled": "fas fa-star fa-lg text-primary", "data-empty": "far fa-star fa-lg" , value: "5", min: "1", max: "5" }
-      .row.mb-4
-        = f.input :title, label: false, placeholder: "Title"
-      .row.mb-4
-        = f.input :body, label: false, :as => :text, placeholder: "Description", input_html: { rows: 7 , style: "width: 100%; resize: none;" }
-    .form-actions
-      .d-flex.flex-row.justify-content-center.align-items-center.mb-2
-        = f.button :submit, class: "btn btn-outline-primary"
+- if not current_user
+  %section.mt-5
+    %h5.text-center Write a Review
+    %hr.mb-4
+    = simple_form_for @review do |f|
+      .form_inputs
+        .d-flex.flex-row.justify-content-center.align-items-center.mb-4
+          = f.input :rating, label: false, placeholder: "Rating", input_html: { class: "rating", type: "hidden", "data-filled": "fas fa-star fa-lg text-primary", "data-empty": "far fa-star fa-lg" , value: "5", min: "1", max: "5" }
+        .row.mb-4
+          = f.input :title, label: false, placeholder: "Title"
+        .row.mb-4
+          = f.input :body, label: false, :as => :text, placeholder: "Description", input_html: { rows: 7 , style: "width: 100%; resize: none;" }
+      .form-actions
+        .d-flex.flex-row.justify-content-center.align-items-center.mb-2
+          = f.button :submit, class: "btn btn-outline-primary"

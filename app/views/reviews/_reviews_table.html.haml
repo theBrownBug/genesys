@@ -34,6 +34,12 @@
                       %span.badge.rounded-pill.bg-danger Live
                     - else
                       %span.badge.rounded-pill.bg-secondary Offline
+                  %td.text-center.px-4
+                    %a{ :href => "#modal_review_edit", "data-bs-toggle" => "modal", "data-bs-target" => "#review_edit_modal_#{review.id}"}
+                    - if review.is_live_landing
+                      %span.badge.rounded-pill.bg-danger Live
+                    - else
+                      %span.badge.rounded-pill.bg-secondary Offline
                   %td.text-center.px4
                     - if !review.order_no
                       n/a

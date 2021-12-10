@@ -3,12 +3,41 @@
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-  .form-inputs
-    = f.input :email
-    = f.label :option, "Option 1", :value => 1
-    = f.radio_button :option, 1
-    = f.label :option, "Option 2", :value => 2
-    = f.radio_button :option, 2, :checked => true
-
-  .form-actions
-    = f.button :submit
+  .row.justify-content-center
+    .col-lg-4.pb-3.form-inputs
+      = f.input :email, class: 'form-group', placeholder: 'Enter Email'
+  %br
+  %section
+  .h6.text-center
+    Please choose a payment tier
+  .container
+    .row.justify-content-center
+      .col-lg-4.pb-3
+        .card
+          .card-header
+            %span= f.label :option, "Option 1", :value => 1 
+          %ul.list-group.list-group-flush
+            %li.list-group-item= f.label :option, "Manual adding of time blocks", :value => 1 
+            %li.list-group-item= f.label :option, "Manually add missed time blocks", :value => 1 
+            %li.list-group-item= f.label :option, "Create tasks for each module", :value => 1 
+            %li.list-group-item= f.label :option, "Create reoccuring tasks, e.g. weekly worksheets", :value => 1 
+            %li.list-group-item= f.label :option, "Manual adding of constant blocks such as appointments or lectures", :value => 1
+            %li.list-group-item
+              = f.radio_button :option, 1
+              %span.text-primary= f.label :option, "Free", :value => 1
+      .col-lg-4
+        .card
+          .card-header
+            %span= f.label :option, "Option 2", :value => 2
+          %ul.list-group.list-group-flush
+            %li.list-group-item= f.label :option, "Automated adding of time blocks", :value => 2
+            %li.list-group-item= f.label :option, "Automated adding of missed time blocks", :value => 2
+            %li.list-group-item= f.label :option, "Set deadlines for tasks", :value => 2
+            %li.list-group-item= f.label :option, "See personal metrics on completion of tasks and time blocks", :value => 2
+            %li.list-group-item= f.label :option, "Import timetable/calendar .csv files", :value => 2
+            %li.list-group-item
+              = f.radio_button :option, 2, :checked => true
+              %span.text-primary= f.label :option, "£2 per month", :value => 2 
+    .row.justify-content-center
+      .col-lg-3.pb-3.form-actions
+        = f.button :submit, "Register Interest", class: 'btn btn-primary w-100 mt-3'

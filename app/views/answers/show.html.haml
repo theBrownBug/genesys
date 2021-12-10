@@ -1,0 +1,19 @@
+#notice.alert.alert-success{:role => "alert" }
+  =notice
+
+%p
+  %b Answer:
+  = @answer.answer
+%p
+  %b Rating:
+  = @answer.rating
+%p
+  %b Likes:
+  = @answer.likes
+%p
+  %b Question:
+  = @answer.question
+
+= link_to 'Edit', edit_question_answer_path(@answer)
+\|
+= link_to 'Back', questions_path
