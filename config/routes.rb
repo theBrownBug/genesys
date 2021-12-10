@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :metrics
   resources :user_roles
   resources :roles
   devise_for :users
@@ -18,6 +19,9 @@ Rails.application.routes.draw do
   match '/500', to: 'errors#error_500', via: :all
 
   get :ie_warning, to: 'errors#ie_warning'
+  post 'click', to: 'metrics#click'
+
+  resources :metrics, only: %i[create index]
 
   get '*path' => redirect('/')
 

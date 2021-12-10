@@ -1,7 +1,7 @@
 - content_for :title, "Home"
 = javascript_pack_tag "collapse"
 = stylesheet_link_tag "collapse", media: :all
-
+= javascript_pack_tag 'features'
 / Splash
 %section.bg-light
   .container
@@ -28,7 +28,7 @@
     %h2 A timetable to suit you
     %p.text-muted.mb-5 Feature spotlight
     .row
-      .col-sm-6.col-lg-4.mb-3.text-center
+      #feature1box.col-sm-6.col-lg-4.mb-3.text-center
         .text-primary.p-2
           %i.fas.fa-graduation-cap.fa-5x
         %h6 Automated timetable creation
@@ -36,7 +36,7 @@
         #feature1.collapse
           %p.text-muted Simply choose your working hours and we'll fill out your day for you! Just think how much time and effort it woud take to do all that by hand.
         %p
-          %a#featureButton1{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-bs-toggle" => "collapse", :href => "#feature1", :role => "button"}
+          %a#featureButton1{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-bs-toggle" => "collapse", :href => "#feature1", :role => "button", :value=>"1"}
             Show details
         %p
           %a.text-decoration-none{:href => "https://twitter.com/intent/tweet?text=Look+at+this+awesome+application+for+automated+time+management+for+students%21+https%3A%2F%2Fteam05.demo1.genesys.shefcompsci.org.uk%2F.%0D%0AMy+favourite+feature+is+the+automated+timetable+creation.", :title => "Share on twitter"}
@@ -45,7 +45,7 @@
             %i.fab.fa-facebook-square.fa-2x
           %a.text-decoration-none{:href => "mailto:?subject=Check this out!&body=Look at this awesome application for automated time management for students! https://team05.demo1.genesys.shefcompsci.org.uk/. %0D%0AMy favourite feature is the automated timetable creation.", :title => "Share by Email"}
             %i.fas.fa-envelope.fa-2x
-      .col-sm-6.col-lg-4.mb-3.text-center
+      #feature2box.col-sm-6.col-lg-4.mb-3.text-center
         .text-primary.p-2
           %i.fas.fa-clock.fa-5x
         %h6 Account for last minute changes
@@ -53,7 +53,7 @@
         #feature2.collapse
           %p.text-muted Our application will react to missed time, giving you a list of missed tasks to make up for at your own pace.
         %p
-          %a#featureButton2{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-bs-toggle" => "collapse", :href => "#feature2", :role => "button"}
+          %a#featureButton2{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-bs-toggle" => "collapse", :href => "#feature2", :role => "button", :value=>"2"}
             Show details
         %p
           %a.text-decoration-none{:href => "https://twitter.com/intent/tweet?text=Look+at+this+awesome+application+for+automated+time+management+for+students%21+https%3A%2F%2Fteam05.demo1.genesys.shefcompsci.org.uk%2F.%0D%0AMy+favourite+feature+is+the+ability+to+account+for+last+minute+changes.", :title => "Share on twitter"}
@@ -69,7 +69,7 @@
       .col-sm-6.col-lg-4.mb-3
         .h-50.img-fluid.max-width
           =image_tag "placeholder.png", alt: "Image placeholder", class: "mw-100"
-      .col-sm-6.col-lg-4.mb-3.text-center
+      #feature3box.col-sm-6.col-lg-4.mb-3.text-center
         .text-primary.p-2
           %i.fas.fa-clipboard-check.fa-5x
         %h6 Track repeating tasks
@@ -77,7 +77,7 @@
         #feature3.collapse
           %p.text-muted This allows you to stay focused on the tasks you need to be completing in your timetabled hours.
         %p
-          %a#featureButton3{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-bs-toggle" => "collapse", :href => "#feature3", :role => "button"}
+          %a#featureButton3{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-bs-toggle" => "collapse", :href => "#feature3", :role => "button", :value=>"3"}
             Show details
         %p
           %a.text-decoration-none{:href => "https://twitter.com/intent/tweet?text=Look+at+this+awesome+application+for+automated+time+management+for+students%21+https%3A%2F%2Fteam05.demo1.genesys.shefcompsci.org.uk%2F.%0D%0AMy+favourite+feature+is+the+ability+to+track+repeating+tasks.", :title => "Share on twitter"}

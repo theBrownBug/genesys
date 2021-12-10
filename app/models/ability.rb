@@ -31,7 +31,6 @@ class Ability
       # set_live
       can %i[read update], Review, :all
       cannot %i[create destroy], Review
-
       can :manage, Question
       can :manage, Answer
       can [:read], Register

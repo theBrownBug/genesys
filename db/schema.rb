@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2021_12_04_121250) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
+  create_table "clicks", force: :cascade do |t|
+    t.string "session_id"
+    t.string "path"
+    t.string "category"
+    t.string "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
     t.integer "attempts", default: 0, null: false
@@ -53,6 +62,7 @@ ActiveRecord::Schema.define(version: 2021_12_04_121250) do
     t.integer "option"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "country"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -113,6 +123,17 @@ ActiveRecord::Schema.define(version: 2021_12_04_121250) do
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "visits", force: :cascade do |t|
+    t.datetime "from"
+    t.datetime "to"
+    t.decimal "longitude"
+    t.decimal "latitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "country"
+    t.string "path"
   end
 
   add_foreign_key "answers", "questions"

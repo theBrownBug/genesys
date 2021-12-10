@@ -1,0 +1,11 @@
+= javascript_include_tag "https://www.gstatic.com/charts/loader.js"
+- @reviews.each do |r|
+    =render :partial => "review_view_modal", locals: { review: r }
+.container.m-0.p-0.w-100
+    =render :partial => "map_section", locals: { locations: @locations, registrations: @registrations }
+    =render :partial => "session_section", locals: { metrics: @metrics }
+    =render :partial => "pricing_section", locals: { pricing: @pricing }
+    =render :partial => "feature_section", locals: { features: @features, features_time: @features_time, socials:@socials, social_keys: @social_keys }
+    =render :partial => "review_section", locals: { reviews: @reviews }
+    =render :partial => "faq_section", locals: { questions: @questions, questions_time: @questions_time }
+

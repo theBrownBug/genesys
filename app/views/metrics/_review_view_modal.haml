@@ -1,0 +1,17 @@
+.modal.fade{ :id => "review_view_modal_#{review.id}", :tabindex => "-1" }
+    .modal-dialog.modal-dialog-centered.modal-lg
+        .modal-content
+            .modal-header
+                %h5.modal-title.ms-4= review.title
+                %btn.btn-close{ "data-bs-dismiss" => "modal", "aria-label" => "Close" }
+            .modal-body.m-4
+                .row
+                    .col-2.text-start
+                        %p.fw-bold.mb-4 #
+                    .col-10.text-start
+                        %p.mb-4= review.id
+                .row
+                    .col-2.text-start
+                        %p.fw-bold.mb-4 Body
+                    .col-10.text-start
+                        %p.mb-4= review.body

@@ -1,7 +1,10 @@
 -# frozen_string_literal: true
+= javascript_pack_tag 'registers'
 = simple_form_for(@register) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  = f.input :lat, :as => :hidden, :input_html => { :value => "", :id =>"register_lat" }
+  = f.input :long, :as => :hidden, :input_html => { :value => "", :id=>"register_long" }
 
   .row.justify-content-center
     .col-lg-4.pb-3.form-inputs
@@ -23,7 +26,7 @@
             %li.list-group-item= f.label :option, "Create reoccuring tasks, e.g. weekly worksheets", :value => 1 
             %li.list-group-item= f.label :option, "Manual adding of constant blocks such as appointments or lectures", :value => 1
             %li.list-group-item
-              = f.radio_button :option, 1
+              #option1= f.radio_button :option, 1
               %span.text-primary= f.label :option, "Free", :value => 1
       .col-lg-4
         .card
@@ -36,7 +39,7 @@
             %li.list-group-item= f.label :option, "See personal metrics on completion of tasks and time blocks", :value => 2
             %li.list-group-item= f.label :option, "Import timetable/calendar .csv files", :value => 2
             %li.list-group-item
-              = f.radio_button :option, 2, :checked => true
+              #option2= f.radio_button :option, 2, :checked => true
               %span.text-primary= f.label :option, "£2 per month", :value => 2 
     .row.justify-content-center
       .col-lg-3.pb-3.form-actions

@@ -1,0 +1,7 @@
+.row
+    .col-12.mb-3
+        .card.shadow-sm.sticky-top
+            .card-header
+                %h5 Sessions
+            .card-body
+                = line_chart metrics.keys.map{|key| {name: key, data: metrics[key].group_by_day(:created_at).count}}
