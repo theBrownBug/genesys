@@ -17,10 +17,10 @@ class Question < ApplicationRecord
   validates :popularity, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :is_live, inclusion: [false], if: ->(question) { question.answer.blank? }
 
+  # rubocop:disable Naming/AccessorMethodName
   def get_answer
     answer = Answer.find_by(question_id: id)
     return nil if answer.nil?
-
-    answer = answer.answer
   end
+  # rubocop:enable Naming/AccessorMethodName
 end

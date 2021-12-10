@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # Tracking of user metrics
-# rubocop:disable Metrics/AbcSize
 class MetricsController < ApplicationController
   CATEGORY_FAQ = 'FAQ'
   CATEGORY_FEATURE = 'feature'
@@ -69,4 +68,3 @@ class MetricsController < ApplicationController
     params.require(:register).permit(:email, :option, :lat, :long)
   end
 end
-# rubocop:enable Metrics/AbcSize

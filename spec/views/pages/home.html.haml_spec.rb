@@ -77,5 +77,6 @@ describe 'pages/home' do
       expect(rendered).to have_link(nil, href: 'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fteam05.demo1.genesys.shefcompsci.org.uk%2F&amp;src=sdkpreparse%22&quote=My+favourite+feature+is+the+ability+to+account+for+last+minute+changes.', visible: :all)
       expect(rendered).to have_link(nil, href: 'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fteam05.demo1.genesys.shefcompsci.org.uk%2F&amp;src=sdkpreparse%22&quote=My+favourite+feature+is+the+ability+to+track+repeating+tasks.', visible: :all)
     end
+    # rubocop:enable Rspec/Layout/LineLength
   end
 end

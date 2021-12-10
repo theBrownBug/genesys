@@ -21,7 +21,6 @@ class RegistersController < ApplicationController
   # GET /registers/1/edit
   def edit; end
 
-  # rubocop:disable Metrics/AbcSize
   # POST /registers
   def create
     longitude = register_params['long']
@@ -41,7 +40,6 @@ class RegistersController < ApplicationController
       render :new
     end
   end
-  # rubocop:enable Metrics/AbcSize
 
   # PATCH/PUT /registers/1
   def update

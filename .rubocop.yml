@@ -5,12 +5,10 @@ require:
 Lint/Debugger:
   Exclude:
     - 'spec/rails_helper.rb'
+    - 'config'
 
-Metrics/BlockLength:
-  Max: 400
-
-Metrics/MethodLength:
-  Max: 20
+Metrics:
+  Enabled: false
 
 Rails/UnknownEnv:
   Environments: ['development', 'test', 'production', 'demo', 'qa']
@@ -26,3 +24,9 @@ RSpec/ExampleLength:
 
 RSpec/MultipleExpectations:
   Max: 10
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/MultipleDescribes:
+  Enabled: false

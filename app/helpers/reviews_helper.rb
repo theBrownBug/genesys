@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/AbcSize
 module ReviewsHelper
   def ratings_metrics(ratings, reviews_count)
     ratings_metrics = ratings.map { |rating, count| [rating, rating_metrics(rating, count, reviews_count)] }.to_h
@@ -10,6 +9,7 @@ module ReviewsHelper
   end
 
   def check_if_order_no_updated(review, review_params)
+    # rubocop:disable Style/GuardClause
     if review_params[:order_no].to_i != review.order_no
       if !review.order_no
         update_order_nos(review.id, Review.where(is_live_landing: true).size + 1, review_params[:order_no].to_i)
@@ -22,6 +22,7 @@ module ReviewsHelper
         update_order_nos(review.id, review.order_no, review_params[:order_no].to_i)
       end
     end
+    # rubocop:enable Style/GuardClause
   end
 
   def update_order_nos(id, order_no, order_no_new)
@@ -55,4 +56,3 @@ module ReviewsHelper
       color: RATING_COLOR[rating] }
   end
 end
-# rubocop:enable Metrics/AbcSize
